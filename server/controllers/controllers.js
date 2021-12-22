@@ -7,7 +7,6 @@ module.exports = {
       if(error) {
         res.status(500).send(error);
       } else {
-        console.log(results);
         res.send(results)
       };
     });
@@ -38,7 +37,6 @@ module.exports = {
       if(error) {
         res.status(500).send(error);
       } else {
-        console.log(results);
         res.send(results)
       };
     });
@@ -49,7 +47,6 @@ module.exports = {
       if(error) {
         res.status(500).send(error);
       } else {
-        console.log(results);
         res.send(results)
       };
     });
@@ -59,7 +56,6 @@ module.exports = {
       if(error) {
         res.status(500).send(error);
       } else {
-        console.log(results);
         res.send(results)
       };
     });

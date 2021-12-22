@@ -1,35 +1,35 @@
 import axios from 'axios';
 
-export const getProducts = (id) => {
+export const getProducts = (productId) => {
   if (id !== undefined) {
     return axios.get('/api/catwalk/products', {
-      params: { id: id }
+      params: { id: productId }
     })
   } else {
     return axios.get('/api/catwalk/products')
   };
 };
 
-export const getReviews = (id) => {
+export const getReviews = (productId) => {
   return axios.get('/api/catwalk/reviews', {
-    params: { id: id }
+    params: { id: productId }
   })
 };
 
-export const getMeta = (id) => {
+export const getMeta = (productId) => {
   return axios.get('/api/catwalk/meta', {
-    params: { id: id }
+    params: { id: productId }
   })
 };
 
-export const getQuestions = (id) => {
+export const getQuestions = (productId) => {
   return axios.get('/api/catwalk/questions', {
-    params: { id: id }
+    params: { id: productId }
   })
 };
 
-export const getAnswers = (id) => {
+export const getAnswers = (productId) => {
   return axios.get('/api/catwalk/questions', {
-    params: { id: id }
+    params: { id: productId }
   })
 };
