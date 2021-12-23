@@ -9,10 +9,10 @@ export const getProducts = (productId) => {
   return axios.get('/api/catwalk/products');
 };
 
-export const getReviews = (productId) => axios.get('/api/catwalk/reviews', { params: { id: productId } });
+export const getReviews = (paramsObject) => axios.get('/api/catwalk/reviews', { params: paramsObject });
 
 export const getMeta = (productId) => axios.get('/api/catwalk/meta', { params: { id: productId } });
 
-export const getQuestions = (productId) => axios.get('/api/catwalk/questions', { params: { id: productId } });
+export const getQuestions = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
 
 export const getAnswers = (productId) => axios.get('/api/catwalk/questions', { params: { id: productId } });
