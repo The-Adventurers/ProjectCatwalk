@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getProducts = (productId) => {
-  if (productId !== undefined) {
+export const getProducts = (paramsObject) => {
+  if (paramsObject.id !== undefined) {
     return axios.get('/api/catwalk/products', {
-      params: { id: productId },
+      params: { paramsObject },
     });
   }
   return axios.get('/api/catwalk/products');
@@ -15,4 +15,4 @@ export const getMeta = (productId) => axios.get('/api/catwalk/meta', { params: {
 
 export const getQuestions = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
 
-export const getAnswers = (productId) => axios.get('/api/catwalk/questions', { params: { id: productId } });
+export const getAnswers = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
