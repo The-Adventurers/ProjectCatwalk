@@ -1,11 +1,13 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
 const PORT = 3000;
 
-const controllers = require('./controllers/controllers.js');
+const controllers = require('./controllers/controllers');
 
 // Middleware
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
 
 // Routes
@@ -16,6 +18,4 @@ app.get('/api/catwalk/answers', controllers.getAnswers);
 app.get('/api/catwalk/cart', controllers.getCart);
 app.get('/api/catwalk/meta', controllers.getMeta);
 
-app.listen(PORT, () => (
-  console.log(`Server listening on port ${PORT}`)
-));
+app.listen(PORT);
