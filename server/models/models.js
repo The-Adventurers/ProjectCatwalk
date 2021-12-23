@@ -1,97 +1,18 @@
 const axios = require('axios');
-const config = require('../../config.js');
+const config = require('../../config');
+
+const headers = { Authorization: `${config.access_token}` };
 
 module.exports = {
-  getProducts: (params, callback) => {
-    if (params !== undefined) {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${params}`, {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-      })
-      .then((results) => {
-        callback(null, results.data);
-      })
-      .catch((error) => {
-        callback(error);
-      })
-    } else {
-      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products', {
-        headers: {
-          'Authorization': `${config.access_token}`
-        }
-      })
-      .then((results) => {
-        callback(null, results.data);
-      })
-      .catch((error) => {
-        callback(error);
-      })
+  getProducts: (paramsObj) => {
+    if (paramsObj.product_id !== undefined) {
+      return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}`, { headers, params: paramsObj });
     }
+    return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products', { headers });
   },
-  getReviews: (params, callback) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/?product_id=${params}`, {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-    })
-    .then((results) => {
-      callback(null, results.data);
-    })
-    .catch((error) => {
-      callback(error);
-    })
-  },
-  getMeta: (params, callback) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/?product_id=${params}`, {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-    })
-    .then((results) => {
-      callback(null, results.data);
-    })
-    .catch((error) => {
-      callback(error);
-    })
-  },
-  getQuestions: (params, callback) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions?&product_id=${params}`, {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-    })
-    .then((results) => {
-      callback(null, results.data);
-    })
-    .catch((error) => {
-      callback(error);
-    })
-  },
-  getAnswers: (params, callback) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${params}/answers`, {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-    })
-    .then((results) => {
-      callback(null, results.data);
-    })
-    .catch((error) => {
-      callback(error);
-    })
-  },
-  getCart: (callback) => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', {
-      headers: {
-        'Authorization': `${config.access_token}`
-      }
-    })
-    .then((results) => {
-      callback(null, results.data);
-    })
-    .catch((error) => {
-      callback(error);
-    })
-  }
+  getReviews: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', { headers, params: paramsObj }),
+  getMeta: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/', { headers, params: paramsObj }),
+  getQuestions: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', { headers, params: paramsObj }),
+  getAnswers: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${paramsObj.product_id}/answers`, { headers, params: paramsObj }),
+  getCart: () => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { headers }),
 };

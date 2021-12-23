@@ -1,35 +1,14 @@
 import axios from 'axios';
 
-export const getProducts = (productId) => {
-  if (id !== undefined) {
+export const getProducts = (paramsObject) => {
+  if (paramsObject.product_id !== undefined) {
     return axios.get('/api/catwalk/products', {
-      params: { id: productId }
-    })
-  } else {
-    return axios.get('/api/catwalk/products')
-  };
+      params: { paramsObject },
+    });
+  }
+  return axios.get('/api/catwalk/products');
 };
-
-export const getReviews = (productId) => {
-  return axios.get('/api/catwalk/reviews', {
-    params: { id: productId }
-  })
-};
-
-export const getMeta = (productId) => {
-  return axios.get('/api/catwalk/meta', {
-    params: { id: productId }
-  })
-};
-
-export const getQuestions = (productId) => {
-  return axios.get('/api/catwalk/questions', {
-    params: { id: productId }
-  })
-};
-
-export const getAnswers = (productId) => {
-  return axios.get('/api/catwalk/questions', {
-    params: { id: productId }
-  })
-};
+export const getReviews = (paramsObject) => axios.get('/api/catwalk/reviews', { params: paramsObject });
+export const getMeta = (paramsObject) => axios.get('/api/catwalk/meta', { params: paramsObject });
+export const getQuestions = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
+export const getAnswers = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });

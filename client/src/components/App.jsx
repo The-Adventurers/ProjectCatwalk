@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { getProducts } from '../shared/api.js';
 
 const App = function () {
   return (
