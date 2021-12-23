@@ -1,3 +1,3 @@
 module.exports = {
-  access_token: 'your github Token'
-}
+  access_token: 'your github Token',
+};
