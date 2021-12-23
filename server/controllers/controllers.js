@@ -2,8 +2,7 @@ const models = require('../models/models');
 
 module.exports = {
   getProducts: (req, res) => {
-    const params = req.query.id;
-    models.getProducts(params)
+    models.getProducts(req.query)
       .then((results) => {
         res.send(results.data);
       })
@@ -12,8 +11,7 @@ module.exports = {
       });
   },
   getReviews: (req, res) => {
-    const params = req.query.id;
-    models.getReviews(params)
+    models.getReviews(req.query)
       .then((results) => {
         res.send(results.data);
       })
@@ -22,8 +20,7 @@ module.exports = {
       });
   },
   getMeta: (req, res) => {
-    const params = req.query.id;
-    models.getMeta(params)
+    models.getMeta(req.query)
       .then((results) => {
         res.send(results.data);
       })
@@ -32,8 +29,7 @@ module.exports = {
       });
   },
   getQuestions: (req, res) => {
-    const params = req.query.id;
-    models.getQuestions(params)
+    models.getQuestions(req.query)
       .then((results) => {
         res.send(results.data);
       })
@@ -42,8 +38,7 @@ module.exports = {
       });
   },
   getAnswers: (req, res) => {
-    const params = req.query.id;
-    models.getAnswers(params)
+    models.getAnswers(req.query)
       .then((results) => {
         res.send(results.data);
       })
