@@ -2,13 +2,12 @@
 
 ## 1: Tests and You
 
----
-
 ### 1.1: Introduction
-
 
 _JEST is a testing framework for javascript (specifically, jsx) which supports unit, integration, and end-to-end tests._  </br>
 _This section will provide a comprehensive guide on how to setup JEST and create / run your first unit test._
+
+---
 
 ### 1.2: Installation and Setup
 
@@ -26,6 +25,8 @@ module.exports = {
   ],
 }; 
 ```
+
+---
 
 ### 1.3: Your First Unit Test
 
@@ -49,6 +50,8 @@ test('EXPECTED: App should render \'Hello World!\'', () => {
 ```
 
 _More details about JEST tests including mocks available at [jestjs docs](https://jestjs.io/docs/getting-started)_
+
+---
 
 ### 1.4: Code Coverage
 
