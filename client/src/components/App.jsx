@@ -1,8 +1,10 @@
 import React from 'react';
 
-const App = function () {
+import { OverviewApp } from './overview/OverviewApp.jsx';
+
+const App = () => {
   return (
-    <div>Hello World!</div>
+    <OverviewApp />
   );
 };
 

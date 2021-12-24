@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getProducts = (paramsObject) => {
   if (paramsObject.product_id !== undefined) {
     return axios.get('/api/catwalk/products', {
-      params: { paramsObject },
+      params: paramsObject ,
     });
   }
   return axios.get('/api/catwalk/products');
