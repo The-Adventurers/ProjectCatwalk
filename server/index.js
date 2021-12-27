@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3030;
 
 const controllers = require('./controllers/controllers');
 
@@ -18,4 +18,4 @@ app.get('/api/catwalk/answers', controllers.getAnswers);
 app.get('/api/catwalk/cart', controllers.getCart);
 app.get('/api/catwalk/meta', controllers.getMeta);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Listening to port... ${PORT}`));
