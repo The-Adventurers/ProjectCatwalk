@@ -2,9 +2,10 @@ import React from 'react';
 
 import { OverviewApp } from './overview/OverviewApp.jsx';
 
-const App = () => {
+const App = (props) => {
+
   return (
-    <OverviewApp />
+    <OverviewApp product_id={ 63616 }/>
   );
 };
 

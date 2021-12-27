@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
@@ -16,6 +16,7 @@ if product is on sale, price should be red
 and original price should be strucktrhough*/
 
 export const ProductInformation = (props) => {
+  
   return (
     <Wrapper>
       <div className="OverviewCategory">Category</div>

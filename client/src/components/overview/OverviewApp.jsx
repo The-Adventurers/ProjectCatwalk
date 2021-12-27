@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+
+import { getStyles, getProducts } from '../../shared/api.js';
 
 import { ProductInformation } from './ProductInformation.jsx';
 import { ImageGallery } from './ImageGallery.jsx';
@@ -19,15 +21,37 @@ const Overview = styled.section`
 `;
 
 export const OverviewApp = (props) => {
+  const [Styles, setStyles] = useState(null);
+  const [Product, setProduct] = useState(null);
+  useEffect(() => {
+    getProducts({ product_id: props.product_id })
+      .then((res) => {
+        setProduct(res.data);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+
+    getStyles({product_id: props.product_id })
+      .then((res) => {
+        setStyles(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [])
+
+
+    console.log(Product)
   return (
     <Overview>
     <div className="Overview">
-      <ImageGallery />
+      <ImageGallery product_id={ props.product_id }/>
       <Review />
-      <ProductInformation />
-      <StyleSelector />
-      <Cart />
-      <ProductDescription />
+      <ProductInformation product_id={ props.product_id }/>
+      <StyleSelector product_id={ props.product_id }/>
+      <Cart product_id={ props.product_id }/>
+      <ProductDescription product_id={ props.product_id }/>
     </div>
     </Overview>
   )
