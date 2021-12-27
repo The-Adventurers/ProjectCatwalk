@@ -8,7 +8,8 @@ export const getProducts = (paramsObj) => {
   }
   return axios.get('/api/catwalk/products');
 };
-export const getReviews = (paramsObj) => axios.get('/api/catwalk/reviews', { params: paramsObj });
-export const getMeta = (paramsObj) => axios.get('/api/catwalk/meta', { params: paramsObj });
-export const getQuestions = (paramsObj) => axios.get('/api/catwalk/questions', { params: paramsObj });
-export const getAnswers = (paramsObj) => axios.get('/api/catwalk/questions', { params: paramsObj });
+export const getReviews = (paramsObject) => axios.get('/api/catwalk/reviews', { params: paramsObject });
+export const getMeta = (paramsObject) => axios.get('/api/catwalk/meta', { params: paramsObject });
+export const getQuestions = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
+export const getAnswers = (paramsObject) => axios.get('/api/catwalk/questions', { params: paramsObject });
+export const getStyles = (paramsObject) => axios.get('/api/catwalk/styles', { params: paramsObject });

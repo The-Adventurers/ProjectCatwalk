@@ -55,4 +55,13 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+  getStyles: (req, res) => {
+    models.getStyles(req.query)
+      .then((results) => {
+        res.send(results.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  },
 };
