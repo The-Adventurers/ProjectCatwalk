@@ -5,15 +5,15 @@ const Wrapper = styled.section`
   border-style: solid;
   position: absolute;
   left: 10%;
-  top: 10%;
-  height: 65%;
-  width: 40%;
+  top: 80%;
+  height: 15%;
+  width: 82.5%;
 `;
 
-export const ImageGallery = (props) => {
+export const ProductDescription = (props) => {
   return (
     <Wrapper>
-      <div className="OverviewGallery">ImageGallery PlaceHolder</div>
+      <div>ProductDescription Placeholder</div>
     </Wrapper>
   )
 }
