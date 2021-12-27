@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ProductInformation } from './ProductInformation.jsx';
 import { ImageGallery } from './ImageGallery.jsx';
 import { StyleSelector } from './StyleSelector.jsx';
-import { Cart } from './Cart.jsx';
+import { Cart } from './cart/Cart.jsx';
 import { ProductDescription } from './ProductDescription.jsx';
 import { Review } from './Review.jsx';
 

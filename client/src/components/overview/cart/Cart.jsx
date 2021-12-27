@@ -14,7 +14,12 @@ width: 40%;
 export const Cart = (props) => {
   return (
     <Wrapper>
-      <div className="Cart"> Cart Placeholder</div>
+      <div class="selectSize">
+         <button class="sizeButton">Select Size</button>
+        <div class="sizeContent">
+          <a href="sizeOne">Style 1</a>
+        </div>
+      </div>
     </Wrapper>
   )
 }

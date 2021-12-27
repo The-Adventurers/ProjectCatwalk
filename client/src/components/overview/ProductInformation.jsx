@@ -11,10 +11,12 @@ const Wrapper = styled.section`
   width: 40%;
 `;
 
-export const ProductInformation = () => {
+export const ProductInformation = (props) => {
   return (
     <Wrapper>
-      <div className="ProductInformation">ProductInformation Placeholder</div>
+      <div className="OverviewCategory">Category</div>
+      <div className="OverviewTitle">Product Title</div>
+      <div className="OverviewPrice">Price</div>
     </Wrapper>
   )
 };
