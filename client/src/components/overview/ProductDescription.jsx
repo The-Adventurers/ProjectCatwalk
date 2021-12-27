@@ -4,10 +4,10 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   border-style: solid;
   position: absolute;
-  left: 10%;
+  left: 2.5%;
   top: 80%;
   height: 15%;
-  width: 82.5%;
+  width: 95%;
 `;
 
 export const ProductDescription = (props) => {

@@ -12,9 +12,10 @@ const Overview = styled.section`
   border-style: solid;
   border-width: .5px;
   position: absolute;
-  width: 75%;
+  width: 90%;
   height: 80%;
-  left: 12.5%;
+  left: 5%;
+  top: 15%;
 `;
 
 export const OverviewApp = (props) => {

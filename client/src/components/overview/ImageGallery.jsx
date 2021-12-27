@@ -4,10 +4,10 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   border-style: solid;
   position: absolute;
-  left: 10%;
+  left: 2.5%;
   top: 10%;
   height: 65%;
-  width: 40%;
+  width: 45%;
 `;
 
 export const ImageGallery = (props) => {
