@@ -16,12 +16,12 @@ if product is on sale, price should be red
 and original price should be strucktrhough*/
 
 export const ProductInformation = (props) => {
-  
+
   return (
     <Wrapper>
-      <div className="OverviewCategory">Category</div>
-      <div className="OverviewTitle">Product Title</div>
-      <div className="OverviewPrice">Price</div>
+      <div className="OverviewCategory">{props.product.category}</div>
+      <div className="OverviewTitle">{props.product.name}</div>
+      <div className="OverviewPrice">{props.style.original_price}</div>
     </Wrapper>
   )
 };

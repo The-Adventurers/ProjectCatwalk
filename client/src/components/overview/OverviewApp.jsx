@@ -21,8 +21,9 @@ const Overview = styled.section`
 `;
 
 export const OverviewApp = (props) => {
-  const [Styles, setStyles] = useState(null);
-  const [Product, setProduct] = useState(null);
+  const [Styles, setStyles] = useState([]);
+  const [Product, setProduct] = useState({});
+  const [Style, setStyle] = useState({});
   useEffect(() => {
     getProducts({ product_id: props.product_id })
       .then((res) => {
@@ -34,24 +35,25 @@ export const OverviewApp = (props) => {
 
     getStyles({product_id: props.product_id })
       .then((res) => {
-        setStyles(res.data);
+        setStyles(res.data.results);
+        setStyle(res.data.results[0])
       })
       .catch((error) => {
         console.log(error);
       });
   }, [])
 
-
-    console.log(Product)
+  console.log(Styles)
+  console.log('style', Style);
   return (
     <Overview>
     <div className="Overview">
-      <ImageGallery product_id={ props.product_id }/>
+      <ImageGallery product={ Product } />
       <Review />
-      <ProductInformation product_id={ props.product_id }/>
-      <StyleSelector product_id={ props.product_id }/>
-      <Cart product_id={ props.product_id }/>
-      <ProductDescription product_id={ props.product_id }/>
+      <ProductInformation product={ Product } style={ Style }/>
+      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
+      <Cart product={ Product }/>
+      <ProductDescription product={ Product }/>
     </div>
     </Overview>
   )
