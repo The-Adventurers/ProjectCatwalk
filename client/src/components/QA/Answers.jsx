@@ -1,25 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 const Answers = ({questions, q_index}) => {
-  console.log('answers', questions[q_index].answers)
+  const allAnswers = questions[q_index].answers;
 
-  let answers = questions[q_index].answers.slice(0, 2);
+  console.log('answers', questions[q_index].answers)
+  const [showAnswers, setAnswers] = useState(questions[q_index].answers.slice(0, 2))
+
+  // let answers = questions[q_index].answers.slice(0, 2);
 
   const showRemainAnswers = () => {
-    answers = questions[q_index].answers.map(ans => ans[1])
-    console.log('from click, >>', answers)
-    return answers;
+    setAnswers(allAnswers)
   };
 
-  console.log('answers after slice(2) ',answers)
-  
+  console.log('answers after slice(2) ',allAnswers)
+
   return(
     <div>
-      {answers.length && <p>A:</p>}
-      {answers.map(ans => (
+      {showAnswers.length && <p>A:</p>}
+      {showAnswers.map(ans => (
         <p style={{marginLeft:'10px'}} >{ans[1].body}</p>
       ))}
-      {(questions[q_index].answers.length > 2 && answers.length !== questions[q_index].answers) && <p onClick={showRemainAnswers} style={{fontSize: '10px', color:'grey'}}>LOAD MORE ANSWERS</p> }
+      {(allAnswers.length > 2 && showAnswers.length !== allAnswers.length) && <p onClick={showRemainAnswers} style={{fontSize: '10px', color:'grey'}}>LOAD MORE ANSWERS</p> }
     </div>
   )
 }
