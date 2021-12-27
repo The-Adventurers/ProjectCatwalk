@@ -29,25 +29,13 @@ const QAsection = ({ product_id }) => {
     fetchData();
   }, [product_id]);
 
-  // const getAnswers = (questionIndex) => {
-  //   const answers = Object.entries(allQuestions[questionIndex].answers);
-  //   return answers
-  // }
-
-
   console.log('all questions pass to others components', allQuestions)
 
   return (
 
-    <>
+    <div style={{width: '60vw'}}>
       <Questions questions={allQuestions}/>
-      {/* {allQuestions.slice(0,4).map((q,index) => (
-        <div>
-          <p key={q.question_id}>Q: <span>{q.question_body}</span></p>
-          <div>A: {getAnswers(index).slice(0, 2).map(a =>  <ul>{a[1].body}</ul>)}</div>
-        </div>
-      ))} */}
-    </>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import Answers from './Answers.jsx';
 const Questions = ({questions}) => {
 
   const  [showQuestions, setShowQuestions] = useState([]);
+  const style = { cursor: 'pointer'}
 
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
@@ -21,20 +22,24 @@ const Questions = ({questions}) => {
     <div>
       {showQuestions.map((question, index) => (
         <>
-        <p>Q:
-        <span>{question.question_body}</span>
-      </p>
+          <p style={{display:'flex', justifyContent: 'space-between'}}>
+            Q:&nbsp;{question.question_body}
+            <span style={{color: 'grey', fontSize: '0.8em'}}>
+              <span>Yes({question.question_helpfulness}) &nbsp;&nbsp;|</span>
+              <span>&nbsp;&nbsp;Add Answer</span>
+            </span>
+          </p>
         <Answers questions={questions} q_index={index}/>
-        </>
+      </>
       ))}
     </div>;
 
 
   //add Q button
-  const addQuestion = <button>ADD QUESTION +</button>;
+  const addQuestion = <button style={style}>ADD QUESTION +</button>;
 
   //more Q button
-  const moreQuestions = <button onClick={showMoreQuestions} >MORE ANSWERED QUESTIONS</button>;
+  const moreQuestions = <button onClick={showMoreQuestions} style={style}>MORE ANSWERED QUESTIONS</button>;
 
   return(
 
