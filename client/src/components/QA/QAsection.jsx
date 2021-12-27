@@ -33,7 +33,7 @@ const QAsection = ({ product_id }) => {
 
   return (
 
-    <div style={{width: '60vw'}}>
+    <div style={{width: '50vw'}}>
       <Questions questions={allQuestions}/>
     </div>
   );

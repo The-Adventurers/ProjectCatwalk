@@ -22,11 +22,18 @@ const Questions = ({questions}) => {
     <div>
       {showQuestions.map((question, index) => (
         <>
-          <p style={{display:'flex', justifyContent: 'space-between'}}>
-            Q:&nbsp;{question.question_body}
-            <span style={{color: 'grey', fontSize: '0.8em'}}>
-              <span>Yes({question.question_helpfulness}) &nbsp;&nbsp;|</span>
-              <span>&nbsp;&nbsp;Add Answer</span>
+          <p style={{display:'flex', justifyContent: 'space-between', fontWeight: 'bold'}}>
+            <span> Q:&nbsp;{question.question_body} </span>
+            <span style={{color: 'grey', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
+              Helpful?&nbsp;&nbsp;
+              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
+                Yes
+              </span>
+              <span>({question.question_helpfulness})</span>
+              <span>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
+                Add Answer
+              </span>
             </span>
           </p>
         <Answers questions={questions} q_index={index}/>
