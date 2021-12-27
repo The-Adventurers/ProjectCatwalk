@@ -17,5 +17,6 @@ app.get('/api/catwalk/questions', controllers.getQuestions);
 app.get('/api/catwalk/answers', controllers.getAnswers);
 app.get('/api/catwalk/cart', controllers.getCart);
 app.get('/api/catwalk/meta', controllers.getMeta);
+app.get('/api/catwalk/styles', controllers.getStyles);
 
 app.listen(PORT, () => console.log(`Listening to port... ${PORT}`));

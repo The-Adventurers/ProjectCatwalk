@@ -15,4 +15,5 @@ module.exports = {
   getQuestions: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', { headers, params: paramsObj }),
   getAnswers: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${paramsObj.question_id}/answers`, { headers, params: paramsObj }),
   getCart: () => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { headers }),
+  getStyles: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/styles`, { headers, params: paramsObj }),
 };
