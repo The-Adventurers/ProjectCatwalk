@@ -19,5 +19,6 @@ app.get('/api/catwalk/cart', controllers.getCart);
 app.get('/api/catwalk/meta', controllers.getMeta);
 app.get('/api/catwalk/styles', controllers.getStyles);
 app.get('/api/catwalk/related', controllers.getRelated);
+app.get('/api/catwalk/relatedInfo', controllers.getRelatedInfo);
 
 app.listen(PORT);
