@@ -5,12 +5,12 @@ import { RelatedProducts, Carousel } from '../../dist/RelatedProductStyles';
 
 const RelatedProductList = () => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
-  let productId = 63609;
+  let [currentProduct, setCurrentProduct] = useState(63609);
   let [relatedProducts, setRelatedProducts] = useState([]);
 
   // get all related products information and set to state
   useEffect(() => {
-    getRelated({product_id: productId})
+    getRelated({product_id: currentProduct})
       .then((results) => {
         let relatedProductInfo = results.data.map((relatedId) => {
           return getRelatedInfo({product_id: relatedId});
@@ -26,13 +26,17 @@ const RelatedProductList = () => {
         setRelatedProducts(allRelatedInfo);
       })
       .catch(err => { console.error(err); })
-    }, [])
+    }, [currentProduct])
+
+  const changeProduct = (id) => {
+    setCurrentProduct(id);
+  }
 
   return (
     <RelatedProducts>RELATED PRODUCTS
       <Carousel>
         {relatedProducts.map((product) => (
-          <RelatedProductCard product={product} key={product.name}/>
+          <RelatedProductCard product={product} key={product.id} changeProduct={changeProduct}/>
         ))}
       </Carousel>
     </RelatedProducts>

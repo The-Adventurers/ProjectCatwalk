@@ -78,6 +78,7 @@ module.exports = {
     Promise.all(getAllInfo)
       .then((results) => {
         let productInfo = {
+          id: results[0].data.id,
           category: results[0].data.category,
           name: results[0].data.name,
           defaultPrice: results[0].data.default_price,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../dist/RelatedProductStyles';
 
-const RelatedProductCard = ({product}) => {
+const RelatedProductCard = ({product, changeProduct}) => {
   let price, image;
   if (product.salePrice) {
     price = <Price>Reg Price: {'$' + Math.round(product.defaultPrice)}, Sale Price: {'$' + Math.round(product.salePrice)}</Price>
@@ -15,7 +15,7 @@ const RelatedProductCard = ({product}) => {
     image = <Image src='https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'/>
   }
   return (
-    <ProductCard>
+    <ProductCard onClick={() => { changeProduct(product.id); }}>
       <Container>
         {image}
         <Icon src='https://cdn-icons-png.flaticon.com/512/929/929566.png'/>
