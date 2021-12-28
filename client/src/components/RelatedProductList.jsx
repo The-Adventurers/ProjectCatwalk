@@ -5,11 +5,9 @@ import RelatedProductCard from './RelatedProductCard.jsx';
 const RelatedProductList = () => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
   let productId = 63609;
-
-  // related products array
   let [relatedProducts, setRelatedProducts] = useState([]);
 
-  // get related products array and set to state
+  // get all related products information and set to state
   useEffect(() => {
     getRelated({product_id: productId})
       .then((results) => {
