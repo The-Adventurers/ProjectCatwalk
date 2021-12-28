@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  border-style: solid;
+  font-family: helvetica;
+  font-size 15px;
   position: absolute;
   left: 2.5%;
   top: 80%;
@@ -13,7 +14,7 @@ const Wrapper = styled.section`
 export const ProductDescription = (props) => {
   return (
     <Wrapper>
-      <div>ProductDescription Placeholder</div>
+      <div>{props.product.description}</div>
     </Wrapper>
   )
 }

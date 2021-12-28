@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
 position: absolute;
-border-style: solid;
+padding-left: 5px;
+font-family: helvetica;
+font-weight: bold;
+font-size 1em;
 width: 35%;
 left: 50%;
 top: 37.5%;
@@ -29,9 +32,10 @@ export const StyleSelector = (props) => {
 
   return (
     <Wrapper>
+      <div>Select Style / Color</div>
       <div>{props.styles.map((style) => {
         return (
-          <Button key={style.style_id} onClick={()=> {props.selectStyle(style.style_id)}}>
+          <Button key={style.style_id} onClick={()=> {props.selectStyle(style)}}>
             {style.name}
           </Button>
         )
