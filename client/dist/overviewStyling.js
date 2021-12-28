@@ -1,23 +1,24 @@
 import styled from 'styled-components';
 
 export const Overview = styled.section`
-position: absolute;
-width: 90%;
-height: 80%;
-left: 5%;
-top: 10%;
+  border-style: solid;
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  left: 2%;
+  top: 5%;
 `;
 
 export const ProductInfoWrapper = styled.section`
-border-style: solid;
-overflow: auto;
+  border-style: solid;
+  overflow: auto;
   font-family: Futura;
   position: absolute;
   width: 35%;
-  left: 50%;
-  top: 20%;
+  left: 62%;
+  top: 5%;
   height: 30%;
-  width: 47.5%;
+  width: 37%;
 `;
 
 export const Category = styled.section`
@@ -59,39 +60,61 @@ export const OldPrice = styled.section`
 `;
 
 export const SelectStyleWrapper = styled.section`
-border-style: solid;
-position: absolute;
-padding-left: 5px;
-font-family: helvetica;
-font-weight: bold;
-font-size 1em;
-width: 35%;
-left: 50%;
-top: 52.5%;
-height: 20%;
-width: 47%;
+  border-style: solid;
+  position: absolute;
+  padding-left: 5px;
+  font-family: helvetica;
+  font-weight: bold;
+  font-size 1em;
+  left: 62%;
+  top: 37.5%;
+  height: 20%;
+  width: 36.5%;
 `;
 
 export const StyleButton = styled.button`
-&:hover {
-  background: black;
-  border: 2px solid black;
-}
-display: inline-block;
-background: grey;
-color: white;
-font-size: 1em;
-margin: 1%;
-padding: 1% 2%;
-border: 2px solid grey;
-border-radius: 3px;
+  &:hover {
+    background: black;
+    border: 2px solid black;
+  }
+  display: inline-block;
+  background: grey;
+  color: white;
+  font-size: 1em;
+  margin: 1%;
+  padding: 1% 2%;
+  border: 2px solid grey;
+  border-radius: 3px;
 `;
 
 export const GalleryWrapper = styled.section`
-border-style: solid;
-position: absolute;
-left: 2.5%;
-top: 10%;
-height: 85%;
-width: 45%;
+  position: absolute;
+  height: 100%;
+  width: 62%;
+  object-fit: contain;
+`;
+
+export const MiniGallery = styled.section`
+  position: absolute;
+  height: 100%;
+  width: 15%;
+  overflow: auto;
+`;
+
+export const MainImage = styled.section`
+  position: absolute;
+  height: 100%;
+  width: 83%;
+  left: 16%;
+  border-radius: 10px;
+`;
+
+export const CartWrapper = styled.section`
+  border-style: solid;
+  position: absolute;
+  width: 35%;
+  left: 62%;
+  top: 60%;
+  height: 20%;
+  width: 37%;
 `;

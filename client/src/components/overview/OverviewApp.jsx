@@ -12,6 +12,7 @@ export const OverviewApp = (props) => {
   const [Styles, setStyles] = useState([]);
   const [Product, setProduct] = useState({});
   const [Style, setStyle] = useState({});
+  const [currentImage, setCurrentImage] = useState(null);
   useEffect(() => {
     getProducts({ product_id: props.product_id })
       .then((res) => {
@@ -25,6 +26,7 @@ export const OverviewApp = (props) => {
       .then((res) => {
         setStyles(res.data.results);
         setStyle(res.data.results[0])
+        setCurrentImage(res.data.results[0].photos[0].url)
       })
       .catch((error) => {
         console.log(error);
@@ -36,8 +38,7 @@ export const OverviewApp = (props) => {
   return (
     <Overview>
     <div className="Overview">
-      <ImageGallery product={ Product } />
-      <Review />
+      <ImageGallery style={ Style } currentImage={currentImage} setCurrentImage={setCurrentImage}/>
       <ProductInformation product={ Product } style={ Style }/>
       <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
       <Cart product={ Product }/>
