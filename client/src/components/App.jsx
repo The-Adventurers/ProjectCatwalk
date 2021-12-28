@@ -3,7 +3,7 @@ import RelatedProductList from './RelatedProductList.jsx';
 
 const App = function () {
   return (
-    <div>Hello World!
+    <div>
       <RelatedProductList/>
     </div>
   );

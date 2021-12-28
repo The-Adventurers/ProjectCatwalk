@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getRelated, getRelatedInfo } from '../shared/api.js';
+import { getRelated, getRelatedInfo } from '../shared/api';
 import RelatedProductCard from './RelatedProductCard.jsx';
+import { RelatedProducts, Carousel } from '../../dist/RelatedProductStyles';
 
 const RelatedProductList = () => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
@@ -28,11 +29,13 @@ const RelatedProductList = () => {
     }, [])
 
   return (
-    <div>RELATED PRODUCTS
-      {relatedProducts.map((product) => (
-        <RelatedProductCard product={product} key={product.name}/>
-      ))}
-    </div>
+    <RelatedProducts>RELATED PRODUCTS
+      <Carousel>
+        {relatedProducts.map((product) => (
+          <RelatedProductCard product={product} key={product.name}/>
+        ))}
+      </Carousel>
+    </RelatedProducts>
   );
 }
 

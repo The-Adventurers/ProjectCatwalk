@@ -1,20 +1,30 @@
 import React from 'react';
+import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../dist/RelatedProductStyles';
 
 const RelatedProductCard = ({product}) => {
-  let price;
+  let price, image;
   if (product.salePrice) {
-    price = <div>Reg Price: {'$' + Math.round(product.defaultPrice)}, Sale Price: {'$' + Math.round(product.salePrice)}</div>
+    price = <Price>Reg Price: {'$' + Math.round(product.defaultPrice)}, Sale Price: {'$' + Math.round(product.salePrice)}</Price>
   } else {
-    price = <div>{'$' + Math.round(product.defaultPrice)}</div>
+    price = <Price>{'$' + Math.round(product.defaultPrice)}</Price>
+  }
+
+  if (product.thumbnailUrl) {
+    image = <Image src={product.thumbnailUrl}/>
+  } else {
+    image = <Image src='https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'/>
   }
   return (
-    <div>
-      <img src={product.thumbnailUrl /* need default image for products without images */}></img>
-      <div>{product.category}</div>
-      <div>{product.name}</div>
+    <ProductCard>
+      <Container>
+        {image}
+        <Icon src='https://cdn-icons-png.flaticon.com/512/929/929566.png'/>
+      </Container>
+      <Category>{product.category.toUpperCase()}</Category>
+      <Name>{product.name}</Name>
       {price}
-      <div>{product.rating /* import star component for rating */}</div>
-    </div>
+      <Rating>{product.rating /* import star component for rating */}</Rating>
+    </ProductCard>
   );
 }
 
