@@ -2,23 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { getStyles, getProducts } from '../../shared/api.js';
-
+import { Overview } from '../../../dist/overviewStyling.js';
 import { ProductInformation } from './ProductInformation.jsx';
 import { ImageGallery } from './ImageGallery.jsx';
 import { StyleSelector } from './StyleSelector.jsx';
-import { Cart } from './cart/Cart.jsx';
-import { ProductDescription } from './ProductDescription.jsx';
-import { Review } from './Review.jsx';
-
-const Overview = styled.section`
-  border-style: solid;
-  border-width: .5px;
-  position: absolute;
-  width: 90%;
-  height: 80%;
-  left: 5%;
-  top: 15%;
-`;
+import { Cart } from './Cart.jsx';
 
 export const OverviewApp = (props) => {
   const [Styles, setStyles] = useState([]);
@@ -53,7 +41,6 @@ export const OverviewApp = (props) => {
       <ProductInformation product={ Product } style={ Style }/>
       <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
       <Cart product={ Product }/>
-      <ProductDescription product={ Product }/>
     </div>
     </Overview>
   )
