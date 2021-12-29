@@ -4,7 +4,6 @@ const Answers = ({questions, q_index}) => {
   const allAnswers = questions[q_index].answers;
   const style = { cursor: 'pointer'};
 
-  console.log('answers', questions[q_index].answers)
   const [showAnswers, setAnswers] = useState(questions[q_index].answers.slice(0, 2))
 
   // let answers = questions[q_index].answers.slice(0, 2);
@@ -19,7 +18,6 @@ const Answers = ({questions, q_index}) => {
     }
   };
 
-  console.log('answers after slice(2) ',allAnswers)
   const formatDate = (date) => { //"2018-01-04T00:00:00.000Z"
     return new Date(date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric'})
   }
