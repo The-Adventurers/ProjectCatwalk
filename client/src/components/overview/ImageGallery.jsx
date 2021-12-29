@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight } from '../../../dist/overviewStyling.js';
 
 export const ImageGallery = (props) => {
-  const images = props.style.photos;
+  const images = props.style.photos.slice(0, 10);
 
   return (
     <GalleryWrapper>
