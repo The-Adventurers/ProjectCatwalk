@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getRelated, getRelatedInfo } from '../shared/api';
 import RelatedProductCard from './RelatedProductCard.jsx';
-import { RelatedProducts, Carousel } from '../../dist/RelatedProductStyles';
+import ComparisonModal from './ComparisonModal.jsx';
+import { MainContainer, RelatedProducts, Carousel } from '../../dist/styling/RelatedProductStyles';
 
 const RelatedProductList = () => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
   let [currentProduct, setCurrentProduct] = useState(63609);
   let [relatedProducts, setRelatedProducts] = useState([]);
+  let [showModal, setShowModal] = useState(false);
 
   // get all related products information and set to state
   useEffect(() => {
@@ -26,20 +28,24 @@ const RelatedProductList = () => {
         setRelatedProducts(allRelatedInfo);
       })
       .catch(err => { console.error(err); })
-    }, [currentProduct])
+    }, [currentProduct, showModal])
 
-  const changeProduct = (id) => {
-    setCurrentProduct(id);
+  const setModal = (e) => {
+    e.stopPropagation();
+    setShowModal(!showModal);
   }
 
   return (
-    <RelatedProducts>RELATED PRODUCTS
-      <Carousel>
-        {relatedProducts.map((product) => (
-          <RelatedProductCard product={product} key={product.id} changeProduct={changeProduct}/>
-        ))}
-      </Carousel>
-    </RelatedProducts>
+    <MainContainer>
+      <RelatedProducts>RELATED PRODUCTS
+        <Carousel>
+          {relatedProducts.map((product) => (
+            <RelatedProductCard product={product} key={product.id} setCurrentProduct={setCurrentProduct} setModal={setModal}/>
+          ))}
+        </Carousel>
+      </RelatedProducts>
+      <ComparisonModal showModal={showModal} setModal={setModal}/>
+    </MainContainer>
   );
 }
 
