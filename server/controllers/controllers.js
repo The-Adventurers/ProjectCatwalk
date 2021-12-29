@@ -90,44 +90,45 @@ module.exports = {
   getRelated: (req, res) => {
     models.getRelated(req.query)
       .then((results) => {
-        res.send(results.data);
+        let fetchAllData = [];
+        results.data.forEach((relatedId) => {
+          fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
+        })
+        return Promise.all(fetchAllData);
       })
-      .catch((error) => {
-        res.status(500).send(error);
-      });
-  },
-  getRelatedInfo: (req, res) => {
-    let getAllInfo = [models.getProducts(req.query), models.getStyles(req.query), models.getMeta(req.query)];
-    Promise.all(getAllInfo)
       .then((results) => {
-        let productInfo = {
-          id: results[0].data.id,
-          category: results[0].data.category,
-          name: results[0].data.name,
-          defaultPrice: results[0].data.default_price,
-          features: results[0].data.features
-        };
+        let allProductInfo = [];
+        for (var i = 0; i < results.length; i+=3) {
+          let productInfo = {
+            id: results[i].data.id,
+            category: results[i].data.category,
+            name: results[i].data.name,
+            defaultPrice: results[i].data.default_price,
+            features: results[i].data.features
+          };
 
-        let styles = results[1].data.results;
-        for (let i = 0; i < styles.length; i++) {
-          if (styles[i]['default?']) {
-            productInfo.thumbnailUrl = styles[i].photos[0].thumbnail_url;
-            if (styles[i].sale_price) {
-              productInfo.salePrice = styles[i].sale_price;
+          let styles = results[i + 1].data.results;
+          for (let j = 0; j < styles.length; j++) {
+            if (styles[j]['default?']) {
+              productInfo.thumbnailUrl = styles[j].photos[0].thumbnail_url;
+              if (styles[j].sale_price) {
+                productInfo.salePrice = styles[j].sale_price;
+              }
             }
           }
-        }
-        productInfo.thumbnailUrl = productInfo.thumbnailUrl || styles[0].photos[0].thumbnail_url;
+          productInfo.thumbnailUrl = productInfo.thumbnailUrl || styles[0].photos[0].thumbnail_url;
 
-        let ratings = results[2].data.ratings;
-        let numberOfRatings = 0;
-        let totalRating = 0;
-        for (let key in ratings) {
-          numberOfRatings += Number(ratings[key]);
-          totalRating += (Number(key) * Number(ratings[key]));
+          let ratings = results[i + 2].data.ratings;
+          let numberOfRatings = 0;
+          let totalRating = 0;
+          for (let key in ratings) {
+            numberOfRatings += Number(ratings[key]);
+            totalRating += (Number(key) * Number(ratings[key]));
+          }
+          productInfo.rating = totalRating / numberOfRatings;
+          allProductInfo.push(productInfo);
         }
-        productInfo.rating = totalRating / numberOfRatings;
-        res.send(productInfo);
+        res.send(allProductInfo);
       })
       .catch((error) => {
         res.status(500).send(error);

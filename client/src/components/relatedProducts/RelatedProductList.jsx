@@ -15,17 +15,7 @@ const RelatedProductList = ({product_id}) => {
   useEffect(() => {
     getRelated({product_id: currentProductId})
       .then((results) => {
-        let relatedProductInfo = results.data.map((relatedId) => {
-          return getRelatedInfo({product_id: relatedId});
-        })
-        return Promise.all(relatedProductInfo);
-      })
-      .then((results) => {
-        let allRelatedInfo = [];
-        for (let i = 0; i < results.length; i++) {
-          allRelatedInfo.push(results[i].data);
-        }
-        setRelatedProducts(allRelatedInfo);
+        setRelatedProducts(results.data);
       })
       .catch(err => { console.error(err); })
     }, [currentProductId])
