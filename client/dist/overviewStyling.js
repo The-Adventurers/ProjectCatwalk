@@ -15,7 +15,7 @@ export const ProductInfoWrapper = styled.section`
   width: 35%;
   left: 62%;
   top: 8%;
-  height: 30%;
+  height: 40%;
   width: 37%;
 `;
 
@@ -64,7 +64,7 @@ export const SelectStyleWrapper = styled.section`
   font-weight: bold;
   font-size 1em;
   left: 62%;
-  top: 40.5%;
+  top: 50.5%;
   height: 20%;
   width: 36.5%;
 `;
@@ -113,7 +113,7 @@ export const CartWrapper = styled.section`
   position: absolute;
   width: 35%;
   left: 62%;
-  top: 63%;
+  top: 73%;
   height: 20%;
   width: 37%;
 `;

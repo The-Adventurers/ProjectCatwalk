@@ -26,6 +26,14 @@
   margin-top: 2%;
 }
 
+.hidden {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 31%;
+  margin-top: 2%;
+  visibility: hidden;
+}
+
 .leftArrowGallery:hover {
   opacity: 0.6;
 }

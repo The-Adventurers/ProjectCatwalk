@@ -23,22 +23,21 @@ export const ProductInformation = (props) => {
         </SalesPrice>
       </ProductInfoWrapper>
     )
-  } else {
-    return (
-      <ProductInfoWrapper>
-        <Category>
-          <div className="OverviewCategory">{props.product.category}</div>
-        </Category>
-        <Title>
-          <div className="OverviewTitle">{props.product.name}</div>
-        </Title>
-        <Description>
-          <div>{props.product.description}</div>
-        </Description>
-        <Price>
-          <div className="OverviewPrice">Price ${props.style.original_price}</div>
-        </Price>
-      </ProductInfoWrapper>
-    )
   }
+  return (
+    <ProductInfoWrapper>
+      <Category>
+        <div className="OverviewCategory">{props.product.category}</div>
+      </Category>
+      <Title>
+        <div className="OverviewTitle">{props.product.name}</div>
+      </Title>
+      <Description>
+        <div>{props.product.description}</div>
+      </Description>
+      <Price>
+        <div className="OverviewPrice">Price ${props.style.original_price}</div>
+      </Price>
+    </ProductInfoWrapper>
+  )
 };

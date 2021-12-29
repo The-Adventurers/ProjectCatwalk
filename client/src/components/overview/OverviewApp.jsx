@@ -40,15 +40,11 @@ export const OverviewApp = (props) => {
   return (
     <Overview>
     <div className="Overview">
-      <img src="https://img.icons8.com/ios/344/circled-left-2.png" className="leftArrowGallery" onClick={() => {
-        if (ImageIndex !== 0) {
-          setImageIndex(ImageIndex-1);
-        }
+      <img src="https://img.icons8.com/ios/344/circled-left-2.png" className={ImageIndex === 0 ? "hidden" : "leftArrowGallery"} onClick={() => {
+        setImageIndex(ImageIndex-1);
       }}/>
-      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className="rightArrowGallery" onClick={() => {
-        if (ImageIndex !== Style.photos.length - 1) {
-          setImageIndex(ImageIndex+1);
-        }
+      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === Style.photos.length - 1 ? "hidden" : "rightArrowGallery"} onClick={() => {
+        setImageIndex(ImageIndex+1);
       }}/>
       <ImageGallery style={ Style } currentImage={currentImage} setImageIndex={setImageIndex}/>
       <ProductInformation product={ Product } style={ Style }/>
