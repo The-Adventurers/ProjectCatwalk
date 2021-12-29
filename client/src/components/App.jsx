@@ -1,8 +1,11 @@
 import React from 'react';
 
-const App = function () {
+import { OverviewApp } from './overview/OverviewApp.jsx';
+
+const App = (props) => {
+
   return (
-    <div>Hello World!</div>
+    <OverviewApp product_id={ 63616 }/>
   );
 };
 
