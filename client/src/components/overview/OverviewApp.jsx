@@ -37,6 +37,11 @@ export const OverviewApp = (props) => {
       });
   }, []);
   const currentImage = Style.photos[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
+  if (Error) {
+    return (
+      <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
+    )
+  }
   return (
     <Overview>
     <div className="Overview">
