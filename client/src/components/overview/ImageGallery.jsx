@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
-import { GalleryWrapper, MiniGallery, MainImage } from '../../../dist/overviewStyling.js';
+import { GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight } from '../../../dist/overviewStyling.js';
 
 export const ImageGallery = (props) => {
   const images = props.style.photos || [];

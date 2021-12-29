@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 
 import { ProductInfoWrapper, Title, Category, Price, SalesPrice, OldPrice, Description } from '../../../dist/overviewStyling.js';
 

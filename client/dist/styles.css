@@ -8,12 +8,6 @@
 }
 
 .MiniGalleryImage:hover  {
-  display: block;
-  margin: auto;
-  max-width: 100%;
-  max-height: 100%;
-  padding-top: 3px;
-  border-radius: 8px;
   opacity: 0.6;
 }
 
@@ -23,4 +17,26 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
+}
+
+.leftArrowGallery {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 31%;
+  margin-top: 2%;
+}
+
+.leftArrowGallery:hover {
+  opacity: 0.6;
+}
+
+.rightArrowGallery {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 1%;
+  margin-top: 2%;
+}
+
+.rightArrowGallery:hover {
+  opacity: 0.6;
 }

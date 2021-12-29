@@ -10,13 +10,12 @@ export const Overview = styled.section`
 `;
 
 export const ProductInfoWrapper = styled.section`
-  border-style: solid;
   overflow: auto;
   font-family: Futura;
   position: absolute;
   width: 35%;
   left: 62%;
-  top: 5%;
+  top: 8%;
   height: 30%;
   width: 37%;
 `;
@@ -60,14 +59,13 @@ export const OldPrice = styled.section`
 `;
 
 export const SelectStyleWrapper = styled.section`
-  border-style: solid;
   position: absolute;
   padding-left: 5px;
   font-family: helvetica;
   font-weight: bold;
   font-size 1em;
   left: 62%;
-  top: 37.5%;
+  top: 40.5%;
   height: 20%;
   width: 36.5%;
 `;
@@ -89,21 +87,23 @@ export const StyleButton = styled.button`
 
 export const GalleryWrapper = styled.section`
   position: absolute;
-  height: 100%;
+  padding-top: 0.4%;
+  height: 85%;
   width: 62%;
   object-fit: contain;
 `;
 
 export const MiniGallery = styled.section`
   position: absolute;
-  height: 100%;
+  height: 87%;
   width: 15%;
   overflow: auto;
+  border-radius: 10px;
 `;
 
 export const MainImage = styled.section`
   position: absolute;
-  height: 100%;
+  height: 87%;
   width: 83%;
   left: 16%;
   border-radius: 10px;
@@ -114,7 +114,7 @@ export const CartWrapper = styled.section`
   position: absolute;
   width: 35%;
   left: 62%;
-  top: 60%;
+  top: 63%;
   height: 20%;
   width: 37%;
 `;
