@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  left: 2%;
+  top: 90%;
 `;
 
 export const RelatedProducts = styled.div`
@@ -25,6 +26,7 @@ export const Carousel = styled.div`
   align-items: stretch;
   max-width: 100%;
   gap: 10px;
+  overflow: hidden;
 `;
 
 export const ProductCard = styled.div`

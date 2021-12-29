@@ -42,5 +42,7 @@ module.exports = {
         data: paramsObj
       };
       return axios(option)
-    }
+    },
+
+    getRelated: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/related`, { headers, params: paramsObj })
 };

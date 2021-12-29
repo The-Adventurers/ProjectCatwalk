@@ -4,9 +4,9 @@ import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import { MainContainer, RelatedProducts, Carousel } from '../../../dist/styling/RelatedProductStyles';
 
-const RelatedProductList = () => {
+const RelatedProductList = ({product_id}) => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
-  let [currentProductId, setCurrentProductId] = useState(63609);
+  let [currentProductId, setCurrentProductId] = useState(product_id);
   let [relatedProducts, setRelatedProducts] = useState([]);
   let [showModal, setShowModal] = useState(false);
   let [modalProduct, setModalProduct] = useState({});
@@ -25,7 +25,6 @@ const RelatedProductList = () => {
         for (let i = 0; i < results.length; i++) {
           allRelatedInfo.push(results[i].data);
         }
-        console.log('Related Product Info: ', allRelatedInfo);
         setRelatedProducts(allRelatedInfo);
       })
       .catch(err => { console.error(err); })
@@ -36,7 +35,6 @@ const RelatedProductList = () => {
     if (!showModal) {
       getProducts({product_id: currentProductId})
       .then((results) => {
-        console.log('Current Product: ', results.data);
         setCurrentProduct(results.data);
         setModalProduct(product);
         setShowModal(!showModal);

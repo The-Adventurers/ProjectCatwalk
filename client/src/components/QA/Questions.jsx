@@ -8,7 +8,6 @@ const Questions = ({questions}) => {
 
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
-    console.log('inside useEffect' ,showQuestions)
   }, [questions])
 
   const showMoreQuestions = () => {

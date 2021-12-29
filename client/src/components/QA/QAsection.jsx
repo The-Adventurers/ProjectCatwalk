@@ -29,7 +29,6 @@ const QAsection = ({ product_id }) => {
     fetchData();
   }, [product_id]);
 
-  console.log('all questions pass to others components', allQuestions)
 
   return (
 

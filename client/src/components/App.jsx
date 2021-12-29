@@ -11,6 +11,9 @@ const App = function () {
       <div>
         <OverviewApp product_id={ 63616 }/>
       </div>
+      <div>
+        <RelatedProductList product_id={ 63616 }/>
+      </div>
       <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={63609} />
       </div>
