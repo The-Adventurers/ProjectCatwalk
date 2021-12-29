@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Overview = styled.section`
-  border-style: solid;
   position: absolute;
   width: 95%;
   height: 80%;

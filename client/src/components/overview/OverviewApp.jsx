@@ -10,7 +10,12 @@ import { Cart } from './Cart.jsx';
 export const OverviewApp = (props) => {
   const [Styles, setStyles] = useState([]);
   const [Product, setProduct] = useState({});
-  const [Style, setStyle] = useState({photos: [{url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'}]});
+  const [Style, setStyle] = useState({
+    photos: [{
+      url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',
+      thumbnail_url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'
+    }]
+  });
   const [ImageIndex, setImageIndex] = useState(0);
   const [Error, setError] = useState(null);
   useEffect(() => {
@@ -26,29 +31,28 @@ export const OverviewApp = (props) => {
       .then((res) => {
         setStyles(res.data.results);
         setStyle(res.data.results[0])
-        setCurrentImage(res.data.results[0].photos[0].url)
       })
       .catch((error) => {
         setError(error);
       });
   }, []);
-
-  const currentImage = Style.photos[ImageIndex].url
-
-  console.log(Styles)
-  console.log('style', Style);
+  const currentImage = Style.photos[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
   return (
     <Overview>
     <div className="Overview">
       <img src="https://img.icons8.com/ios/344/circled-left-2.png" className="leftArrowGallery" onClick={() => {
-        console.log('left');
+        if (ImageIndex !== 0) {
+          setImageIndex(ImageIndex-1);
+        }
       }}/>
       <img src="https://img.icons8.com/ios/344/circled-right-2.png" className="rightArrowGallery" onClick={() => {
-        console.log('right');
+        if (ImageIndex !== Style.photos.length - 1) {
+          setImageIndex(ImageIndex+1);
+        }
       }}/>
       <ImageGallery style={ Style } currentImage={currentImage} setImageIndex={setImageIndex}/>
       <ProductInformation product={ Product } style={ Style }/>
-      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle} setImageIndex={setImageIndex}/>
+      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
       <Cart product={ Product }/>
     </div>
     </Overview>

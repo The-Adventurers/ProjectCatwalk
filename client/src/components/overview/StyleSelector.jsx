@@ -11,7 +11,6 @@ export const StyleSelector = (props) => {
         return (
           <StyleButton key={style.style_id} onClick={()=> {
             props.selectStyle(style);
-            props.setCurrentImage(style.photos[0].url)
           }}>
             {style.name}
           </StyleButton>
