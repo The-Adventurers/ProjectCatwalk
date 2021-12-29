@@ -36,7 +36,9 @@ export const OverviewApp = (props) => {
         setError(error);
       });
   }, []);
-  const currentImage = Style.photos[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
+
+  const LimitImageArray = Style.photos.slice(0, 10);
+  const currentImage = LimitImageArray[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
   if (Error) {
     return (
       <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
@@ -48,10 +50,10 @@ export const OverviewApp = (props) => {
       <img src="https://img.icons8.com/ios/344/circled-left-2.png" className={ImageIndex === 0 ? "hiddenArrow" : "leftArrowGallery"} onClick={() => {
         setImageIndex(ImageIndex-1);
       }}/>
-      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === Style.photos.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
+      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === LimitImageArray.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
         setImageIndex(ImageIndex+1);
       }}/>
-      <ImageGallery style={ Style } currentImage={currentImage} setImageIndex={setImageIndex}/>
+      <ImageGallery style={ Style } currentImage={currentImage} limitImageArray={LimitImageArray} setImageIndex={setImageIndex}/>
       <ProductInformation product={ Product } style={ Style }/>
       <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
       <Cart product={ Product }/>
