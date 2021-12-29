@@ -40,7 +40,7 @@ export const OverviewApp = (props) => {
   }, []);
 
   const LimitImageArray = Style.photos.slice(0, 10);
-  const currentImage = LimitImageArray[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
+  const currentImage = LimitImageArray[ImageIndex].url || 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'
   if (Error) {
     return (
       <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
@@ -57,7 +57,7 @@ export const OverviewApp = (props) => {
       }}/>
       <ImageGallery style={ Style } currentImage={currentImage} limitImageArray={LimitImageArray} setImageIndex={setImageIndex} zoom={Zoom} setZoom={setZoom}/>
       <ProductInformation product={ Product } style={ Style }/>
-      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
+      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle} setZoom={setZoom}/>
       <Cart product={ Product }/>
     </div>
     </Overview>

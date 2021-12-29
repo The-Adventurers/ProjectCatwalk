@@ -12,9 +12,7 @@ export const ProductInfoWrapper = styled.section`
   overflow: auto;
   font-family: Futura;
   position: relative;
-  width: 35%;
   left: 62%;
-  top: 8%;
   height: 40%;
   width: 37%;
 `;
@@ -117,11 +115,13 @@ export const CartWrapper = styled.section`
   width: 37%;
 `;
 
-export const ZoomImage = styled.section`
+export const ZoomImage = styled.div`
   position: relative;
-  z-index: 0;
-  max-height: 75%;
-  max-width: auto;
-  left: 16%;
-  border-radius: 10px;
+  z-index: 2;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+  left: 15%;
+  height: 110%;
+  width: auto;
 `;

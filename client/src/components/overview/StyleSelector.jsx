@@ -11,6 +11,7 @@ export const StyleSelector = (props) => {
         return (
           <StyleButton key={style.style_id} onClick={()=> {
             props.selectStyle(style);
+            props.setZoom(false);
           }}>
             {style.name}
           </StyleButton>

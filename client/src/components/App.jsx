@@ -6,16 +6,18 @@ import { OverviewApp } from './overview/OverviewApp.jsx';
 
 const App = function () {
 
+  const hardCodedID = 63616;
+
   return (
     <div>
       <div>
-        <OverviewApp product_id={ 63616 }/>
+        <OverviewApp product_id={ hardCodedID }/>
       </div>
       <div>
-        <RelatedProductList product_id={ 63616 }/>
+        <RelatedProductList product_id={ hardCodedID }/>
       </div>
       <div className="QA-section" style={{marginTop: '85vh'}}>
-        <QAsection product_id={63609} />
+        <QAsection product_id={ hardCodedID } />
       </div>
     </div>
   )
