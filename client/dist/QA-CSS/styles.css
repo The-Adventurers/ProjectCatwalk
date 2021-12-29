@@ -1,0 +1,15 @@
+.question-container {
+ width: 60vw;
+}
+
+div[name|='button'] button:nth-child(2){
+  /* display: flex;
+  justify-content: space-evenly; */
+  margin-left: 5%;
+}
+
+div[name|='button'] button {
+  padding: 3%;
+  margin-top: 5%;
+
+}
