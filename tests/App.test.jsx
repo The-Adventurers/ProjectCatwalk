@@ -22,8 +22,6 @@ test('EXPECTED: App should render \'Hello World!\'', () => {
 
     //if no question should show only a button to add question
 
-
-
     //check order if it arranged by helpfulness onQ
 
     //check order if it arranged by seller then helpfulness on answer

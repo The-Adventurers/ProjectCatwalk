@@ -25,26 +25,30 @@ const Answers = ({questions, q_index}) => {
   }
 
   return(
-    <div>
+    <>
       {showAnswers.length &&
         <>
         {showAnswers.map((ans, index) => (
           <>
             <p>
               { index===0 && <span style={{fontWeight: 'bold'}}>A: </span>}
-              <span style={{fontWeight: 'lighter'}}>{ans[1].body}</span>
+              <span style={index === 0
+                ? {fontWeight: 'lighter', marginLeft: '0'}
+                : {fontWeight: 'lighter', marginLeft: '18px'} }>
+                  {ans[1].body}
+              </span>
             </p>
             <p>
-              <span style={{fontSize: '0.8em', color: 'grey', fontWeight: 'lighter'}}>
-                by {ans[1].answerer_name}  {formatDate(ans[1].date)}
+              <span style={{fontSize: '0.8em', color: '#7f7f7f', fontWeight: 'lighter', marginLeft: '18px'}}>
+                by <span style={ans[1].answerer_name === 'Seller'? {fontWeight:'border'} : null}>{ans[1].answerer_name}</span>,&nbsp;{formatDate(ans[1].date)}
               </span>
-              <span style={{color: 'grey', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
-              &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Helpful?&nbsp;&nbsp;&nbsp;
+              <span style={{color: '#7f7f7f', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
+              &ensp;&nbsp;|&nbsp;&ensp;Helpful?&ensp;&nbsp;
               <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
                 Yes
               </span>
               <span>({ans[1].helpfulness})</span>
-              <span>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <span>&ensp;|&emsp;</span>
               <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
                 Report
               </span>
@@ -55,10 +59,10 @@ const Answers = ({questions, q_index}) => {
         </>
       }
       {(allAnswers.length > 2) &&
-        <p onClick={displayAnswers} style={{fontSize: '0.8em', fontWeight: 'bold', color: 'grey', cursor: 'pointer'}}> <span>LOAD MORE ANSWERS</span>
+        <p onClick={displayAnswers} style={{fontSize: '0.8em', fontWeight: 'bold', color: 'grey', cursor: 'pointer'}}> <span style={{marginLeft: '18px'}}>LOAD MORE ANSWERS</span>
           { showAnswers.length !== allAnswers.length && <span>&nbsp;({allAnswers.length - showAnswers.length})</span>}
         </p> }
-    </div>
+    </>
   )
 }
 export default Answers;

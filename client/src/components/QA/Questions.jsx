@@ -25,12 +25,12 @@ const Questions = ({questions}) => {
           <p style={{display:'flex', justifyContent: 'space-between', fontWeight: 'bold'}}>
             <span> Q:&nbsp;{question.question_body} </span>
             <span style={{color: 'grey', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
-              Helpful?&nbsp;&nbsp;
+              Helpful?&ensp;
               <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
                 Yes
               </span>
               <span>({question.question_helpfulness})</span>
-              <span>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+              <span>&ensp;|&emsp;</span>
               <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
                 Add Answer
               </span>
@@ -50,7 +50,7 @@ const Questions = ({questions}) => {
 
   return(
 
-    <div>
+    <div className='question-container'>
       {questions.length ? question : addQuestion }
 
       <div name="button">

@@ -64,4 +64,26 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+
+  updateQA: (req, res) => {
+    const { type, section, id } = req.body;
+    // console.log(req.body)
+    models.updateQA(type, section, id)
+      .then((results) => {
+        res.status(204).send(results.data)
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      })
+  },
+
+  addQA: (req, res) => {
+    models.addQA(req.body) //prevent invalid input from front end
+      .then((results) => {
+        res.status(201).send(results.data)
+      })
+      .catch((error) => {
+        res.status(505).send(error)
+      })
+  }
 };
