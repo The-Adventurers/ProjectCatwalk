@@ -17,7 +17,9 @@ export const OverviewApp = (props) => {
     }]
   });
   const [ImageIndex, setImageIndex] = useState(0);
+  const [Zoom, setZoom] = useState(false);
   const [Error, setError] = useState(null);
+
   useEffect(() => {
     getProducts({ product_id: props.product_id })
       .then((res) => {
@@ -53,7 +55,7 @@ export const OverviewApp = (props) => {
       <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === LimitImageArray.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
         setImageIndex(ImageIndex+1);
       }}/>
-      <ImageGallery style={ Style } currentImage={currentImage} limitImageArray={LimitImageArray} setImageIndex={setImageIndex}/>
+      <ImageGallery style={ Style } currentImage={currentImage} limitImageArray={LimitImageArray} setImageIndex={setImageIndex} zoom={Zoom} setZoom={setZoom}/>
       <ProductInformation product={ Product } style={ Style }/>
       <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
       <Cart product={ Product }/>

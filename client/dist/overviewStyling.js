@@ -11,7 +11,7 @@ export const Overview = styled.section`
 export const ProductInfoWrapper = styled.section`
   overflow: auto;
   font-family: Futura;
-  position: absolute;
+  position: relative;
   width: 35%;
   left: 62%;
   top: 8%;
@@ -89,7 +89,6 @@ export const GalleryWrapper = styled.section`
   padding-top: 0.4%;
   height: 85%;
   width: 62%;
-  object-fit: contain;
 `;
 
 export const MiniGallery = styled.section`
@@ -101,7 +100,7 @@ export const MiniGallery = styled.section`
 `;
 
 export const MainImage = styled.section`
-  position: absolute;
+  position: relative;
   height: 87%;
   width: 83%;
   left: 16%;
@@ -116,4 +115,13 @@ export const CartWrapper = styled.section`
   top: 73%;
   height: 20%;
   width: 37%;
+`;
+
+export const ZoomImage = styled.section`
+  position: relative;
+  z-index: 0;
+  max-height: 75%;
+  max-width: auto;
+  left: 16%;
+  border-radius: 10px;
 `;

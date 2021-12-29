@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight } from '../../../dist/overviewStyling.js';
+import { GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight, ZoomImage } from '../../../dist/overviewStyling.js';
 
 export const ImageGallery = (props) => {
   const images = props.limitImageArray;
@@ -17,9 +17,9 @@ export const ImageGallery = (props) => {
         })}
         </div>
       </MiniGallery>
-      <MainImage>
-        <img src={props.currentImage} alt="Product Image" className="MainImage"/>
-      </MainImage>
+      {props.zoom === false ? (<MainImage>
+        <img src={props.currentImage} alt="Product Image" className="MainImage" onClick={() => {props.setZoom(!props.zoom)}}/>
+      </MainImage>) : <ZoomImage><img src={props.currentImage} alt="Product Image" className="ZoomImage" onClick={() => {props.setZoom(!props.zoom)}}/></ZoomImage>}
     </GalleryWrapper>
   )
 }
