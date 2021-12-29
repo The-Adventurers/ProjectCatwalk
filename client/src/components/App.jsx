@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedProductList from './RelatedProductList.jsx';
+import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
 
 const App = function () {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Background, ModalWrapper, Header, Products } from '../../dist/styling/ComparisonModalStyles';
+import { Background, ModalWrapper, Header, Products } from '../../../dist/styling/ComparisonModalStyles';
 
 const ComparisonModal = ({ currentProductId, modalProduct, showModal, setModal }) => {
   if (showModal) {

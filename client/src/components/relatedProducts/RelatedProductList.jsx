@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getRelated, getRelatedInfo, getProducts } from '../shared/api';
+import { getRelated, getRelatedInfo, getProducts } from '../../shared/api';
 import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { MainContainer, RelatedProducts, Carousel } from '../../dist/styling/RelatedProductStyles';
+import { MainContainer, RelatedProducts, Carousel } from '../../../dist/styling/RelatedProductStyles';
 
 const RelatedProductList = () => {
   // get product ID from URL (URl encoding/decoding) in App.jsx - using hard-coded ID for now
