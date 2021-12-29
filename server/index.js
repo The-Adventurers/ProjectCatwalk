@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3030;
 
 const controllers = require('./controllers/controllers');
 
@@ -18,7 +18,9 @@ app.get('/api/catwalk/answers', controllers.getAnswers);
 app.get('/api/catwalk/cart', controllers.getCart);
 app.get('/api/catwalk/meta', controllers.getMeta);
 app.get('/api/catwalk/styles', controllers.getStyles);
+app.put('/api/catwalk/updateQA', controllers.updateQA);
+app.post('/api/catwalk/addQA', controllers.addQA);
 app.get('/api/catwalk/related', controllers.getRelated);
 app.get('/api/catwalk/relatedInfo', controllers.getRelatedInfo);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Listening to port... ${PORT}`));

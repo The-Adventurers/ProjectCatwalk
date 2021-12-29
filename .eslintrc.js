@@ -26,5 +26,5 @@ module.exports = {
       "namedComponents": "function-declaration" | "function-expression" | "arrow-function" | Array<"function-declaration" | "function-expression" | "arrow-function">,
       "unnamedComponents": "function-expression" | "arrow-function" | Array<"function-expression" | "arrow-function">
     }]
-  }
+  },
 };
