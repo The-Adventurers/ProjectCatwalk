@@ -1,0 +1,50 @@
+.MiniGalleryImage {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: 3px;
+  border-radius: 8px;
+}
+
+.MiniGalleryImage:hover  {
+  opacity: 0.6;
+}
+
+.MainImage {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+
+.leftArrowGallery {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 31%;
+  margin-top: 2%;
+}
+
+.hiddenArrow {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 31%;
+  margin-top: 2%;
+  visibility: hidden;
+}
+
+.leftArrowGallery:hover {
+  opacity: 0.6;
+}
+
+.rightArrowGallery {
+  max-width: 2%;
+  max-height: 2%;
+  margin-left: 1%;
+  margin-top: 2%;
+}
+
+.rightArrowGallery:hover {
+  opacity: 0.6;
+}

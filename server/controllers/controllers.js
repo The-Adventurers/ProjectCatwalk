@@ -85,5 +85,15 @@ module.exports = {
       .catch((error) => {
         res.status(505).send(error)
       })
-  }
+  },
+
+  getRelated: (req, res) => {
+    models.getRelated(req.query)
+      .then((results) => {
+        res.send(results.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  },
 };

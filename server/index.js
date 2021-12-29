@@ -20,5 +20,6 @@ app.get('/api/catwalk/meta', controllers.getMeta);
 app.get('/api/catwalk/styles', controllers.getStyles);
 app.put('/api/catwalk/updateQA', controllers.updateQA);
 app.post('/api/catwalk/addQA', controllers.addQA);
+app.get('/api/catwalk/related', controllers.getRelated);
 
 app.listen(PORT, () => console.log(`Listening to port... ${PORT}`));

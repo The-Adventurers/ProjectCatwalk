@@ -1,5 +1,5 @@
 .question-container {
- width: 40vw;
+ width: 60vw;
 }
 
 div[name|='button'] button:nth-child(2){
@@ -11,5 +11,5 @@ div[name|='button'] button:nth-child(2){
 div[name|='button'] button {
   padding: 3%;
   margin-top: 5%;
-  
+
 }
