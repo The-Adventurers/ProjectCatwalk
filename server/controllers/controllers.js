@@ -82,6 +82,7 @@ module.exports = {
           category: results[0].data.category,
           name: results[0].data.name,
           defaultPrice: results[0].data.default_price,
+          features: results[0].data.features
         };
 
         let styles = results[1].data.results;

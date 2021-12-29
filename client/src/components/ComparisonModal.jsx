@@ -1,7 +1,7 @@
 import React from 'react';
 import { Background, ModalWrapper, Header, Products } from '../../dist/styling/ComparisonModalStyles';
 
-const ComparisonModal = ({showModal, setModal}) => {
+const ComparisonModal = ({ currentProductId, modalProduct, showModal, setModal }) => {
   if (showModal) {
     return (
       <Background onClick={setModal}>
