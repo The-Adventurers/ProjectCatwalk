@@ -36,6 +36,7 @@ export const ProductCard = styled.div`
   margin: 5px 10px;
   position: relative;
   cursor: pointer;
+  border-radius: 10px;
 `;
 
 export const Category = styled.div`
@@ -68,8 +69,10 @@ export const Image = styled.img`
   height: 300px;
   transition: transform 0.5s, filter 0.5s ease-in-out;
   transform-origin: center center;
+  border-radius: 10px 10px 0 0;
   &:hover {
     transform: scale(1.05);
+    opacity: 0.6;
   }
 `;
 
