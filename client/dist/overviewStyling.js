@@ -117,7 +117,7 @@ export const CartWrapper = styled.section`
 
 export const ZoomImage = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 100;
   display: block;
   margin: auto;
   object-fit: contain;

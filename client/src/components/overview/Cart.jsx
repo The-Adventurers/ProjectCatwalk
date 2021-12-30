@@ -3,10 +3,15 @@ import React from 'react';
 import { CartWrapper } from '../../../dist/overviewStyling.js';
 
 export const Cart = (props) => {
+  const SKU = [];
+  for (let k in props.style.skus) {
+    SKU.push(props.style.skus[k])
+  }
+  SKU.sort((a, b) => a.size - b.size);
+
   return (
     <CartWrapper>
-      <div className="selectSize">
-      </div>
+
     </CartWrapper>
   )
 }

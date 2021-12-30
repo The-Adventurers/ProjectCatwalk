@@ -38,6 +38,7 @@ export const OverviewApp = (props) => {
         setError(error);
       });
   }, []);
+  console.log(Style);
 
   const LimitImageArray = Style.photos.slice(0, 10);
   const currentImage = LimitImageArray[ImageIndex].url || 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'
@@ -58,7 +59,7 @@ export const OverviewApp = (props) => {
       <ImageGallery style={ Style } currentImage={ currentImage } limitImageArray={ LimitImageArray } setImageIndex={ setImageIndex } zoom={ Zoom } setZoom={ setZoom }/>
       <ProductInformation product={ Product } style={ Style }/>
       <StyleSelector product={ Product } styles={ Styles } selectStyle={ setStyle } setZoom={ setZoom }/>
-      <Cart product={ Product }/>
+      <Cart style={ Style }/>
     </div>
     </Overview>
   )
