@@ -1,17 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { CartWrapper } from '../../../dist/overviewStyling.js';
+import { SelectSize } from './SelectSize.jsx';
+import { SelectQuantity } from './SelectQuantity.jsx'
+import { postCart } from '../../shared/api.js';
+
 
 export const Cart = (props) => {
-  const SKU = [];
-  for (let k in props.style.skus) {
-    SKU.push(props.style.skus[k])
-  }
-  SKU.sort((a, b) => a.size - b.size);
+  const [OutOfStock, setOutOfStock] = useState(false);
+  const [Size, setSize] = useState(null);
+  const [Quantity, setQuantity] = useState(null);
 
+  const SKU = [];
+  let availableQty = 0;
+  let currentSKU;
+  for (let k in props.style.skus) {
+    const newObject = {
+      sku: k,
+      size: props.style.skus[k].size,
+      quantity: props.style.skus[k].quantity
+    }
+    if (Size === newObject.size) {
+      availableQty = newObject.quantity;
+      currentSKU = newObject.sku;
+    }
+    SKU.push(newObject)
+  }
+  if (Size === null) {
+    return (
+      <CartWrapper>
+        <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
+      </CartWrapper>
+    )
+  }
+
+  if (Size !== null && Quantity === null) {
+    return (
+      <CartWrapper>
+        <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
+        <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
+      </CartWrapper>
+    )
+  }
   return (
     <CartWrapper>
-
+      <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
+      <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
+      <button onClick= {
+        () => {
+          postCart({ sku_id: currentSKU, quantity: Quantity })
+            .then((results) => {
+              console.log('Cart Createed', results);
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }
+      }>Add To Cart</button>
     </CartWrapper>
   )
 }

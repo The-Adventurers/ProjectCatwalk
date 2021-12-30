@@ -21,6 +21,8 @@ module.exports = {
 
     getCart: () => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { headers }),
 
+    postCart: (paramsObj) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { headers, params: paramsObj }),
+
     getStyles: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/styles`, { headers, params: paramsObj }),
 
     updateQA:(type, section, id) => {// type questions or answers- section report or helpful // id- QA id

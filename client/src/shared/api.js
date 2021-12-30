@@ -15,3 +15,4 @@ export const getAnswers = (paramsObj) => axios.get('/api/catwalk/questions', { p
 export const getStyles = (paramsObj) => axios.get('/api/catwalk/styles', { params: paramsObj });
 export const getRelated = (paramsObj) => axios.get('/api/catwalk/related', { params: paramsObj });
 export const getRelatedInfo = (paramsObj) => axios.get('/api/catwalk/relatedInfo', { params: paramsObj });
+export const postCart = (paramsObj) => axios.post('/api/catwalk/relatedInfo', { params: paramsObj});
