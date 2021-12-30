@@ -50,7 +50,7 @@ export const Cart = (props) => {
         () => {
           postCart({ sku_id: currentSKU, quantity: Quantity })
             .then((results) => {
-              console.log('Cart Createed', results);
+              console.log('Cart Created', results);
             })
             .catch((error) => {
               console.log(error)
