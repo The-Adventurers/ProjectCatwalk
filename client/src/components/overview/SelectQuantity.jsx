@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const SelectQuantity = (props) => {
-  const maxQty = ['-'];
+  const maxQty = [];
   for (let i = 1; i < props.availableQty + 1 ; i++) {
     if(i === 16) {
       break;
@@ -11,7 +11,8 @@ export const SelectQuantity = (props) => {
 
   return (
     <select onChange={() => {props.setQuantity(event.target.value)}}>
-      {maxQty.map((qty) => <option value={qty}>{qty}</option>)}
+      <option> - </option>
+      {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
     </select>
   )
 }

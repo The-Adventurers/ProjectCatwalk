@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { CartWrapper } from '../../../dist/overviewStyling.js';
+import { CartWrapper, AddCartButton } from '../../../dist/overviewStyling.js';
 import { SelectSize } from './SelectSize.jsx';
 import { SelectQuantity } from './SelectQuantity.jsx'
 import { postCart } from '../../shared/api.js';
@@ -46,7 +46,7 @@ export const Cart = (props) => {
     <CartWrapper>
       <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
       <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
-      <button onClick= {
+      <AddCartButton onClick= {
         () => {
           postCart({ sku_id: currentSKU, quantity: Quantity })
             .then((results) => {
@@ -56,7 +56,7 @@ export const Cart = (props) => {
               console.log(error)
             })
         }
-      }>Add To Cart</button>
+      }>Add To Cart</AddCartButton>
     </CartWrapper>
   )
 }
