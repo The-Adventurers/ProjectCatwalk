@@ -6,7 +6,6 @@ const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setMod
   let comparisonFeatures = {};
   let allFeatures = {};
 
-
   if (showModal) {
     currentProduct.features.forEach((ele) => {
       currentFeatures[ele.feature] = ele.value;

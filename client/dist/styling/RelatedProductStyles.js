@@ -8,6 +8,46 @@ export const MainContainer = styled.div`
   top: 90%;
 `;
 
+export const MainContainer2 = styled.div`
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  left: 2%;
+  top: 145%;
+`;
+
+export const AddCard = styled.div`
+  width: 260px;
+  height: 340px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 5px 10px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+`
+
+export const Add = styled.div`
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  color: #333;
+`
+
+export const AddIcon = styled.img`
+  width: 260px;
+  height: 260px;
+  transition: transform 0.5s, filter 0.5s ease-in-out;
+  transform-origin: center center;
+  border-radius: 10px 10px 0 0;
+  &:hover {
+    opacity: 0.6;
+  }
+`;
+
 export const RelatedProducts = styled.div`
   display: flex;
   flex-direction: column;
