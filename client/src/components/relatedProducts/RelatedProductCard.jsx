@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/styling/RelatedProductStyles';
 
-const RelatedProductCard = ({ product, setCurrentProductId, setModal }) => {
+const RelatedProductCard = ({ product, setProductId, setModal }) => {
   let price, image;
   if (product.salePrice) {
     price = <Price>Reg Price: {'$' + Math.round(product.defaultPrice)}, Sale Price: {'$' + Math.round(product.salePrice)}</Price>
@@ -18,7 +18,7 @@ const RelatedProductCard = ({ product, setCurrentProductId, setModal }) => {
   return (
     <ProductCard
       aria-label='Go to related product page'
-      onClick={() => { setCurrentProductId(product.id); }}
+      onClick={() => { setProductId(product.id); }}
     >
       <Container>
         {image}
