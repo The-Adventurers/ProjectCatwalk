@@ -2,18 +2,19 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { test } from '@jest/globals';
 import App from '../client/src/components/App';
+import { ImageGallery } from '../client/src/components/overview/ImageGallery';
 
-test('EXPECTED: App should render \'Price\'', () => {
-  render(<App />);
-  screen.getByText('Price');
-});
-
-<<<<<<< HEAD
-// test('ImageGallery to render correct quantity of miages in MiniGallery', () => {
+// test('EXPECTED: App should render \'Price\'', () => {
 //   render(<App />);
+//   screen.getByText('Price');
+// });
 
-// })
-=======
+test('ImageGallery to render correct quantity of images in MiniGallery', () => {
+
+  render(<App/>);
+  
+})
+
 // test components if it is rendered
 // test('it render without crashing', () => {
 //   // render(<QAsection />); ---> get Component
@@ -42,7 +43,3 @@ test('EXPECTED: App should render \'Price\'', () => {
   //second click on same helpfulness vote on both question and answer should not increase a vote but decrease  --> toggle
 
   //click add answer and question!! >> to be continue
-
-
-
->>>>>>> origin
