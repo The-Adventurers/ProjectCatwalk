@@ -48,7 +48,7 @@ export const Cart = (props) => {
       <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
       <AddCartButton onClick= {
         () => {
-          postCart({ sku_id: currentSKU, quantity: Quantity })
+          postCart({ sku_id: currentSKU, count: Quantity })
             .then((results) => {
               console.log('Cart Created', results);
             })

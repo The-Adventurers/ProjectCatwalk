@@ -136,9 +136,9 @@ module.exports = {
   },
 
   postCart: (req, res) => {
-    models.postCart(req.query)
+    models.postCart(req.body)
       .then((results) =>{
-        module.exports.getCart();
+       res.send(results.data);
       })
       .catch((error) => {
         res.status(500).send(error);
