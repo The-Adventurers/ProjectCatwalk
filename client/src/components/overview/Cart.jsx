@@ -16,13 +16,13 @@ export const Cart = (props) => {
   let currentSKU;
   for (let k in props.style.skus) {
     const newObject = {
-      sku: k,
+      sku_id: k,
       size: props.style.skus[k].size,
       quantity: props.style.skus[k].quantity
     }
     if (Size === newObject.size) {
       availableQty = newObject.quantity;
-      currentSKU = newObject.sku;
+      currentSKU = newObject.sku_id;
     }
     SKU.push(newObject)
   }
