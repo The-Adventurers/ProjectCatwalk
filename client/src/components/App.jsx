@@ -20,14 +20,14 @@ const App = function () {
   return (
     <div>
       <div>
-        <OverviewApp product_id={ productId }/>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
       </div>
       <div>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId}/>
       </div>
-      <div className="QA-section" style={{marginTop: '85vh'}}>
+      {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
-      </div>
+      </div> */}
     </div>
   )
 }

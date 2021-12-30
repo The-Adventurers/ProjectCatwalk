@@ -14,8 +14,11 @@ export const ProductInformation = (props) => {
         <Description>
           <div>{props.product.description}</div>
         </Description>
-
-          <div className="OverviewPrice">Price ${props.style.sale_price !== null ? ( <><OldPrice>{props.style.original_price}</OldPrice><SalesPrice>${props.style.sale_price}</SalesPrice></> ) : <Price>{props.style.original_price}</Price> }</div>
+          <div className="OverviewPrice">
+            Price ${
+              props.style.sale_price !== null ? ( <><OldPrice>{props.style.original_price}</OldPrice><SalesPrice>${props.style.sale_price}</SalesPrice></> ) : <Price>{props.style.original_price}</Price>
+            }
+          </div>
       </ProductInfoWrapper>
     )
 };

@@ -9,11 +9,13 @@ export const StyleSelector = (props) => {
       <div>Select Style / Color</div>
       <div>{props.styles.map((style) => {
         return (
-          <StyleButton key={style.style_id} onClick={()=> {
+          <button key={style.style_id} onClick={()=> {
             props.selectStyle(style);
+            props.setZoom(false);
           }}>
+            <img src={style.photos[0].thumbnail_url}/>
             {style.name}
-          </StyleButton>
+          </button>
         )
       })}
       </div>

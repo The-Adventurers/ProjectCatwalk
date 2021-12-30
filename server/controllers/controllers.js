@@ -133,5 +133,15 @@ module.exports = {
       .catch((error) => {
         res.status(500).send(error);
       });
-  }
+  },
+
+  postCart: (req, res) => {
+    models.postCart(req.body)
+      .then((results) =>{
+       res.send(results.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      })
+  },
 };
