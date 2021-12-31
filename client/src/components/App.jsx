@@ -1,29 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
+import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
-import { getProducts } from '../shared/api';
+import { getProducts, getStyles, getRelated } from '../shared/api';
 
 
 const App = function () {
   let [productId, setProductId] = useState(63616);
   let [currentProduct, setCurrentProduct] = useState({});
+  let [styles, setStyles] = useState([]);
+  let [relatedProducts, setRelatedProducts] = useState([]);
+  let [error, setError] = useState(null);
+  let [isLoading, setIsLoading] = useState(true);
+
+  const getAllData = () => {
+    let getData = [getProducts({product_id: productId}), getStyles({product_id: productId }), getRelated({product_id: productId})];
+    Promise.all(getData)
+      .then((results) => {
+        setCurrentProduct(results[0].data);
+        setStyles(results[1].data);
+        setRelatedProducts(results[2].data);
+        setIsLoading(false);
+      })
+      .catch(err => { setError(err); })
+  }
 
   useEffect(() => {
-    getProducts({product_id: productId})
-      .then((results) => {
-        setCurrentProduct(results.data);
-      })
-      .catch(err => { console.error(err); })
+    getAllData();
   }, [productId])
+
+  if (error) {
+    return (
+      <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
+    );
+  }
+
+  if (isLoading) {
+    return <img src='https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'/>;
+  }
 
   return (
     <div>
       <div>
-        <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
       </div>
       <div>
-        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId}/>
+        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
+      </div>
+      <div>
+        <OutfitList productId={productId} currentProduct={currentProduct}/>
       </div>
       {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
