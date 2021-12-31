@@ -21,9 +21,9 @@ const App = function () {
     Promise.all(getData)
       .then((results) => {
         setCurrentProduct(results[0].data);
-        setStyles(results[1].data);
         setRelatedProducts(results[2].data.slice(1));
         setCurrentOutfit(results[2].data[0])
+        setStyles(results[1].data.results);
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
