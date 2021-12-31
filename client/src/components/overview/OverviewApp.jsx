@@ -9,7 +9,6 @@ import { Cart } from './Cart.jsx';
 
 export const OverviewApp = (props) => {
   const [Styles, setStyles] = useState([]);
-  const [Product, setProduct] = useState({});
   const [Style, setStyle] = useState({
     photos: [{
       url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',
@@ -17,16 +16,10 @@ export const OverviewApp = (props) => {
     }]
   });
   const [ImageIndex, setImageIndex] = useState(0);
+  const [Zoom, setZoom] = useState(false);
   const [Error, setError] = useState(null);
-  useEffect(() => {
-    getProducts({ product_id: props.product_id })
-      .then((res) => {
-        setProduct(res.data);
-      })
-      .catch((error) => {
-        setError(error)
-      });
 
+  useEffect(() => {
     getStyles({product_id: props.product_id })
       .then((res) => {
         setStyles(res.data.results);
@@ -35,21 +28,28 @@ export const OverviewApp = (props) => {
       .catch((error) => {
         setError(error);
       });
-  }, []);
-  const currentImage = Style.photos[ImageIndex].url || 'https://st.depositphotos.com/3097111/4720/v/600/depositphotos_47208689-stock-illustration-picture-coming-soon-image-vector.jpg'
+  }, [props.product_id]);
+
+  const LimitImageArray = Style.photos.slice(0, 10);
+  const currentImage = LimitImageArray[ImageIndex].url || 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'
+  if (Error) {
+    return (
+      <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
+    )
+  }
   return (
     <Overview>
     <div className="Overview">
       <img src="https://img.icons8.com/ios/344/circled-left-2.png" className={ImageIndex === 0 ? "hiddenArrow" : "leftArrowGallery"} onClick={() => {
         setImageIndex(ImageIndex-1);
       }}/>
-      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === Style.photos.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
+      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === LimitImageArray.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
         setImageIndex(ImageIndex+1);
       }}/>
-      <ImageGallery style={ Style } currentImage={currentImage} setImageIndex={setImageIndex}/>
-      <ProductInformation product={ Product } style={ Style }/>
-      <StyleSelector product={ Product } styles={ Styles } selectStyle={setStyle}/>
-      <Cart product={ Product }/>
+      <ImageGallery style={ Style } currentImage={ currentImage } limitImageArray={ LimitImageArray } setImageIndex={ setImageIndex } zoom={ Zoom } setZoom={ setZoom }/>
+      <ProductInformation product={ props.currentProduct } style={ Style }/>
+      <StyleSelector styles={ Styles } selectStyle={ setStyle } setZoom={ setZoom }/>
+      <Cart style={ Style }/>
     </div>
     </Overview>
   )

@@ -11,10 +11,8 @@ export const Overview = styled.section`
 export const ProductInfoWrapper = styled.section`
   overflow: auto;
   font-family: Futura;
-  position: absolute;
-  width: 35%;
+  position: relative;
   left: 62%;
-  top: 8%;
   height: 40%;
   width: 37%;
 `;
@@ -84,12 +82,26 @@ export const StyleButton = styled.button`
   border-radius: 3px;
 `;
 
+export const AddCartButton = styled.button`
+  &:hover {
+    background: black;
+    border: 2px solid black;
+  }
+  display: inline-block;
+  background: grey;
+  color: white;
+  font-size: 1em;
+  margin: 1%;
+  padding: 1% 2%;
+  border: 2px solid grey;
+  border-radius: 3px;
+`;
+
 export const GalleryWrapper = styled.section`
   position: absolute;
   padding-top: 0.4%;
   height: 85%;
   width: 62%;
-  object-fit: contain;
 `;
 
 export const MiniGallery = styled.section`
@@ -101,7 +113,7 @@ export const MiniGallery = styled.section`
 `;
 
 export const MainImage = styled.section`
-  position: absolute;
+  position: relative;
   height: 87%;
   width: 83%;
   left: 16%;
@@ -109,11 +121,21 @@ export const MainImage = styled.section`
 `;
 
 export const CartWrapper = styled.section`
-  border-style: solid;
   position: absolute;
   width: 35%;
   left: 62%;
   top: 73%;
   height: 20%;
   width: 37%;
+`;
+
+export const ZoomImage = styled.div`
+  position: relative;
+  z-index: 100;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+  left: 15%;
+  height: 110%;
+  width: auto;
 `;
