@@ -8,7 +8,6 @@ import { StyleSelector } from './StyleSelector.jsx';
 import { Cart } from './Cart.jsx';
 
 export const OverviewApp = (props) => {
-  const [Styles, setStyles] = useState([]);
   const [Style, setStyle] = useState({
     photos: [{
       url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',
@@ -22,7 +21,6 @@ export const OverviewApp = (props) => {
   useEffect(() => {
     getStyles({product_id: props.product_id })
       .then((res) => {
-        setStyles(res.data.results);
         setStyle(res.data.results[0])
       })
       .catch((error) => {
@@ -39,18 +37,18 @@ export const OverviewApp = (props) => {
   }
   return (
     <Overview>
-    <div className="Overview">
-      <img src="https://img.icons8.com/ios/344/circled-left-2.png" className={ImageIndex === 0 ? "hiddenArrow" : "leftArrowGallery"} onClick={() => {
-        setImageIndex(ImageIndex-1);
-      }}/>
-      <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === LimitImageArray.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
-        setImageIndex(ImageIndex+1);
-      }}/>
-      <ImageGallery style={ Style } currentImage={ currentImage } limitImageArray={ LimitImageArray } setImageIndex={ setImageIndex } zoom={ Zoom } setZoom={ setZoom }/>
-      <ProductInformation product={ props.currentProduct } style={ Style }/>
-      <StyleSelector styles={ Styles } selectStyle={ setStyle } setZoom={ setZoom }/>
-      <Cart style={ Style }/>
-    </div>
+      <div className="Overview">
+        <img src="https://img.icons8.com/ios/344/circled-left-2.png" className={ImageIndex === 0 ? "hiddenArrow" : "leftArrowGallery"} onClick={() => {
+          setImageIndex(ImageIndex-1);
+        }}/>
+        <img src="https://img.icons8.com/ios/344/circled-right-2.png" className={ImageIndex === LimitImageArray.length - 1 ? "hiddenArrow" : "rightArrowGallery"} onClick={() => {
+          setImageIndex(ImageIndex+1);
+        }}/>
+        <ImageGallery style={ Style } currentImage={ currentImage } limitImageArray={ LimitImageArray } setImageIndex={ setImageIndex } zoom={ Zoom } setZoom={ setZoom }/>
+        <ProductInformation product={ props.currentProduct } style={ Style }/>
+        <StyleSelector styles={ props.styles } selectStyle={ setStyle } setZoom={ setZoom }/>
+        <Cart style={ Style }/>
+      </div>
     </Overview>
   )
 };
