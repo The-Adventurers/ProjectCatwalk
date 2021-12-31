@@ -62,10 +62,16 @@ export const SelectStyleWrapper = styled.section`
   font-weight: bold;
   font-size 1em;
   left: 62%;
-  top: 50.5%;
-  height: 20%;
+  top: 35.5%;
+  height: 35%;
   width: 36.5%;
 `;
+
+export const Styles = styled.div`
+  width: 95%;
+  height: 80%;
+  overflow: auto;
+`
 
 export const StyleButton = styled.button`
   &:hover {
@@ -81,6 +87,22 @@ export const StyleButton = styled.button`
   border: 2px solid grey;
   border-radius: 3px;
 `;
+
+export const ImageButton = styled.button`
+  padding: '0rem', '0rem';
+  background-color: transparent;
+  border: 0;
+  border-radius: '0rem';
+  cursor: 'pointer';
+  margin-bottom: '0rem';
+  padding: 0px !important;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 5%;
+  object-fit: cover;
+
+`
 
 export const AddCartButton = styled.button`
   &:hover {
