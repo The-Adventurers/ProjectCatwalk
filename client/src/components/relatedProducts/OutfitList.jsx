@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { MainContainer2, RelatedProducts, Carousel, AddCard, Add, AddIcon } from '../../../dist/styling/RelatedProductStyles';
 
 const OutfitList = ({ productId, currentProduct }) => {
-  console.log('Current Product: ', currentProduct);
   return (
     <MainContainer2>
       <RelatedProducts>YOUR OUTFIT
@@ -22,7 +21,3 @@ const OutfitList = ({ productId, currentProduct }) => {
 }
 
 export default OutfitList;
-
-{/* {image} */}
-{/* {price}
-<Rating>{product.rating /* import star component for rating */}
