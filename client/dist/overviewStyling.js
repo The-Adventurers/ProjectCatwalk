@@ -30,8 +30,11 @@ export const Title = styled.section`
   margin-bottom: 10px;
 `;
 
-export const Description = styled.section`
-  padding-left: 5px;
+export const Description = styled.div`
+  padding: 5px;
+  border-style: solid;
+  max-height: 5%;
+  overflow: auto;
 `;
 
 export const Price = styled.section`

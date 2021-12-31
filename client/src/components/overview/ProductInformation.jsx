@@ -12,7 +12,7 @@ export const ProductInformation = (props) => {
           <div className="OverviewTitle">{props.product.name}</div>
         </Title>
         <Description>
-          <div>{props.product.description}</div>
+          {props.product.description}
         </Description>
           <div className="OverviewPrice">
             Price ${
