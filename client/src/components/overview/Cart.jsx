@@ -26,6 +26,16 @@ export const Cart = (props) => {
     }
     SKU.push(newObject)
   }
+  const handleChange = () => {
+    postCart({ sku_id: currentSKU, count: Quantity })
+      .then((results) => {
+        console.log('Cart Created', results);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   if (Size === null) {
     return (
       <CartWrapper>
@@ -46,17 +56,7 @@ export const Cart = (props) => {
     <CartWrapper>
       <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
       <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
-      <AddCartButton onClick= {
-        () => {
-          postCart({ sku_id: currentSKU, count: Quantity })
-            .then((results) => {
-              console.log('Cart Created', results);
-            })
-            .catch((error) => {
-              console.log(error)
-            })
-        }
-      }>Add To Cart</AddCartButton>
+      <AddCartButton onClick= {handleChange}>Add To Cart</AddCartButton>
     </CartWrapper>
   )
 }
