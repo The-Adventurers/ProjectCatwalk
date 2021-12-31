@@ -90,7 +90,8 @@ module.exports = {
   getRelated: (req, res) => {
     models.getRelated(req.query)
       .then((results) => {
-        let fetchAllData = [];
+        let fetchAllData = [models.getProducts({product_id: req.query.product_id}), models.getStyles({product_id: req.query.product_id}), models.getMeta({product_id: req.query.product_id})];
+
         results.data.forEach((relatedId) => {
           fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
         })

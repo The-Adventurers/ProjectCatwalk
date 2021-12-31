@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/styling/RelatedProductStyles';
+import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
 const RelatedProductCard = ({ product, setProductId, setModal }) => {
   let price, image;
@@ -23,7 +23,7 @@ const RelatedProductCard = ({ product, setProductId, setModal }) => {
       <Container>
         {image}
         <Icon
-          src='https://cdn-icons-png.flaticon.com/512/929/929566.png'
+          src='https://cdn-icons.flaticon.com/png/512/471/premium/471662.png?token=exp=1640915442~hmac=67b5064851563bc392a24f1c142c85a5'
           aria-label='Open product comparison modal'
           alt=''
           onClick={(e) => {setModal(e, product)}}
