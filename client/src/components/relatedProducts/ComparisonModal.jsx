@@ -1,5 +1,5 @@
 import React from 'react';
-import { Background, ModalWrapper, Header, Products, Features, Feature, CheckMark } from '../../../dist/styling/RelatedProductStyles';
+import { Background, ModalWrapper, Header, Products, Features, Feature, CheckMark, ModalIcon } from '../../../dist/RelatedProductStyles';
 
 const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setModal }) => {
   let currentFeatures = {};
@@ -47,7 +47,13 @@ const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setMod
     }
 
     return (
-      <Background onClick={setModal}>
+      <Background>
+            <ModalIcon
+                src='https://cdn-icons.flaticon.com/png/512/2734/premium/2734822.png?token=exp=1640915254~hmac=e17f64f7dddaad35c5f73a9a22441120'
+                aria-label='Close Modal'
+                alt=''
+                onClick={setModal}
+              />
             <ModalWrapper>
               <Header>COMPARING</Header>
               <Products>

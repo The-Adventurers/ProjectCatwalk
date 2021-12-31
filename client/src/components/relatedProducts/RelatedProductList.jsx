@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { MainContainer, RelatedProducts, Carousel } from '../../../dist/styling/RelatedProductStyles';
+import { MainContainer, RelatedProducts, Carousel } from '../../../dist/RelatedProductStyles';
 
 const RelatedProductList = ({productId, currentProduct, setProductId, relatedProducts, setRelatedProducts}) => {
   let [showModal, setShowModal] = useState(false);

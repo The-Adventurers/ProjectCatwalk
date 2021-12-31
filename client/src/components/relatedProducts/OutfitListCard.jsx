@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/styling/RelatedProductStyles';
+import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
 const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
   let price, image;

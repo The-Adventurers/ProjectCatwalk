@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import OutfitListCard from './OutfitListCard.jsx';
-import { MainContainer2, RelatedProducts, Carousel, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/styling/RelatedProductStyles';
+import { MainContainer2, RelatedProducts, Carousel, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
 const OutfitList = ({ productId, currentProduct, currentOutfit, yourOutfit, setYourOutfit }) => {
   const addOutfit = () => {
