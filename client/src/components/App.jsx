@@ -19,7 +19,7 @@ const App = function () {
     Promise.all(getData)
       .then((results) => {
         setCurrentProduct(results[0].data);
-        setStyles(results[1].data);
+        setStyles(results[1].data.results);
         setRelatedProducts(results[2].data);
         setIsLoading(false);
       })
