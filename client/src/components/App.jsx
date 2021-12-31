@@ -11,6 +11,8 @@ const App = function () {
   let [currentProduct, setCurrentProduct] = useState({});
   let [styles, setStyles] = useState([]);
   let [relatedProducts, setRelatedProducts] = useState([]);
+  let [currentOutfit, setCurrentOutfit] = useState({});
+  let [yourOutfit, setYourOutfit] = useState([]);
   let [error, setError] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
 
@@ -20,7 +22,8 @@ const App = function () {
       .then((results) => {
         setCurrentProduct(results[0].data);
         setStyles(results[1].data);
-        setRelatedProducts(results[2].data);
+        setRelatedProducts(results[2].data.slice(1));
+        setCurrentOutfit(results[2].data[0])
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
@@ -49,7 +52,7 @@ const App = function () {
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
       </div>
       <div>
-        <OutfitList productId={productId} currentProduct={currentProduct}/>
+        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
       </div>
       {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
