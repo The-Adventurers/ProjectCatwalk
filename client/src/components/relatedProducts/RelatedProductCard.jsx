@@ -23,7 +23,7 @@ const RelatedProductCard = ({ product, setProductId, setModal }) => {
       <Container>
         {image}
         <Icon
-          src='https://cdn-icons.flaticon.com/png/512/471/premium/471662.png?token=exp=1640915442~hmac=67b5064851563bc392a24f1c142c85a5'
+          src='https://cdn-icons-png.flaticon.com/512/157/157933.png'
           aria-label='Open product comparison modal'
           alt=''
           onClick={(e) => {setModal(e, product)}}
