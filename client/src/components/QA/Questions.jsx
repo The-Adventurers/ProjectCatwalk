@@ -1,56 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import Answers from './Answers.jsx';
 
-const Questions = ({questions}) => {
+import { updateQA, addQA } from '../../shared/api.js';
+// addQA({product_id: 63609, body: 'is it required only handwash?', name:'potential-customer', email:'c@gmail.com'})
 
-  const  [showQuestions, setShowQuestions] = useState([]);
-  const style = { cursor: 'pointer'}
+// addQA({question_id: 563152, name:'regular-customer', body:'it is best to do handwash to make it last long', email:'same@gmail.com'})
 
+
+const Questions = ({questions, updateData}) => {
+
+  const  [showQuestions, setShowQuestions] = useState([questions]);
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
-    console.log('inside useEffect' ,showQuestions)
   }, [questions])
+
+  // const updateQA = () => { // report Question is coming ?
+  //   updateQA()
+  // }
+
+  const handleOnClick = (e) => {
+    // console.log(e.target.getAttribute('voted'))
+    if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
+      const ansId = e.nativeEvent.path[1].getAttribute('ans_id');
+      const quesId = e.nativeEvent.path[2].getAttribute('q_id');
+      const type = ansId ? 'answers' : 'questions';
+      const section = e.target.innerText.trim() === 'Yes' ? 'helpful' : 'report';
+      const target = e.target;
+      section === 'report'
+        ? (()=> target.innerText = 'Reported')()
+        : updateQA({type, section, id: ansId || quesId}).then(()=> {
+        target.setAttribute('voted', 'true')
+        updateData()});
+    }
+
+    // console.log(e.nativeEvent.path[1].getAttribute('ans_id'))
+    // console.log(e.nativeEvent.path[2].getAttribute('q_id')) // get question id for both ass Answer and
+    // if click is span and has value of helpful
+     // determine if it's question or answer from
+  }
 
   const showMoreQuestions = () => {
     let length = showQuestions.length;
     setShowQuestions(questions.slice(0, length + 2));
   }
 
-  // show Q
-
   const question =
     <div>
       {showQuestions.map((question, index) => (
-        <>
-          <p style={{display:'flex', justifyContent: 'space-between', fontWeight: 'bold'}}>
+        <div key={index}>
+          <p className='question' q_id={question.question_id}>
             <span> Q:&nbsp;{question.question_body} </span>
-            <span style={{color: 'grey', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
-              Helpful?&ensp;
-              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
-                Yes
-              </span>
+            <span>
+              Helpful ?&ensp;&ensp;
+              <span voted={'false'}>Yes</span>&ensp;
               <span>({question.question_helpfulness})</span>
               <span>&ensp;|&emsp;</span>
-              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
+              <span>
                 Add Answer
               </span>
             </span>
           </p>
-        <Answers questions={questions} q_index={index}/>
-      </>
+        <Answers questions={showQuestions} q_index={index}/>
+      </ div>
       ))}
     </div>;
 
+  const addQuestion = <button>ADD QUESTION +</button>;
 
-  //add Q button
-  const addQuestion = <button style={style}>ADD QUESTION +</button>;
-
-  //more Q button
-  const moreQuestions = <button onClick={showMoreQuestions} style={style}>MORE ANSWERED QUESTIONS</button>;
+  const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({questions.length - showQuestions.length})</button>;
 
   return(
 
-    <div className='question-container'>
+    <div className='question-container' onClick={handleOnClick}>
       {questions.length ? question : addQuestion }
 
       <div name="button">

@@ -15,7 +15,7 @@ module.exports = {
 
     getMeta: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/meta/', { headers, params: paramsObj }),
 
-    getQuestions: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions', { headers, params: paramsObj }),
+    getQuestions: (paramsObj) => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/', { headers, params: paramsObj }),
 
     getAnswers: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/questions/${paramsObj.question_id}/answers`, { headers, params: paramsObj }),
 
@@ -23,7 +23,9 @@ module.exports = {
 
     getStyles: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/styles`, { headers, params: paramsObj }),
 
-    updateQA:(type, section, id) => {// type questions or answers- section report or helpful // id- QA id
+    getRelated: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/related`, { headers, params: paramsObj }),
+
+    updateQA:(type, section, id) => { // type - questions or answers / section- helpful or report 
       const option = {
         method: 'put',
         url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/qa/${type}/${id}/${section}`,
@@ -32,8 +34,7 @@ module.exports = {
       return axios(option)
     },
 
-    addQA:(paramsObj) => {//add question doesn't required ID
-      console.log('from post req in Models >> ', paramsObj)
+    addQA:(paramsObj) => {
       const question_id = paramsObj.question_id;
       const option = {
         method: 'post',

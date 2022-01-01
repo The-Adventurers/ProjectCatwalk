@@ -48,3 +48,139 @@
 .rightArrowGallery:hover {
   opacity: 0.6;
 }
+
+
+/*------------- QA-section start here ----------------*/
+
+/* Questions component */
+.question-container {
+  width: 50vw;
+ }
+
+ div[name|='button'] button:nth-child(2){
+   /* display: flex;
+   justify-content: space-evenly; */
+   margin-left: 5%;
+ }
+
+ div[name|='button'] button {
+   padding: 0.5%;
+   /* margin-top: 2%; */
+   cursor: pointer;
+ }
+ .question {
+   display: flex;
+   justify-content: space-between;
+   font-weight: bolder;
+ }
+
+ /* NEED to fix line-height here */
+ .question span:nth-child(2) {
+  color: grey;
+  font-size: 0.8em;
+  font-weight: lighter;
+ }
+
+.question span span:first-child, .question span span:last-child {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Answer component */
+.answer {
+  font-weight: bolder;
+}
+
+.first-answer{
+  font-weight: lighter;
+  margin-left: 0;
+}
+
+.regular-answer {
+  font-weight: lighter;
+  margin-left: 2.5%;
+}
+
+p .answer-info:first-child  {
+  font-weight: lighter;
+  margin-left: 2.5%;
+}
+
+span.seller {
+  font-weight: bolder;
+}
+
+span.user {
+  font-weight: lighter;
+}
+
+.answer-info-container span {
+  font-size: 0.7em;
+  color: #7f7f7f;
+}
+.answer-info-container span:nth-child(5), .answer-info-container span:last-child {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.more-answer {
+  font-size: 0.3em;
+  font-weight: 60;
+  color: grey;
+  cursor: pointer;
+  margin-left: 2.5%;
+  border: 1px solid grey;
+  width: fit-content;
+  padding: 0.4%;
+}
+
+/* Question form */
+.question-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form-container {
+  position:fixed;
+  left: 10vw;
+  top:10vh;
+  border: 1px solid #403d39;
+  height: 80vh;
+  width: 80vw;
+  background-color: white;
+  z-index: 1;
+  outline: 100vh solid rgba(0, 0, 0, 0.5);
+}
+.question-form div:first-child {
+  background-color: #403d39;
+  color:#eaf4f4;
+  height: 70%;
+  width: inherit;
+  margin-bottom: 3%;
+  text-align: center;
+  padding: 1%;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.question-form textarea, .question-form input {
+  outline: none;
+  width: 40vw;
+  height: 10vh;
+  margin-left: 30vw;
+
+}
+
+.question-form label {
+  margin-left: 10vw;
+}
+.question-form input {
+  height: 3vh;
+}
+
+
+h3 {
+  text-align: center;
+}
+
+
+/*------------- QA-section END ----------------*/

@@ -65,9 +65,18 @@ module.exports = {
       });
   },
 
+  getRelated: (req, res) => {
+    models.getRelated(req.query)
+      .then((results) => {
+        res.send(results.data);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
+  },
+
   updateQA: (req, res) => {
     const { type, section, id } = req.body;
-    // console.log(req.body)
     models.updateQA(type, section, id)
       .then((results) => {
         res.status(204).send(results.data)
@@ -85,15 +94,7 @@ module.exports = {
       .catch((error) => {
         res.status(505).send(error)
       })
-  },
+  }
 
-  getRelated: (req, res) => {
-    models.getRelated(req.query)
-      .then((results) => {
-        res.send(results.data);
-      })
-      .catch((error) => {
-        res.status(500).send(error);
-      });
-  },
+
 };

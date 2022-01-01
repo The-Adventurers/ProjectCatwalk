@@ -8,7 +8,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack --config ./webpack.config.js  -w",
-    "test": "jest"
+    "test": "jest",
+    "clean":"kill -9 $(lsof -t -i:3030)"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
