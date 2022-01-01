@@ -165,22 +165,47 @@ span.user {
 .question-form textarea, .question-form input {
   outline: none;
   width: 40vw;
-  height: 10vh;
-  margin-left: 30vw;
-
+  height: 20vh;
 }
 
 .question-form label {
+  width: 60vw;
   margin-left: 10vw;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+
 }
+
 .question-form input {
   height: 3vh;
+
+}
+
+.question-form label p {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form label p span {
+  color: grey;
+  font-size: x-small;
+  font-weight: lighter;
 }
 
 
 h3 {
   text-align: center;
+  margin-top: 0;
 }
 
-
+.question-form button {
+  width: 10vw;
+  align-self: center;
+  color: white;
+  background-color: black;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 1%;
+}
 /*------------- QA-section END ----------------*/
