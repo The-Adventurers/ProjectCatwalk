@@ -3,11 +3,7 @@ import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
 import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
-<<<<<<< HEAD
-import RnR_App from './R&R/RnRApp.jsx';
-=======
 import { getProducts, getStyles, getRelated } from '../shared/api';
->>>>>>> 810a8ff0e38c064f640c3e3b7c703f69811ca17a
 
 
 const App = function () {
