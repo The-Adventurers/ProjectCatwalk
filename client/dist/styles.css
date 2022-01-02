@@ -133,39 +133,51 @@ span.user {
   padding: 0.4%;
 }
 
-/* Question form */
+/*-------- Question form -----------*/
 .question-form {
   display: flex;
   flex-direction: column;
 }
 
 .question-form-container {
+  display: none;
   position:fixed;
   left: 10vw;
   top:10vh;
-  border: 1px solid #403d39;
+  border: 3px solid #282624;
   height: 80vh;
   width: 80vw;
   background-color: white;
   z-index: 1;
   outline: 100vh solid rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  border-radius: 10px;
+
 }
 .question-form div:first-child {
-  background-color: #403d39;
+  background-color: black;
   color:#eaf4f4;
-  height: 70%;
+  height: 4vh;
   width: inherit;
   margin-bottom: 3%;
-  text-align: center;
   padding: 1%;
-  font-size: large;
+  font-size: 1.7vw;
   font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.question-form div i {
+  position: absolute;
+  left: 77vw;
+
 }
 
 .question-form textarea, .question-form input {
   outline: none;
   width: 40vw;
   height: 20vh;
+  font-size: 0.95vw;
 }
 
 .question-form label {
@@ -174,38 +186,42 @@ span.user {
   display: flex;
   justify-content: space-between;
   font-weight: bolder;
-
 }
 
 .question-form input {
   height: 3vh;
-
 }
 
 .question-form label p {
   display: flex;
   flex-direction: column;
+  font-size: 1vw;
 }
 
 .question-form label p span {
   color: grey;
-  font-size: x-small;
+  font-size: 0.7vw;
   font-weight: lighter;
 }
 
 
 h3 {
   text-align: center;
-  margin-top: 0;
+  margin-top: -10px;
+  font-size: 1.5vw;
+
 }
 
 .question-form button {
   width: 10vw;
+  height: max-content;
   align-self: center;
   color: white;
   background-color: black;
   border: 1px solid transparent;
   border-radius: 10px;
-  padding: 1%;
+  padding: 0.8vh;
+  font-size: 1vw;
+
 }
 /*------------- QA-section END ----------------*/

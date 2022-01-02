@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Answers from './Answers.jsx';
+import QuestionForm from './QuestionForm.jsx';
 
 import { updateQA, addQA } from '../../shared/api.js';
 // addQA({product_id: 63609, body: 'is it required only handwash?', name:'potential-customer', email:'c@gmail.com'})
@@ -14,9 +15,7 @@ const Questions = ({questions, updateData}) => {
     setShowQuestions(questions.slice(0,4));
   }, [questions])
 
-  // const updateQA = () => { // report Question is coming ?
-  //   updateQA()
-  // }
+
 
   const handleOnClick = (e) => {
     // console.log(e.target.getAttribute('voted'))
@@ -32,11 +31,12 @@ const Questions = ({questions, updateData}) => {
         target.setAttribute('voted', 'true')
         updateData()});
     }
-
-    // console.log(e.nativeEvent.path[1].getAttribute('ans_id'))
-    // console.log(e.nativeEvent.path[2].getAttribute('q_id')) // get question id for both ass Answer and
-    // if click is span and has value of helpful
-     // determine if it's question or answer from
+    if (e.target.tagName === 'BUTTON' && e.target.innerText === 'ADD QUESTION +') {
+      document.querySelector('.question-form-container').style.display = 'block'
+    }
+    if(e.target.tagName === 'I') {
+      document.querySelector('.question-form-container').style.display = 'none'
+    }
   }
 
   const showMoreQuestions = () => {
@@ -78,6 +78,7 @@ const Questions = ({questions, updateData}) => {
         {(questions.length > 2 && showQuestions.length < questions.length) && moreQuestions }
         {questions.length && addQuestion}
       </div>
+      <QuestionForm/>
     </div>
 
   )
