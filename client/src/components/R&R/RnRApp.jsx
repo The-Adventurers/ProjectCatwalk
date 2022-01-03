@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useWindowDimensions from '../../shared/useWindowDimensions';
-import { MainContainer2, RelatedProducts, Carousel, floatChild, floatChild2, floatContainer} from '../../../dist/RnRStyles';
+import { ReviewListContainer} from '../../../dist/RnRStyles';
 import { getReviews } from '../../shared/api';
 import RnRList from './RnRList.jsx';
 
@@ -9,25 +9,35 @@ import RnRList from './RnRList.jsx';
 const RnRApp = function (props) {
   const [reviewList, reviewListUpdater] = useState([])
   const [productId, productIdUpdater] = useState(props.productId)
+  const [reviewLength, reviewLengthUpdater] = useState(100)
   
   useEffect(() => {
     productIdUpdater(props.productId)
-    getReviews( {product_id : props.productId} )
+    getReviews( {product_id : props.productId, count : reviewLength} )
     .then(
-      res => {reviewListUpdater(res.data.results)})
-  }, [props.productId])
+      res => {reviewListUpdater(res.data.results)}
+      )
+    .then(
+      res => {
+        if (res.data.results.length == reviewLength) {
+          reviewLengthUpdater(reviewLength + 100)
+          console.log("There might be more reviews. Fetching more data.")
+        } 
+      }
+    )
+  }, [props.productId, reviewLength])
 
   const { height, width } = useWindowDimensions();
   return (
-    <MainContainer2>
+    <ReviewListContainer>
         <div className = "leftSection">
-            <p> There will be another component here. </p>
+            <p> This is where the summary sidebar will appear, but it is a stretch goal (Rob said so.) </p>
         </div>
         <div className = "rightSection">
             <RnRList reviewList = {reviewList}/>
             {/*console.log(reviewList)*/}
         </div>
-    </MainContainer2>
+    </ReviewListContainer>
   )
 }
 

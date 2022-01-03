@@ -7,7 +7,7 @@ const RnRApp = function () {
     <div style = {{paddingLeft : width * 0.05}}>
       {/* */}
       <>
-         <span> Just a plain old left box. </span> <span> Just a plain old right box. </span> 
+         <span> Coming soon! </span> 
         {/* <div style = {{"width" : width * 0.5}}>  </div> */} 
       </>
     </div>
