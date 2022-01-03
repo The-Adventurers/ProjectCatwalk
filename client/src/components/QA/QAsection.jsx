@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getQuestions, updateQA } from '../../shared/api.js';
 import Questions from './Questions.jsx';
 
-
-
-
 const QAsection = ({ product_id , product_name}) => {
 
   const [allQuestions, setQuestions] = useState([]);
@@ -16,7 +13,6 @@ const QAsection = ({ product_id , product_name}) => {
     const fetchData = () => {
       getQuestions({ product_id, count: 1000 }).then(res => {
         let questions = res.data.results;
-        // console.log('question from API>> ', res.data.results)
         questions.sort((a, b) =>
           b.question_helpfulness - a.question_helpfulness
         )
@@ -47,13 +43,10 @@ const QAsection = ({ product_id , product_name}) => {
   return (
 
     <div className='main-QA' >
-      {/* { document.querySelector('.main-QA') ? console.log(document.querySelector('.main-QA').getBoundingClientRect()) :null}
-      {console.log(screen.height)} */}
-      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report={(id)=>{
-        const temp = [...reportedAns];
-        temp.push(id);
-        setReportedAns(temp);
-        }}/>
+      <input type='search' placeholder='search'/>
+      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {(id) => {
+        setReportedAns([...reportedAns, id]);
+        }} />
     </div>
   );
 };

@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
 const Answers = ({questions, q_index, product_name}) => {
-  // console.log( 'before hit undefined--->',questions)
-  // console.log( 'before hit undefined--->',q_index)
   const allAnswers = questions[q_index].answers;
   const [showAnswers, setAnswers] = useState([]);
 
@@ -20,10 +18,10 @@ const Answers = ({questions, q_index, product_name}) => {
     }
   };
 
-  const formatDate = (date) => { //"2018-01-04T00:00:00.000Z"
+  const formatDate = (date) => {
     return new Date(date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric'})
   }
-//  console.log(allAnswers)
+
   return(
     <>
       {showAnswers.length > 0 &&
@@ -39,7 +37,6 @@ const Answers = ({questions, q_index, product_name}) => {
               {ans[1].photos.length ?
                  <span className='photos'>
                    {ans[1].photos.map((photo, index) => <img key={index} src={photo} onError={(e) => {
-                    //  e.onerror = null;
                      e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
                    }} alt={`answer-photo-${ans[0]}-productName-${product_name}`}/>)}
                  </span> : null
@@ -64,10 +61,12 @@ const Answers = ({questions, q_index, product_name}) => {
         ))}
         </div>
       }
-      {(allAnswers.length > 2) &&
-        <p className='more-answer'onClick={displayAnswers} > <span>LOAD MORE ANSWERS</span>
+      {(allAnswers.length > 2)
+        ? <p className='more-answer'onClick={displayAnswers} > <span>LOAD MORE ANSWERS</span>
           { showAnswers.length !== allAnswers.length && <span>&nbsp;({allAnswers.length - showAnswers.length})</span>}
-        </p> }
+         </p>
+        : null
+      }
     </>
   )
 }

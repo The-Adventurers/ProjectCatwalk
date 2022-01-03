@@ -5,14 +5,19 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const body = e.target.querySelector('#question-body').value;
-    const name =  e.target.querySelector('#question-nickname').value;
-    const email = e.target.querySelector('#question-email').value;
-    const questionFormRequest = {product_id, body, name, email};
-    const form = e.target;
-    const photo = e.target.querySelector('#question-photo');
+    const body = e.target.querySelector('#question-body');
+    const name =  e.target.querySelector('#question-nickname');
+    const email = e.target.querySelector('#question-email');
+    const questionFormRequest = {product_id, body: body.value, name: name.value, email: email.value};
+
+    addQA(questionFormRequest).then(() => {
+      [body, name, email].forEach(el => el.value = '');
+      document.querySelector('.form-wrapper').style.display = 'none';
+      updateData();
+    })
+
   }
-  // ADD You must enter the following: for incompleted form request !!
+  // ADD You must enter the following: for incompleted form request !! **** Note
   return (
     <div className="form-wrapper">
       <div className='question-form-container'>

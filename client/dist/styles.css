@@ -164,8 +164,7 @@ span.user {
   z-index: 10;
 }
 .singleScreen {
-  margin-top: 5%;
-  height: 80vh;
+  height: 90vh;
 
   overflow: scroll;
 }
@@ -226,7 +225,7 @@ span.user {
 }
 
 
-.question-form h3 {
+.question-form h3, .answer-form h3 {
   text-align: center;
   margin-top: -10px;
   font-size: 1.5vw;
