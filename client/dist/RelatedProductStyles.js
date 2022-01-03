@@ -57,6 +57,26 @@ export const Price = styled.div`
   font-weight: lighter;
   font-size: 14px;
   padding: 2px 10px;
+  margin-bottom: 5px;
+`;
+
+export const SalePrice = styled.div`
+  font-weight: lighter;
+  font-size: 14px;
+  padding: 2px 10px;
+  display: inline-block;
+  padding-left: 5px;
+  font-size: 15px;
+  color: red;
+`;
+
+export const RegPrice = styled.div`
+  font-weight: lighter;
+  font-size: 14px;
+  padding: 2px 10px;
+  display: inline-block;
+  font-size: 15px;
+  text-decoration: line-through;
 `;
 
 export const Container = styled.div`
