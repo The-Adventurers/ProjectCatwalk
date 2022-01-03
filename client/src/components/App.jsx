@@ -5,6 +5,7 @@ import QAsection from './QA/QAsection.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
 import { getProducts, getStyles, getRelated } from '../shared/api';
 import { MainContainer } from '../../dist/RelatedProductStyles';
+import RnRApp from './R&R/RnRApp.jsx';
 
 
 const App = function () {
@@ -53,6 +54,9 @@ const App = function () {
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
       </MainContainer>
+      <div>
+        <RnRApp productId = {productId} />
+      </div>
       {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
       </div> */}

@@ -6,6 +6,17 @@
   top: 110%;
 }
 
+.rightSection {
+  width: 40%;
+  display: inline-block;
+}
+
+.leftSection {
+  padding-left: 15%;
+  width: 17.5%;
+  display: inline-block;
+}
+
 .MiniGalleryImage {
   display: block;
   margin: auto;
