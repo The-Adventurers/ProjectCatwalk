@@ -30,7 +30,7 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
       <Container>
         {image}
         <Icon
-          src='https://cdn-icons.flaticon.com/png/512/2734/premium/2734822.png?token=exp=1640915254~hmac=e17f64f7dddaad35c5f73a9a22441120'
+          src='https://cdn-icons-png.flaticon.com/512/992/992660.png'
           aria-label='Remove current product from your outfit list'
           alt=''
           onClick={removeOutfit}
