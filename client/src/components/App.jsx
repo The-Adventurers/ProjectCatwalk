@@ -55,7 +55,7 @@ const App = function () {
       <div>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
       </div>
-        <RnRApp />
+        <RnRApp productId = {productId} />
       {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
       </div> */}
