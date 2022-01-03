@@ -3,17 +3,16 @@ import { screen, render } from '@testing-library/react';
 import { test } from '@jest/globals';
 import App from '../client/src/components/App';
 
-<<<<<<< HEAD
 
 test('EXPECTED: App should render \'Hello World!\'', () => {
   render(<App />);
+})
+
   // screen.getByText('Q');
-=======
-test('EXPECTED: App should render \'Price\'', () => {
-  render(<App />);
-  screen.getByText('Price');
->>>>>>> b036b6e7d67c95e91a8a4cb1d7bc038f55cc2a3d
-});
+// test('EXPECTED: App should render \'Price\'', () => {
+//   render(<App />);
+//   screen.getByText('Price');
+// });
 
 // test components if it is rendered
 // test('it render without crashing', () => {

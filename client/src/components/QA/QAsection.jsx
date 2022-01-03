@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { getQuestions, getAnswers } from '../../shared/api.js';
+import { getQuestions, updateQA } from '../../shared/api.js';
 import Questions from './Questions.jsx';
 
 
 
 
-const QAsection = ({ product_id }) => {
+const QAsection = ({ product_id , product_name}) => {
 
-  const [allQuestions, setQuestions] = useState([])
-  const [update, setUpdate] = useState(false)
+  const [allQuestions, setQuestions] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [reportedAns, setReportedAns] = useState([]);
+
 
   useEffect(() => {
     const fetchData = () => {
@@ -33,16 +35,25 @@ const QAsection = ({ product_id }) => {
     fetchData();
   }, [product_id, update]);
 
-  // useEffect(()=>{
-  //   console.log('from 2nd UEF ---------> ',allQuestions)
-  // }, [allQuestions])
-
+  useEffect(()=>{
+    return ()=> {
+      if(reportedAns.length) {
+        reportedAns.forEach(id => updateQA({type:'answers', section:'report', id}))
+      }
+    }
+  }
+  , [product_id])
 
   return (
 
-    <div className='main-QA'>
-
-      <Questions questions={allQuestions} updateData={()=>setUpdate(!update)}/>
+    <div className='main-QA' >
+      {/* { document.querySelector('.main-QA') ? console.log(document.querySelector('.main-QA').getBoundingClientRect()) :null}
+      {console.log(screen.height)} */}
+      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report={(id)=>{
+        const temp = [...reportedAns];
+        temp.push(id);
+        setReportedAns(temp);
+        }}/>
     </div>
   );
 };

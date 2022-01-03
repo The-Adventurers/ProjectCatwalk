@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const Answers = ({questions, q_index}) => {
+const Answers = ({questions, q_index, product_name}) => {
   // console.log( 'before hit undefined--->',questions)
   // console.log( 'before hit undefined--->',q_index)
   const allAnswers = questions[q_index].answers;
@@ -35,10 +35,19 @@ const Answers = ({questions, q_index}) => {
               <span className = { index === 0 ? 'first-answer' : 'regular-answer' }>
                 {ans[1].body}
               </span>
+              <br/>
+              {ans[1].photos.length ?
+                 <span className='photos'>
+                   {ans[1].photos.map((photo, index) => <img key={index} src={photo} onError={(e) => {
+                    //  e.onerror = null;
+                     e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
+                   }} alt={`answer-photo-${ans[0]}-productName-${product_name}`}/>)}
+                 </span> : null
+              }
             </p>
             <p className='answer-info-container' ans_id={ans[0]}>
               <span className='answer-info'> by</span>
-              <span  className={ans[1].answerer_name === 'Seller'? 'seller' : 'user'}>&ensp;{ans[1].answerer_name}
+              <span  className={ans[1].answerer_name.toLowerCase() === 'seller'? 'seller' : 'user'}>&ensp;{ans[1].answerer_name}
               </span>
               <span className='answer-info'>
                 ,&nbsp;{formatDate(ans[1].date)}

@@ -57,13 +57,13 @@
   width: 50vw;
  }
 
- div[name|='button'] button:nth-child(2){
+div[name|='button'] button:nth-child(2){
    /* display: flex;
    justify-content: space-evenly; */
    margin-left: 5%;
  }
 
- div[name|='button'] button {
+div[name|='button'] button {
    padding: 0.5%;
    /* margin-top: 2%; */
    cursor: pointer;
@@ -106,18 +106,20 @@ p .answer-info:first-child  {
   margin-left: 2.5%;
 }
 
+.answer-info-container span {
+  font-size: 0.7em;
+  color: #7f7f7f;
+}
+
 span.seller {
   font-weight: bolder;
+  font-size: 0.8em;
 }
 
 span.user {
   font-weight: lighter;
 }
 
-.answer-info-container span {
-  font-size: 0.7em;
-  color: #7f7f7f;
-}
 .answer-info-container span:nth-child(5), .answer-info-container span:last-child {
   text-decoration: underline;
   cursor: pointer;
@@ -128,19 +130,27 @@ span.user {
   color: grey;
   cursor: pointer;
   margin-left: 2.5%;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
+  text-decoration: underline;
   width: fit-content;
   padding: 0.4%;
 }
 
 /*-------- Question form -----------*/
-.question-form {
-  display: flex;
-  flex-direction: column;
+
+.form-wrapper {
+  position: absolute;
+  display: none;
+  top:0;
+  left:0;
+  background: transparent;
+  z-index: 2;
+  width: 100vw;
+  height: 100%;
 }
 
-.question-form-container {
-  display: none;
+.question-form-container, .answer-form-container {
+  /* display: none; */
   position:fixed;
   left: 10vw;
   top:10vh;
@@ -148,13 +158,24 @@ span.user {
   height: 80vh;
   width: 80vw;
   background-color: white;
-  z-index: 1;
   outline: 100vh solid rgba(0, 0, 0, 0.5);
   overflow-y: auto;
   border-radius: 10px;
-
+  z-index: 10;
 }
-.question-form div:first-child {
+.singleScreen {
+  margin-top: 5%;
+  height: 80vh;
+
+  overflow: scroll;
+}
+
+.question-form , .answer-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form div:first-child, .answer-form div:first-child {
   background-color: black;
   color:#eaf4f4;
   height: 4vh;
@@ -167,20 +188,20 @@ span.user {
   justify-content: center;
   align-items: center;
 }
-.question-form div i {
+.question-form div i, .answer-form div i  {
   position: absolute;
   left: 77vw;
-
+  transform: scale(1.3);
 }
 
-.question-form textarea, .question-form input {
+.question-form textarea, .question-form input, .answer-form textarea, .answer-form input {
   outline: none;
   width: 40vw;
   height: 20vh;
   font-size: 0.95vw;
 }
 
-.question-form label {
+.question-form label, .answer-form label {
   width: 60vw;
   margin-left: 10vw;
   display: flex;
@@ -188,40 +209,60 @@ span.user {
   font-weight: bolder;
 }
 
-.question-form input {
-  height: 3vh;
+.question-form input, .answer-form input {
+  height: max-content;
 }
 
-.question-form label p {
+.question-form label p, .answer-form label p {
   display: flex;
   flex-direction: column;
   font-size: 1vw;
 }
 
-.question-form label p span {
+.question-form label p span, .answer-form label p span {
   color: grey;
   font-size: 0.7vw;
   font-weight: lighter;
 }
 
 
-h3 {
+.question-form h3 {
   text-align: center;
   margin-top: -10px;
   font-size: 1.5vw;
-
 }
 
-.question-form button {
-  width: 10vw;
-  height: max-content;
+.question-form button, .answer-form button {
+  /* width: 10vw; */
+  /* height: max-content; */
   align-self: center;
   color: white;
   background-color: black;
   border: 1px solid transparent;
   border-radius: 10px;
-  padding: 0.8vh;
+  /* padding: 0.8vh; */
   font-size: 1vw;
 
 }
+
+/*------------ AnswerForm ----------*/
+.answer-form-wrapper {
+  position: absolute;
+  display: none;
+  width: 100vw;
+  height: 100%;
+  top:0;
+  left:0;
+  background: transparent;
+}
+/*---  photo ---*/
+img {
+  max-width: 10vw;
+  max-height: 10vw;
+  width: auto;
+  height: 10vh;
+  margin-left: 5%;
+}
+
+
 /*------------- QA-section END ----------------*/
