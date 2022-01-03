@@ -21,8 +21,8 @@ const RnRList = function (props) {
     4 : "★★★★☆",
     5 : "★★★★★"}
 
-    if (listItem.recommend) {
-      if (listItem.response == "") {
+    if (listItem.recommend && listItem.response === "") {
+      {console.log(listItem.response)}
       return (
         <div className = "reviewItem" key = {listItem.review_id}> 
         <h3>{starConverter[listItem.rating]}</h3> 
@@ -35,8 +35,10 @@ const RnRList = function (props) {
         <hr></hr>
         </div>
       )
-      }
-      else {
+    }
+
+    else if (listItem.recommend && listItem.response !== "") {
+      {console.log(listItem.response)}
         return (
           <div className = "reviewItem" key = {listItem.review_id}> 
           <h3>{starConverter[listItem.rating]}</h3> 
@@ -54,9 +56,9 @@ const RnRList = function (props) {
           </div>
         )
       }
-    }
-    else {
-      if (listItem.response == "") {
+  
+    else if (!listItem.recommend && listItem.response === ""){
+      {console.log(listItem.response)}
       return (
       <div className = "reviewItem" key = {listItem.review_id}> 
       <h3>{starConverter[listItem.rating]}</h3> 
@@ -64,12 +66,13 @@ const RnRList = function (props) {
       <p> {listItem.body} </p>
       <HelperStyles>
             <p>Helpful? Yes | Report</p>
-        </HelperStyles>
+      </HelperStyles>
       <hr></hr>
       </div>
       )
-      }
-      else {
+    }
+    else if (!listItem.recommend && listItem.response !== "") {
+      {console.log(listItem.response)}
         return (
           <div className = "reviewItem" key = {listItem.review_id}> 
           <h3>{starConverter[listItem.rating]}</h3> 
@@ -86,7 +89,6 @@ const RnRList = function (props) {
           </div>
           )
       }
-    }
     }
     )
 

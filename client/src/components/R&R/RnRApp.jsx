@@ -35,7 +35,6 @@ const RnRApp = function (props) {
         </div>
         <div className = "rightSection">
             <RnRList reviewList = {reviewList}/>
-            {/*console.log(reviewList)*/}
         </div>
     </ReviewListContainer>
   )

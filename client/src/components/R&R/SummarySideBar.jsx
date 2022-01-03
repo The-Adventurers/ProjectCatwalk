@@ -5,10 +5,8 @@ const RnRApp = function () {
   const { height, width } = useWindowDimensions();
   return (
     <div style = {{paddingLeft : width * 0.05}}>
-      {/* */}
       <>
          <span> Coming soon! </span> 
-        {/* <div style = {{"width" : width * 0.5}}>  </div> */} 
       </>
     </div>
   )
