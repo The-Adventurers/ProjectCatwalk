@@ -1,22 +1,24 @@
 import React from 'react';
 
-import { SelectStyleWrapper, StyleButton } from '../../../dist/overviewStyling.js';
+import { SelectStyleWrapper, Styles, ImageButton, StyleButton } from '../../../dist/overviewStyling.js';
 
 export const StyleSelector = (props) => {
 
   return (
     <SelectStyleWrapper>
       <div>Select Style / Color</div>
-      <div>{props.styles.map((style) => {
+      <Styles>{props.styles.map((style) => {
         return (
-          <StyleButton key={style.style_id} onClick={()=> {
+          <ImageButton key={style.style_id} onClick={()=> {
             props.selectStyle(style);
-          }}>
+            props.setZoom(false);
+          }} className="StyleButton">
+            <img src={style.photos[0].thumbnail_url} className="StyleImage"/>
             {style.name}
-          </StyleButton>
+          </ImageButton>
         )
       })}
-      </div>
+      </Styles>
     </SelectStyleWrapper>
   )
 }

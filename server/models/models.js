@@ -21,6 +21,8 @@ module.exports = {
 
     getCart: () => axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', { headers }),
 
+    postCart: (bodyObj) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', bodyObj, { headers }),
+
     getStyles: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/styles`, { headers, params: paramsObj }),
 
     getRelated: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/related`, { headers, params: paramsObj }),
@@ -43,5 +45,7 @@ module.exports = {
         data: paramsObj
       };
       return axios(option)
-    }
+    },
+
+    getRelated: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/related`, { headers, params: paramsObj })
 };

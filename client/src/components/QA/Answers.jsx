@@ -7,6 +7,8 @@ const Answers = ({questions, q_index, product_name}) => {
   useEffect(()=>{
     setAnswers(questions[q_index].answers.slice(0, 2))
   }, [questions])
+  // const [showAnswers, setAnswers] = useState(questions[q_index].answers.slice(0, 2))
+
 
   const displayAnswers = (e) => {
     if (e.target.innerText.includes('LOAD MORE ANSWERS')) {

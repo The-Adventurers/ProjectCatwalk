@@ -3,7 +3,6 @@ import Answers from './Answers.jsx';
 import QuestionForm from './QuestionForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
 import SearchBar from './SearchBar.jsx';
-
 import { updateQA } from '../../shared/api.js';
 
 const Questions = ({questions, updateData, product_id, product_name, report}) => {

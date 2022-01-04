@@ -1,3 +1,22 @@
+.QA-section {
+  position: absolute;
+  width: 95%;
+  height: 80%;
+  left: 2%;
+  top: 110%;
+}
+
+.rightSection {
+  width: 40%;
+  display: inline-block;
+}
+
+.leftSection {
+  padding-left: 15%;
+  width: 17.5%;
+  display: inline-block;
+}
+
 .MiniGalleryImage {
   display: block;
   margin: auto;
@@ -12,6 +31,7 @@
 }
 
 .MainImage {
+  cursor:zoom-in;
   display: block;
   margin: auto;
   max-width: 100%;
@@ -22,14 +42,14 @@
 .leftArrowGallery {
   max-width: 2%;
   max-height: 2%;
-  margin-left: 31%;
+  margin-left: 33.4%;
   margin-top: 2%;
 }
 
 .hiddenArrow {
   max-width: 2%;
   max-height: 2%;
-  margin-left: 31%;
+  margin-left: 33.4%;
   margin-top: 2%;
   visibility: hidden;
 }
@@ -49,12 +69,35 @@
   opacity: 0.6;
 }
 
+.ZoomImage {
+  cursor: zoom-out;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.StyleImage {
+  padding: '0rem', '0rem';
+  background-color: transparent;
+  border: 0;
+  border-radius: '0rem';
+  cursor: 'pointer';
+  margin-bottom: '0rem';
+  padding: 0px !important;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  object-fit: cover;
+}
 
 /*------------- QA-section start here ----------------*/
-/* .QA-section{
-  position: relative;
+.QA-section{
+
   margin-top: 100vh;
-} */
+}
 
 /* Search component */
 .search-wrapper {
@@ -299,3 +342,4 @@ img {
 
 
 /*------------------------------------- QA-section END ----------------------------------------*/
+
