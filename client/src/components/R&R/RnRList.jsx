@@ -13,7 +13,7 @@ const RnRList = function (props) {
   let myArray = [];
   const { height, width } = useWindowDimensions();
     myArray = props.reviewList.map(function (listItem) {
-    const starConverter = 
+    const starConverter =
     {0 : "☆☆☆☆☆",
     1 : "★☆☆☆☆",
     2 : "★★☆☆☆",
@@ -22,10 +22,9 @@ const RnRList = function (props) {
     5 : "★★★★★"}
 
     if (listItem.recommend && listItem.response === "") {
-      {console.log(listItem.response)}
       return (
-        <div className = "reviewItem" key = {listItem.review_id}> 
-        <h3>{starConverter[listItem.rating]}</h3> 
+        <div className = "reviewItem" key = {listItem.review_id}>
+        <h3>{starConverter[listItem.rating]}</h3>
         <h3>{listItem.summary}</h3>
         <p> {listItem.body} </p>
         <p> ✓ I recommend this product </p>
@@ -38,10 +37,9 @@ const RnRList = function (props) {
     }
 
     else if (listItem.recommend && listItem.response !== "") {
-      {console.log(listItem.response)}
         return (
-          <div className = "reviewItem" key = {listItem.review_id}> 
-          <h3>{starConverter[listItem.rating]}</h3> 
+          <div className = "reviewItem" key = {listItem.review_id}>
+          <h3>{starConverter[listItem.rating]}</h3>
           <h3>{listItem.summary}</h3>
           <p> {listItem.body} </p>
           <p> ✓ I recommend this product </p>
@@ -56,12 +54,11 @@ const RnRList = function (props) {
           </div>
         )
       }
-  
+
     else if (!listItem.recommend && listItem.response === ""){
-      {console.log(listItem.response)}
       return (
-      <div className = "reviewItem" key = {listItem.review_id}> 
-      <h3>{starConverter[listItem.rating]}</h3> 
+      <div className = "reviewItem" key = {listItem.review_id}>
+      <h3>{starConverter[listItem.rating]}</h3>
       <h3>{listItem.summary}</h3>
       <p> {listItem.body} </p>
       <HelperStyles>
@@ -72,10 +69,9 @@ const RnRList = function (props) {
       )
     }
     else if (!listItem.recommend && listItem.response !== "") {
-      {console.log(listItem.response)}
         return (
-          <div className = "reviewItem" key = {listItem.review_id}> 
-          <h3>{starConverter[listItem.rating]}</h3> 
+          <div className = "reviewItem" key = {listItem.review_id}>
+          <h3>{starConverter[listItem.rating]}</h3>
           <h3>{listItem.summary}</h3>
           <p> {listItem.body} </p>
           <ResponseBorder>

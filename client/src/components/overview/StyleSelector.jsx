@@ -11,7 +11,6 @@ export const StyleSelector = (props) => {
         return (
           <ImageButton key={style.style_id} onClick={()=> {
             props.selectStyle(style);
-            props.setZoom(false);
           }} className="StyleButton">
             <img src={style.photos[0].thumbnail_url} className="StyleImage"/>
             {style.name}
@@ -21,4 +20,4 @@ export const StyleSelector = (props) => {
       </Styles>
     </SelectStyleWrapper>
   )
-}
+};

@@ -22,4 +22,4 @@ export const ImageGallery = (props) => {
       </MainImage>
     </GalleryWrapper>
   )
-}
+};

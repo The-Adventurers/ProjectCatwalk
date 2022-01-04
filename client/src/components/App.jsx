@@ -11,7 +11,6 @@ import RnRApp from './R&R/RnRApp.jsx';
 const App = function () {
   const [productId, setProductId] = useState(63616);
   const [currentProduct, setCurrentProduct] = useState({});
-  const [styles, setStyles] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
   const [yourOutfit, setYourOutfit] = useState([]);
@@ -19,13 +18,12 @@ const App = function () {
   const [isLoading, setIsLoading] = useState(true);
 
   const getAllData = () => {
-    const getData = [getProducts({product_id: productId}), getStyles({product_id: productId }), getRelated({product_id: productId})];
+    const getData = [getProducts({product_id: productId}), getRelated({product_id: productId})];
     Promise.all(getData)
       .then((results) => {
         setCurrentProduct(results[0].data);
-        setRelatedProducts(results[2].data.slice(1));
-        setCurrentOutfit(results[2].data[0])
-        setStyles(results[1].data.results);
+        setRelatedProducts(results[1].data.slice(1));
+        setCurrentOutfit(results[1].data[0])
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
@@ -48,7 +46,7 @@ const App = function () {
   return (
     <div>
       <div>
-        <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
       </div>
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>

@@ -10,7 +10,7 @@ const RnRApp = function (props) {
   const [reviewList, reviewListUpdater] = useState([])
   const [productId, productIdUpdater] = useState(props.productId)
   const [reviewLength, reviewLengthUpdater] = useState(100)
-  
+
   useEffect(() => {
     productIdUpdater(props.productId)
     getReviews( {product_id : props.productId, count : reviewLength} )
@@ -21,8 +21,7 @@ const RnRApp = function (props) {
       res => {
         if (res.data.results.length == reviewLength) {
           reviewLengthUpdater(reviewLength + 100)
-          console.log("There might be more reviews. Fetching more data.")
-        } 
+        }
       }
     )
   }, [props.productId, reviewLength])
