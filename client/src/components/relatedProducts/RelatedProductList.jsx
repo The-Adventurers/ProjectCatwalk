@@ -15,17 +15,30 @@ const RelatedProductList = ({productId, currentProduct, setProductId, relatedPro
     setShowModal(!showModal);
   }
 
+  const removeDuplicates = (products) => {
+    let noDuplicates = {};
+    let newProducts = [...products];
+    for (let i = 0; i < newProducts.length; i++) {
+      if (noDuplicates[newProducts[i].id]) {
+        newProducts.splice(i, 1);
+      } else {
+        noDuplicates[newProducts[i].id] = newProducts[i].name;
+      }
+    }
+    return newProducts;
+  }
+
   return (
-    <MainContainer>
+    <div>
       <RelatedProducts>RELATED PRODUCTS
         <Carousel>
-          {relatedProducts.map((product) => (
+          {removeDuplicates(relatedProducts).map((product) => (
             <RelatedProductCard product={product} key={product.id} setProductId={setProductId} setModal={setModal}/>
           ))}
         </Carousel>
       </RelatedProducts>
       <ComparisonModal currentProduct={currentProduct} comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>
-    </MainContainer>
+    </div>
   );
 }
 

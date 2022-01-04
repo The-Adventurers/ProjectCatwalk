@@ -4,6 +4,7 @@ import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
 import { getProducts, getStyles, getRelated } from '../shared/api';
+import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
 
 
@@ -49,13 +50,13 @@ const App = function () {
       <div>
         <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
       </div>
-      <div>
+      <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
-      </div>
-      <div>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
-      </div>
+      </MainContainer>
+      <div>
         <RnRApp productId = {productId} />
+      </div>
       {/* <div className="QA-section" style={{marginTop: '85vh'}}>
         <QAsection product_id={productId} />
       </div> */}

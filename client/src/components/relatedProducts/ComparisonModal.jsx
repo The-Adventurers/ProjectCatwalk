@@ -48,23 +48,23 @@ const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setMod
 
     return (
       <Background>
-            <ModalIcon
-                src='https://cdn-icons.flaticon.com/png/512/2734/premium/2734822.png?token=exp=1640915254~hmac=e17f64f7dddaad35c5f73a9a22441120'
-                aria-label='Close Modal'
-                alt=''
-                onClick={setModal}
-              />
-            <ModalWrapper>
-              <Header>COMPARING</Header>
-              <Products>
-                <div>{currentProduct.name}</div>
-                <div>{comparisonProduct.name}</div>
-              </Products>
-              <Features>
-                {features}
-              </Features>
-            </ModalWrapper>
-        </Background>
+        <ModalWrapper>
+          <Header>COMPARING</Header>
+          <ModalIcon
+              src='https://cdn-icons-png.flaticon.com/512/992/992660.png'
+              aria-label='Close Modal'
+              alt=''
+              onClick={setModal}
+            />
+          <Products>
+            <div>{currentProduct.name}</div>
+            <div>{comparisonProduct.name}</div>
+          </Products>
+          <Features>
+            {features}
+          </Features>
+        </ModalWrapper>
+      </Background>
     );
   } else {
     return null;
