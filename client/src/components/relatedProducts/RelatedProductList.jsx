@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { MainContainer, RelatedProducts, CarouselContainer, Carousel, Arrow } from '../../../dist/RelatedProductStyles';
+import { MainContainer, RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow } from '../../../dist/RelatedProductStyles';
 
 const RelatedProductList = ({productId, currentProduct, setProductId, relatedProducts, setRelatedProducts}) => {
   let [showModal, setShowModal] = useState(false);
   let [comparisonProduct, setComparisonProduct] = useState({});
-  let [shownCards, setShownCards] = useState([]);
-  let index = 0;
+  let [allCards, setAllCards] = useState([]);
+  let [index, setIndex] = useState(0);
 
   const setModal = (e, product) => {
     e.stopPropagation();
@@ -17,32 +17,43 @@ const RelatedProductList = ({productId, currentProduct, setProductId, relatedPro
     setShowModal(!showModal);
   }
 
-  const generateCards = (products) => {
+  const removeDuplicates = () => {
     let noDuplicates = {};
     let cards = [];
-    for (let i = 0; i < products.length; i++) {
-      if ((noDuplicates[products[i].id] === undefined) && (index < 4)) {
-        noDuplicates[products[i].id] = products[i].name;
-        cards.push(<RelatedProductCard product={products[i]} key={products[i].id} setProductId={setProductId} setModal={setModal}/>);
-        index++;
+    for (let i = 0; i < relatedProducts.length; i++) {
+      if ((noDuplicates[relatedProducts[i].id] === undefined)) {
+        noDuplicates[relatedProducts[i].id] = relatedProducts[i].name;
+        cards.push(<RelatedProductCard product={relatedProducts[i]} key={relatedProducts[i].id} setProductId={setProductId} setModal={setModal}/>);
       }
     }
-    setShownCards(cards);
+    setAllCards(cards);
   }
 
   useEffect(() => {
-    generateCards(relatedProducts);
-  }, [])
+    removeDuplicates();
+  }, [relatedProducts])
+
+  const updateIndex = (newIndex) => {
+    if (newIndex < 0) {
+      newIndex = 0;
+    } else if (newIndex >= allCards.length - 4) {
+      newIndex = allCards.length - 4;
+    }
+    setIndex(newIndex);
+  }
 
   return (
     <div>
       <RelatedProducts>RELATED PRODUCTS
         <CarouselContainer>
-          {index<4 ? null : <Arrow src='https://img.icons8.com/ios/344/circled-left-2.png'/>}
+          {index === 0 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-left-2.png'
+          onClick={() => { updateIndex(index - 1); }}/>}
           <Carousel>
-            {shownCards}
+            <InnerCarousel style={{ transform: `translateX(-${index * 25}%)` }}>
+              {allCards}
+            </InnerCarousel>
           </Carousel>
-          {index<=4 ? <Arrow src='https://img.icons8.com/ios/344/circled-right-2.png'/> : null}
+          {index >= allCards.length - 4 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-right-2.png' onClick={() => { updateIndex(index + 1); }}/>}
         </CarouselContainer>
       </RelatedProducts>
       <ComparisonModal currentProduct={currentProduct} comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>

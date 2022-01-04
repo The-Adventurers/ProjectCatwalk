@@ -30,10 +30,17 @@ export const CarouselContainer = styled.div`
 `;
 
 export const Carousel = styled.div`
+  overflow: hidden;
+`;
+
+export const InnerCarousel = styled.div`
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   gap: 10px;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  width: 1150px;
 `;
 
 export const ProductCard = styled.div`
@@ -125,10 +132,36 @@ export const Arrow = styled.img`
     opacity: 0.6;
   }
 `;
+
+export const NoArrow = styled.img`
+  width: 50px;
+  height: 50px;
+  visibility: hidden;
+`;
 // RELATED PRODUCTS LIST //
 
 
 // YOUR OUTFIT LIST //
+export const YourOutfits = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  font-family: Helvetica, Sans-Serif;
+  margin-top: 50px;
+  font-weight: 500;
+  font-size: 20px;
+  overflow: auto;
+`;
+
+export const OutfitCarousel = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+`;
+
 export const AddCard = styled.div`
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -167,7 +200,6 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 2%;
   bottom: 15%;
 `;
 
@@ -236,5 +268,6 @@ export const ModalIcon = styled.img`
   top: 12px;
   right: 20px;
   position: absolute;
+  cursor: pointer;
 `;
 // COMPARISON MODAL //
