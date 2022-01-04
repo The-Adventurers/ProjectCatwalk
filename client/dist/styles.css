@@ -1,11 +1,3 @@
-.QA-section {
-  position: absolute;
-  width: 95%;
-  height: 80%;
-  left: 2%;
-  top: 110%;
-}
-
 .rightSection {
   width: 40%;
   display: inline-block;
@@ -92,3 +84,260 @@
   margin: 5px;
   object-fit: cover;
 }
+
+/*------------- QA-section start here ----------------*/
+/* #app {
+  width: 100%;
+  height: max-content;
+  border: 2px solid green;
+  z-index:0;
+} */
+
+.main-QA {
+  margin-top: 120%;
+}
+
+
+/* Search component */
+.search-wrapper {
+  width: 60%;
+  height: 30px;
+  margin-left: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5vw;
+  border-radius: 10px;
+  background-color: rgb(52, 49, 49);
+  padding: 0.5vw 0;
+}
+
+.search-wrapper i {
+  color: white;
+  cursor: pointer;
+}
+
+#search {
+  width:55%;
+  min-height: 25px;
+  outline: none;
+  border-radius: 10px;
+  border: 0.5px solid grey;
+  text-align: center;
+  outline: none;
+  margin-left: 1.5%;
+}
+#search::placeholder {
+  color: grey;
+  text-align: center;
+}
+
+/* Questions component */
+
+.question-container {
+  width: 60%;
+  margin-left: 20%;
+ }
+
+div[name|='button'] button:nth-child(2){
+   margin-left: 5%;
+ }
+
+div[name|='button'] button {
+   padding: 0.5%;
+   cursor: pointer;
+ }
+ .question {
+   display: flex;
+   justify-content: space-between;
+   font-weight: bolder;
+ }
+
+ /* NEED to fix line-height here */
+ .question span:nth-child(2) {
+  color: grey;
+  font-size: 0.8em;
+  font-weight: lighter;
+ }
+
+.question span span:first-child, .question span span:last-child {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Answer component */
+.answer {
+  font-weight: bolder;
+}
+
+.first-answer{
+  font-weight: lighter;
+  margin-left: 0;
+}
+
+.regular-answer {
+  font-weight: lighter;
+  margin-left: 0.8vw;
+}
+
+p .answer-info:first-child  {
+  font-weight: lighter;
+  margin-left: 0.8vw;
+}
+
+.answer-info-container span {
+  font-size: 0.7em;
+  color: #7f7f7f;
+}
+
+span.seller {
+  font-weight: bolder;
+  font-size: 0.8em;
+}
+
+span.user {
+  font-weight: lighter;
+}
+
+.answer-info-container span:nth-child(5), .answer-info-container span:last-child {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.more-answer {
+  font-size: 0.3em;
+  font-weight: 60;
+  color: grey;
+  cursor: pointer;
+  margin-left: 2.5%;
+  text-decoration: underline;
+  width: fit-content;
+  padding: 0.4%;
+}
+
+/*----- QuestionForm component ------*/
+
+.form-wrapper {
+  position: absolute;
+  display: none;
+  top:0;
+  left:0;
+  background: transparent;
+  z-index: 2;
+  width: 100vw;
+  height: 100%;
+}
+
+.question-form-container, .answer-form-container {
+  position:fixed;
+  left: 10vw;
+  top:10vh;
+  border: 3px solid #282624;
+  height: 80vh;
+  width: 80vw;
+  background-color: white;
+  outline: 100vh solid rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  border-radius: 10px;
+  z-index: 10;
+}
+.singleScreen {
+  height: 90vh;
+  overflow: scroll;
+}
+
+.question-form , .answer-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.question-form div:first-child, .answer-form div:first-child {
+  background-color: black;
+  color:#eaf4f4;
+  height: 4vh;
+  width: inherit;
+  margin-bottom: 3%;
+  padding: 1%;
+  font-size: 1.7vw;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.question-form div i, .answer-form div i  {
+  position: absolute;
+  left: 77vw;
+  transform: scale(1.3);
+}
+
+.question-form textarea, .question-form input, .answer-form textarea, .answer-form input {
+  outline: none;
+  width: 40vw;
+  height: 20vh;
+  font-size: 0.95vw;
+}
+
+.question-form label, .answer-form label {
+  width: 60vw;
+  margin-left: 10vw;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+}
+
+.question-form input, .answer-form input {
+  height: max-content;
+}
+
+.question-form label p, .answer-form label p {
+  display: flex;
+  flex-direction: column;
+  font-size: 1vw;
+}
+
+.question-form label p span, .answer-form label p span {
+  color: grey;
+  font-size: 0.7vw;
+  font-weight: lighter;
+}
+
+
+.question-form h3, .answer-form h3 {
+  text-align: center;
+  margin-top: -10px;
+  font-size: 1.5vw;
+}
+
+.question-form button, .answer-form button {
+  align-self: center;
+  color: white;
+  background-color: black;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 1vw;
+
+}
+
+/*-----------------AnswerForm  component --------------*/
+.answer-form-wrapper {
+  position: absolute;
+  display: none;
+  width: 100vw;
+  height: 100%;
+  top:0;
+  left:0;
+  background: transparent;
+}
+/*---  photo ---*/
+.photos img {
+  max-width: 10vw;
+  max-height: 10vw;
+  width: auto;
+  height: 10vh;
+  margin-left: 0.8vw;
+  margin-top: 2.5vh;
+  border-radius: 5px;
+}
+
+
+/*------------------------------------- QA-section END ----------------------------------------*/
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
 import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
@@ -7,8 +7,8 @@ import { getProducts, getStyles, getRelated } from '../shared/api';
 import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
 
-
 const App = function () {
+
   let [productId, setProductId] = useState(63616);
   let [currentProduct, setCurrentProduct] = useState({});
   let [styles, setStyles] = useState([]);
@@ -54,15 +54,13 @@ const App = function () {
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
       </MainContainer>
+       <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
       <div>
         <RnRApp productId = {productId} />
       </div>
-      {/* <div className="QA-section" style={{marginTop: '85vh'}}>
-        <QAsection product_id={productId} />
-      </div> */}
+
     </div>
   )
 }
-
 
 export default App;
