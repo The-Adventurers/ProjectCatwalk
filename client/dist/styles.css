@@ -94,7 +94,8 @@
 } */
 
 .main-QA {
-  margin-top: 120%;
+  position: sticky;
+  margin-top: 130%;
 }
 
 
@@ -118,7 +119,7 @@
 }
 
 #search {
-  width:55%;
+  width:65%;
   min-height: 25px;
   outline: none;
   border-radius: 10px;

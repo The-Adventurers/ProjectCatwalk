@@ -56,7 +56,7 @@ const App = function () {
       </MainContainer>
        <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
       <div>
-        <RnRApp productId = {productId} />
+        {/* <RnRApp productId = {productId} /> */}
       </div>
 
     </div>

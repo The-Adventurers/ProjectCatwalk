@@ -9,9 +9,16 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   const  [showQuestions, setShowQuestions] = useState([questions]);
   const [chosenQuestion, setChosenQuestion] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
+  const [keyWord, setKeyWord] = useState('');
+
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
-  }, [questions])
+  }, [questions]);
+
+  useEffect(()=>{
+    setShowQuestions(searchResult.slice(0, 4))
+  },[searchResult])
 
   const handleOnClick = (e) => {
     if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
@@ -45,7 +52,12 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   const showMoreQuestions = () => {
     let length = showQuestions.length;
-    setShowQuestions(questions.slice(0, length + 2));
+    if (keyWord.length > 2) {
+      setShowQuestions(searchResult.slice(0, length + 2));
+    } else {
+      setShowQuestions(questions.slice(0, length + 2));
+    }
+
   }
 
   const question =
@@ -70,17 +82,17 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
     </div>
 
   const addQuestion = <button>ADD QUESTION +</button>;
+  const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
+  // const resizeSection = document.querySelector('[name = "button"]') ? (screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y )/screen.height * 100  < 30 ? 'singleScreen' : null : null;
+  const resizeSection = document.querySelector('[name = "button"]') ? ((screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y - Math.abs(document.querySelector('.search-wrapper').getBoundingClientRect().y)) * 100/screen.height < 30 ? 'singleScreen': null) : null;
 
-  const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({questions.length - showQuestions.length})</button>;
-  const resizeSection = document.querySelector('[name = "button"]') ? (screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y )/screen.height * 100  < 30 ? 'singleScreen' : null : null;
   return(
     <>
-      <SearchBar questions={questions} />
+      <SearchBar questions={questions} searchResult={setSearchResult} keyWord={setKeyWord}/>
       <div className={`question-container ${resizeSection}`} onClick={handleOnClick} >
         {questions.length ? question : addQuestion }
-
         <div name="button">
-          {(questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions :  ''}
+          {keyWord.length > 2 ? ((searchResult.length > 2 && showQuestions.length < searchResult.length) ? moreQuestions : ''):((questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions : '')}
           {questions.length ? addQuestion : 'Loading...' }
         </div>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
