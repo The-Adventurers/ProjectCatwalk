@@ -9,6 +9,7 @@ import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
 
 const App = function () {
+
   const [productId, setProductId] = useState(63616);
   const [currentProduct, setCurrentProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -50,7 +51,7 @@ const App = function () {
       </div>
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
-        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
+        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit}/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
         <RnRApp productId = {productId} />
       </MainContainer>

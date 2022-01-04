@@ -8,6 +8,7 @@ const RelatedProductList = ({productId, currentProduct, setProductId, relatedPro
   let [comparisonProduct, setComparisonProduct] = useState({});
   let [allCards, setAllCards] = useState([]);
   let [index, setIndex] = useState(0);
+  let [scrollY, setScrollY] = useState(window.scrollY);
 
   const setModal = (e, product) => {
     e.stopPropagation();
@@ -42,18 +43,38 @@ const RelatedProductList = ({productId, currentProduct, setProductId, relatedPro
     setIndex(newIndex);
   }
 
+  const scroll = () => {
+    if (window.scrollY > scrollY) {
+      updateIndex(index + 1);
+    } else {
+      updateIndex(index - 1);
+    }
+    setScrollY(window.scrollY);
+  }
+
   return (
     <div>
       <RelatedProducts>RELATED PRODUCTS
         <CarouselContainer>
-          {index === 0 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-left-2.png'
-          onClick={() => { updateIndex(index - 1); }}/>}
-          <Carousel>
+          {index === 0 ? <NoArrow/> :
+          <Arrow
+            src='https://img.icons8.com/ios/344/circled-left-2.png'
+            aria-label='Scroll left in related products'
+            alt=''
+            onClick={() => { updateIndex(index - 1); }}
+          />}
+          <Carousel onWheel={scroll}>
             <InnerCarousel style={{ transform: `translateX(-${index * 25}%)` }}>
               {allCards}
             </InnerCarousel>
           </Carousel>
-          {index >= allCards.length - 4 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-right-2.png' onClick={() => { updateIndex(index + 1); }}/>}
+          {index >= allCards.length - 4 ? <NoArrow/> :
+          <Arrow
+            src='https://img.icons8.com/ios/344/circled-right-2.png'
+            onClick={() => { updateIndex(index + 1); }}
+            aria-label='Scroll right in related products'
+            alt=''
+          />}
         </CarouselContainer>
       </RelatedProducts>
       <ComparisonModal currentProduct={currentProduct} comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>

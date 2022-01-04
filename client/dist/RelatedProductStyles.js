@@ -142,26 +142,6 @@ export const NoArrow = styled.img`
 
 
 // YOUR OUTFIT LIST //
-export const YourOutfits = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  gap: 20px;
-  font-family: Helvetica, Sans-Serif;
-  margin-top: 50px;
-  font-weight: 500;
-  font-size: 20px;
-  overflow: auto;
-`;
-
-export const OutfitCarousel = styled.div`
-  display: inline-flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 10px;
-`;
-
 export const AddCard = styled.div`
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -171,8 +151,8 @@ export const AddCard = styled.div`
 `
 
 export const Add = styled.div`
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-top: 25px;
   text-align: center;
   font-weight: 500;
   font-size: 22px;
