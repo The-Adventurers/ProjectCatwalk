@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { MainContainer, RelatedProducts, Carousel } from '../../../dist/RelatedProductStyles';
+import { MainContainer, RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow } from '../../../dist/RelatedProductStyles';
 
 const RelatedProductList = ({productId, currentProduct, setProductId, relatedProducts, setRelatedProducts}) => {
   let [showModal, setShowModal] = useState(false);
   let [comparisonProduct, setComparisonProduct] = useState({});
+  let [allCards, setAllCards] = useState([]);
+  let [index, setIndex] = useState(0);
 
   const setModal = (e, product) => {
     e.stopPropagation();
@@ -15,27 +17,44 @@ const RelatedProductList = ({productId, currentProduct, setProductId, relatedPro
     setShowModal(!showModal);
   }
 
-  const removeDuplicates = (products) => {
+  const removeDuplicates = () => {
     let noDuplicates = {};
-    let newProducts = [...products];
-    for (let i = 0; i < newProducts.length; i++) {
-      if (noDuplicates[newProducts[i].id]) {
-        newProducts.splice(i, 1);
-      } else {
-        noDuplicates[newProducts[i].id] = newProducts[i].name;
+    let cards = [];
+    for (let i = 0; i < relatedProducts.length; i++) {
+      if ((noDuplicates[relatedProducts[i].id] === undefined)) {
+        noDuplicates[relatedProducts[i].id] = relatedProducts[i].name;
+        cards.push(<RelatedProductCard product={relatedProducts[i]} key={relatedProducts[i].id} setProductId={setProductId} setModal={setModal}/>);
       }
     }
-    return newProducts;
+    setAllCards(cards);
+  }
+
+  useEffect(() => {
+    removeDuplicates();
+  }, [relatedProducts])
+
+  const updateIndex = (newIndex) => {
+    if (newIndex < 0) {
+      newIndex = 0;
+    } else if (newIndex >= allCards.length - 4) {
+      newIndex = allCards.length - 4;
+    }
+    setIndex(newIndex);
   }
 
   return (
     <div>
       <RelatedProducts>RELATED PRODUCTS
-        <Carousel>
-          {removeDuplicates(relatedProducts).map((product) => (
-            <RelatedProductCard product={product} key={product.id} setProductId={setProductId} setModal={setModal}/>
-          ))}
-        </Carousel>
+        <CarouselContainer>
+          {index === 0 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-left-2.png'
+          onClick={() => { updateIndex(index - 1); }}/>}
+          <Carousel>
+            <InnerCarousel style={{ transform: `translateX(-${index * 25}%)` }}>
+              {allCards}
+            </InnerCarousel>
+          </Carousel>
+          {index >= allCards.length - 4 ? <NoArrow/> : <Arrow src='https://img.icons8.com/ios/344/circled-right-2.png' onClick={() => { updateIndex(index + 1); }}/>}
+        </CarouselContainer>
       </RelatedProducts>
       <ComparisonModal currentProduct={currentProduct} comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>
     </div>

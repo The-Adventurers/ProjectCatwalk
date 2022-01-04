@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import OutfitListCard from './OutfitListCard.jsx';
-import { RelatedProducts, Carousel, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
+import { YourOutfits, OutfitCarousel, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
 const OutfitList = ({ productId, currentProduct, currentOutfit, yourOutfit, setYourOutfit }) => {
   const addOutfit = () => {
@@ -15,8 +15,8 @@ const OutfitList = ({ productId, currentProduct, currentOutfit, yourOutfit, setY
 
   return (
     <div>
-      <RelatedProducts>YOUR OUTFIT
-        <Carousel>
+      <YourOutfits>YOUR OUTFIT
+        <OutfitCarousel>
           {yourOutfit.map((product) => (
             <OutfitListCard product={product} key={product.id} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
           ))}
@@ -29,8 +29,8 @@ const OutfitList = ({ productId, currentProduct, currentOutfit, yourOutfit, setY
             />
             <Add>Add to Outfit</Add>
           </AddCard>
-        </Carousel>
-      </RelatedProducts>
+        </OutfitCarousel>
+      </YourOutfits>
     </div>
   );
 }
