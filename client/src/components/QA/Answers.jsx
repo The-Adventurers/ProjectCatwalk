@@ -9,10 +9,10 @@ const Answers = ({questions, q_index, product_name}) => {
   }, [questions])
 
   const displayAnswers = (e) => {
-    if (e.target.innerHTML.includes('LOAD MORE ANSWERS')) {
+    if (e.target.innerText.includes('LOAD MORE ANSWERS')) {
       e.target.innerText = 'COLLAPSE ANSWERS';
       setAnswers(allAnswers);
-    } else {
+    } else if (e.target.innerText.includes('COLLAPSE ANSWERS')){
       e.target.innerText = 'LOAD MORE ANSWERS';
       setAnswers(allAnswers.slice(0, 2));
     }
@@ -62,7 +62,7 @@ const Answers = ({questions, q_index, product_name}) => {
         </div>
       }
       {(allAnswers.length > 2)
-        ? <p className='more-answer'onClick={displayAnswers} > <span>LOAD MORE ANSWERS</span>
+        ? <p className='more-answer'><span onClick={displayAnswers} >LOAD MORE ANSWERS</span>
           { showAnswers.length !== allAnswers.length && <span>&nbsp;({allAnswers.length - showAnswers.length})</span>}
          </p>
         : null

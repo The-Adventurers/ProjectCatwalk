@@ -8,7 +8,6 @@ const QAsection = ({ product_id , product_name}) => {
   const [update, setUpdate] = useState(false);
   const [reportedAns, setReportedAns] = useState([]);
 
-
   useEffect(() => {
     const fetchData = () => {
       getQuestions({ product_id, count: 1000 }).then(res => {
@@ -41,9 +40,7 @@ const QAsection = ({ product_id , product_name}) => {
   , [product_id])
 
   return (
-
     <div className='main-QA' >
-      <input type='search' placeholder='search'/>
       <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {(id) => {
         setReportedAns([...reportedAns, id]);
         }} />

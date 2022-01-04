@@ -51,15 +51,53 @@
 
 
 /*------------- QA-section start here ----------------*/
+/* .QA-section{
+  position: relative;
+  margin-top: 100vh;
+} */
+
+/* Search component */
+.search-wrapper {
+  width: 60vw;
+  height: 30px;
+  margin-left: 20vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5vw;
+  border-radius: 10px;
+  background-color: rgb(52, 49, 49);
+  padding: 0.5vw 0;
+}
+
+.search-wrapper i {
+  color: white;
+  cursor: pointer;
+}
+
+#search {
+  width:55vw;
+  min-height: 25px;
+  outline: none;
+  border-radius: 10px;
+  border: 0.5px solid grey;
+  text-align: center;
+  outline: none;
+  margin-left: 1.5vw;
+}
+#search::placeholder {
+  color: grey;
+  text-align: center;
+}
 
 /* Questions component */
+
 .question-container {
-  width: 50vw;
+  width: 60vw;
+  margin-left: 20vw;
  }
 
 div[name|='button'] button:nth-child(2){
-   /* display: flex;
-   justify-content: space-evenly; */
    margin-left: 5%;
  }
 
@@ -98,12 +136,12 @@ div[name|='button'] button {
 
 .regular-answer {
   font-weight: lighter;
-  margin-left: 2.5%;
+  margin-left: 0.8vw;
 }
 
 p .answer-info:first-child  {
   font-weight: lighter;
-  margin-left: 2.5%;
+  margin-left: 0.8vw;
 }
 
 .answer-info-container span {
@@ -130,13 +168,12 @@ span.user {
   color: grey;
   cursor: pointer;
   margin-left: 2.5%;
-  /* border: 1px solid grey; */
   text-decoration: underline;
   width: fit-content;
   padding: 0.4%;
 }
 
-/*-------- Question form -----------*/
+/*----- QuestionForm component ------*/
 
 .form-wrapper {
   position: absolute;
@@ -150,7 +187,6 @@ span.user {
 }
 
 .question-form-container, .answer-form-container {
-  /* display: none; */
   position:fixed;
   left: 10vw;
   top:10vh;
@@ -165,7 +201,6 @@ span.user {
 }
 .singleScreen {
   height: 90vh;
-
   overflow: scroll;
 }
 
@@ -232,19 +267,16 @@ span.user {
 }
 
 .question-form button, .answer-form button {
-  /* width: 10vw; */
-  /* height: max-content; */
   align-self: center;
   color: white;
   background-color: black;
   border: 1px solid transparent;
   border-radius: 10px;
-  /* padding: 0.8vh; */
   font-size: 1vw;
 
 }
 
-/*------------ AnswerForm ----------*/
+/*-----------------AnswerForm  component --------------*/
 .answer-form-wrapper {
   position: absolute;
   display: none;
@@ -260,8 +292,10 @@ img {
   max-height: 10vw;
   width: auto;
   height: 10vh;
-  margin-left: 5%;
+  margin-left: 0.8vw;
+  margin-top: 2.5vh;
+  border-radius: 5px;
 }
 
 
-/*------------- QA-section END ----------------*/
+/*------------------------------------- QA-section END ----------------------------------------*/

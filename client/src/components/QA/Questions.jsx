@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Answers from './Answers.jsx';
 import QuestionForm from './QuestionForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
-
-
+import SearchBar from './SearchBar.jsx';
 
 import { updateQA } from '../../shared/api.js';
 
@@ -76,17 +75,19 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({questions.length - showQuestions.length})</button>;
   const resizeSection = document.querySelector('[name = "button"]') ? (screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y )/screen.height * 100  < 30 ? 'singleScreen' : null : null;
   return(
+    <>
+      <SearchBar questions={questions} />
+      <div className={`question-container ${resizeSection}`} onClick={handleOnClick} >
+        {questions.length ? question : addQuestion }
 
-    <div className={`question-container ${resizeSection}`} onClick={handleOnClick} >
-      {questions.length ? question : addQuestion }
-
-      <div name="button">
-        {(questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions :  ''}
-        {questions.length ? addQuestion : 'Loading...' }
+        <div name="button">
+          {(questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions :  ''}
+          {questions.length ? addQuestion : 'Loading...' }
+        </div>
+        <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
+        <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
       </div>
-      <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
-      <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
-    </div>
+    </>
   )
 }
 

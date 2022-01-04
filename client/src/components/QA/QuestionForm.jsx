@@ -26,23 +26,17 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
             <p>Ask Your Question</p>
             <i className="fas fa-times"></i>
           </div>
-
           <h3>About the "{product_name}"</h3>
-
           <label htmlFor='question-body'><p>Your Question :</p>
-          <textarea id='question-body' name='question' placeholder='Example: Why did you like the product or not?' maxLength='1000' required>
-          </textarea>
+            <textarea id='question-body' name='question' placeholder='Example: Why did you like the product or not?' maxLength='1000' required>
+            </textarea>
           </label>
-
-
           <label htmlFor='question-nickname'><p>Your nickname :</p>
-          <p>
-            <input id='question-nickname' placeholder='Example: jackson11!' autoComplete='off' required/>
-            <span>For privacy reasons, do not use your full name or email address</span>
-          </p>
+            <p>
+              <input id='question-nickname' placeholder='Example: jackson11!' autoComplete='off' required/>
+              <span>For privacy reasons, do not use your full name or email address</span>
+            </p>
           </label>
-
-
           <label htmlFor='question-email'><p>Your email :</p>
           <p>
             <input type='email' id='question-email' autoComplete='off' placeholder='Example: jack@email.com' required/>
