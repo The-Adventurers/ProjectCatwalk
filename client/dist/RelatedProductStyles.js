@@ -22,6 +22,13 @@ export const RelatedProducts = styled.div`
   overflow: auto;
 `;
 
+export const CarouselContainer = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const Carousel = styled.div`
   display: inline-flex;
   justify-content: center;
@@ -109,6 +116,14 @@ export const Rating = styled.div`
   font-size: 12px;
   padding: 2px 10px;
   margin-bottom: 5px;
+`;
+
+export const Arrow = styled.img`
+  width: 50px;
+  height: 50px;
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 // RELATED PRODUCTS LIST //
 
