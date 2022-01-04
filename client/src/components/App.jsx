@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+
 import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
 import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
@@ -8,18 +9,17 @@ import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
 
 const App = function () {
-
-  let [productId, setProductId] = useState(63616);
-  let [currentProduct, setCurrentProduct] = useState({});
-  let [styles, setStyles] = useState([]);
-  let [relatedProducts, setRelatedProducts] = useState([]);
-  let [currentOutfit, setCurrentOutfit] = useState({});
-  let [yourOutfit, setYourOutfit] = useState([]);
-  let [error, setError] = useState(null);
-  let [isLoading, setIsLoading] = useState(true);
+  const [productId, setProductId] = useState(63616);
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [styles, setStyles] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [currentOutfit, setCurrentOutfit] = useState({});
+  const [yourOutfit, setYourOutfit] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getAllData = () => {
-    let getData = [getProducts({product_id: productId}), getStyles({product_id: productId }), getRelated({product_id: productId})];
+    const getData = [getProducts({product_id: productId}), getStyles({product_id: productId }), getRelated({product_id: productId})];
     Promise.all(getData)
       .then((results) => {
         setCurrentProduct(results[0].data);
