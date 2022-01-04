@@ -46,7 +46,7 @@ const App = function () {
   }
 
   return (
-    <div className='main'>
+    <div>
       <div>
         <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
       </div>
@@ -54,10 +54,11 @@ const App = function () {
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
       </MainContainer>
+       <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
+      <div>
         <RnRApp productId = {productId} />
-      <div className="QA-section">
-        <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
       </div>
+
     </div>
   )
 }

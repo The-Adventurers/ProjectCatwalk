@@ -29,8 +29,9 @@ const QAsection = ({ product_id , product_name}) => {
     }
     fetchData();
   }, [product_id, update]);
+
   return (
-    <div className='main-QA' >
+    <div className='main-QA'>
       <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {(id) => {
         setReportedAns([...reportedAns, id]);
         }} />
