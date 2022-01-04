@@ -95,7 +95,6 @@
 
 /*------------- QA-section start here ----------------*/
 .QA-section{
-
   margin-top: 100vh;
 }
 
@@ -330,7 +329,7 @@ span.user {
   background: transparent;
 }
 /*---  photo ---*/
-img {
+.photos img {
   max-width: 10vw;
   max-height: 10vw;
   width: auto;

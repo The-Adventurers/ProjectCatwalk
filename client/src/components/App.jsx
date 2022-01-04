@@ -4,23 +4,11 @@ import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
 import { getProducts, getStyles, getRelated } from '../shared/api';
+import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
 
-/*  PLEASE READ* QAsection is currently getting product name by sending request to product route for Only component testing purpose, will remove both product_name requestion and generate random product_id when all components are connected - QAsection component takes in product_id and product_name as input params */
-
-
 const App = function () {
-  /** ------------------USE for generate randon product_id to test component ---------------*/
-  // const [id, setID] = useState(63609);
-  // const [name, setProductName] = useState('Camo Onesie')
-  // const generateRandomProduct = () => {
-  //   let RandomProduct_id = Math.floor(Math.random() * 6) + 63609;
-  //   setID(RandomProduct_id);
-  // }
-  // useEffect(()=>{
-  //   getProducts({product_id: id}).then(res=> setProductName(res.data.name));
-  // },[id])
-  /**------------------ end of component testing input param for QAsection ----------------**/
+
   let [productId, setProductId] = useState(63616);
   let [currentProduct, setCurrentProduct] = useState({});
   let [styles, setStyles] = useState([]);
@@ -58,15 +46,14 @@ const App = function () {
   }
 
   return (
-
-    <div id="main">
-      <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
+    <div className='main'>
       <div>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
+      </div>
+      <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
-      </div>
-      <div>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
-      </div>
+      </MainContainer>
         <RnRApp productId = {productId} />
       <div className="QA-section">
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
