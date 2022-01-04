@@ -14,7 +14,6 @@ const App = function () {
   let [styles, setStyles] = useState([]);
   let [relatedProducts, setRelatedProducts] = useState([]);
   let [currentOutfit, setCurrentOutfit] = useState({});
-  let [yourOutfit, setYourOutfit] = useState([]);
   let [error, setError] = useState(null);
   let [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +51,7 @@ const App = function () {
       </div>
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
-        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
+        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit}/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
         <RnRApp productId = {productId} />
       </MainContainer>
