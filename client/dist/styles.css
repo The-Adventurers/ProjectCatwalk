@@ -120,7 +120,7 @@
 
 #search {
   width:65%;
-  min-height: 25px;
+  height: 25px;
   outline: none;
   border-radius: 10px;
   border: 0.5px solid grey;
@@ -243,7 +243,7 @@ span.user {
 }
 .singleScreen {
   height: 90vh;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .question-form , .answer-form{
@@ -337,6 +337,20 @@ span.user {
   margin-left: 0.8vw;
   margin-top: 2.5vh;
   border-radius: 5px;
+}
+#photo-form-container{
+  display: flex;
+}
+#photo-form-container img {
+  max-width: 150px;
+  object-fit: cover;
+}
+#photo-form-container div  {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  margin-left: 10%;
+  margin-bottom: 10%;
 }
 
 

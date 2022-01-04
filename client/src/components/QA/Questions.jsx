@@ -11,6 +11,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const [chosenQuestion, setChosenQuestion] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [keyWord, setKeyWord] = useState('');
+  const [componentSize, setSize] = useState(0);
 
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
@@ -18,7 +19,12 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   useEffect(()=>{
     setShowQuestions(searchResult.slice(0, 4))
-  },[searchResult])
+  },[searchResult]);
+
+  useEffect(()=> {
+    setSize(screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y - Math.abs(document.querySelector('.search-wrapper').getBoundingClientRect().y) * 100/screen.height)
+  })
+
 
   const handleOnClick = (e) => {
     if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
@@ -48,6 +54,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
       document.querySelector('.answer-form-wrapper').style.display = 'block';
       document.querySelector('.answer-form-container').style.display = 'block';
     }
+
   }
 
   const showMoreQuestions = () => {
@@ -83,8 +90,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   const addQuestion = <button>ADD QUESTION +</button>;
   const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
-  // const resizeSection = document.querySelector('[name = "button"]') ? (screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y )/screen.height * 100  < 30 ? 'singleScreen' : null : null;
-  const resizeSection = document.querySelector('[name = "button"]') ? ((screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y - Math.abs(document.querySelector('.search-wrapper').getBoundingClientRect().y)) * 100/screen.height < 30 ? 'singleScreen': null) : null;
+  const resizeSection = document.querySelector('[name = "button"]') ? (componentSize < 20 ? 'singleScreen': null) : null;
 
   return(
     <>

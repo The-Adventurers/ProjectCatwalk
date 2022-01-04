@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { addQA } from '../../shared/api.js';
 
 const AnswerForm = ({updateData, product_name, question_info}) => {
+
+  const [selectedImg, setImg] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = e.target.querySelector('#answer-body');
@@ -14,6 +17,10 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
       document.querySelector('.answer-form-wrapper').style.display = 'none';
       updateData();
     })
+  }
+  let imgURL;
+  const handleUploadFile = (e) => {
+    setImg([...selectedImg, e.target.files])
   }
 
   return(
@@ -48,12 +55,17 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
           </p>
           </label>
 
-          {/* <label htmlFor='answer-photo'><p>Add Photo : </p>
+          <label htmlFor='answer-photo'><p>Add Photo : </p>
             <p>
               <input id='answer-photo' type='file' accept='image/*' name='photo' onChange={handleUploadFile}/>
-              <span>up to 5 photos</span>
+              <span>upload up to 5 photos</span>
+
             </p>
-          </label> */}
+          </label>
+          <div id='photo-form-container'>
+            {selectedImg.map(img =>  <div> <img alt= 'uploadedImg' src={selectedImg}/> </div> )}
+
+          </div>
 
           <button type='submit'>Submit</button>
 
