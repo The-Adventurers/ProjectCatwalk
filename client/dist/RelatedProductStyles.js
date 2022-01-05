@@ -3,9 +3,9 @@ import styled from 'styled-components';
 // RELATED PRODUCTS LIST //
 export const MainContainer = styled.div`
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 80%;
-  left: 2%;
+  left: 10%;
   top: 80%;
 `;
 
@@ -18,11 +18,10 @@ export const RelatedProducts = styled.div`
   margin-top: 50px;
   font-weight: 500;
   font-size: 20px;
-  overflow: auto;
 `;
 
 export const CarouselContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -33,7 +32,7 @@ export const Carousel = styled.div`
 `;
 
 export const InnerCarousel = styled.div`
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
   align-items: stretch;
   gap: 10px;
@@ -74,7 +73,6 @@ export const Price = styled.div`
   font-weight: lighter;
   font-size: 14px;
   padding: 2px 10px;
-  margin-bottom: 5px;
 `;
 
 export const SalePrice = styled.div`
@@ -151,8 +149,8 @@ export const AddCard = styled.div`
 `
 
 export const Add = styled.div`
-  margin-bottom: 25px;
-  margin-top: 25px;
+  margin-bottom: 33px;
+  margin-top: 33px;
   text-align: center;
   font-weight: 500;
   font-size: 22px;

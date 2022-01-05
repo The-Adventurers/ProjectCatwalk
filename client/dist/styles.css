@@ -1,3 +1,14 @@
+* {
+  color: #222;
+  font-family: Helvetica, sans-serif;
+}
+
+hr {
+  background-color: rgba(0, 0, 0, 0.063);
+  height: 1px;
+  border: none;
+}
+
 .rightSection {
   width: 40%;
   display: inline-block;

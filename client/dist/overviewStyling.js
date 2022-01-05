@@ -3,29 +3,28 @@ import styled from 'styled-components';
 export const Overview = styled.div`
   position: absolute;
   letter-spacing: 0.5px;
-  width: 95%;
+  width: 80%;
   height: 80%;
-  left: 2%;
+  left: 10%;
   top: 5%;
 `;
 
 export const ProductInfoWrapper = styled.div`
-  font-family: Futura;
+  font-family: Helvetica;
   position: absolute;
-  left: 62%;
+  left: 63%;
   height: 30%;
   width: 37%;
 `;
 
 export const Category = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 200;
-  color: #4d4d4d;
 `;
 
 export const Title = styled.div`
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 550;
   margin-top: 2px;
   margin-bottom: 10px;
 `;
@@ -37,26 +36,29 @@ export const Description = styled.div`
   overflow: auto;
 `;
 export const PriceComponent = styled.div`
-  position: absolute;
-  top: 100%;
+  position: relative;
+  margin-bottom: 10px;
 `
 export const Price = styled.div`
   display: inline-block;
   padding-left: 5px;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 500;
 `;
 
 export const SalesPrice = styled.div`
   display: inline-block;
   padding-left: 5px;
-  font-size: 15px;
+  font-size: 18px;
   color: red;
+  font-weight: 500;
 `;
 
 export const OldPrice = styled.div`
   display: inline-block;
-  font-size: 15px;
+  font-size: 18px;
   text-decoration: line-through;
+  font-weight: 500;
 `;
 
 export const SelectStyleWrapper = styled.div`
@@ -65,8 +67,8 @@ export const SelectStyleWrapper = styled.div`
   font-family: helvetica;
   font-weight: bold;
   font-size 1em;
-  left: 62%;
-  top: 48.5%;
+  left: 63%;
+  top: 35%;
   height: 35%;
   width: 36.5%;
 `;
@@ -149,8 +151,8 @@ export const MainImage = styled.div`
 export const CartWrapper = styled.div`
   position: absolute;
   width: 35%;
-  left: 62%;
-  top: 85%;
+  left: 63%;
+  top: 72%;
   height: 20%;
   width: 37%;
 `;
