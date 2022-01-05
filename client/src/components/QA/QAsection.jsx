@@ -30,11 +30,21 @@ const QAsection = ({ product_id , product_name}) => {
     fetchData();
   }, [product_id, update]);
 
+  useEffect(()=>{
+      if(reportedAns.length) {
+        reportedAns.forEach(id => updateQA({type:'answers', section:'report', id}))
+      }
+    }
+  , [product_id]);
+
+  const report = (id) => {
+    setReportedAns([...reportedAns, id]);
+  }
+
   return (
     <div className='main-QA'>
-      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {(id) => {
-        setReportedAns([...reportedAns, id]);
-        }} />
+      <p id='header'>QUESTIONS & ANSWERS</p>
+      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {report} />
     </div>
   );
 };

@@ -64,6 +64,14 @@ input {
   width: 100%;
 }
 
+textarea {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+}
+
 label {
   color: #3d3d3d;
   display: block;

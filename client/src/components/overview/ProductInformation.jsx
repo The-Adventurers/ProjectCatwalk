@@ -11,14 +11,13 @@ export const ProductInformation = (props) => {
         <Title>
           <div className="OverviewTitle">{props.product.name}</div>
         </Title>
+        <PriceComponent>
+          {props.style.sale_price !== null ? ( <><OldPrice>{'$' + props.style.original_price}</OldPrice><SalesPrice>{'$' + props.style.sale_price}</SalesPrice></> ) : <Price>{'$' + props.style.original_price}</Price>}
+        </PriceComponent>
         <Description>
           {props.product.description}
         </Description>
-        <PriceComponent>
-          Price ${
-            props.style.sale_price !== null ? ( <><OldPrice>{props.style.original_price}</OldPrice><SalesPrice>${props.style.sale_price}</SalesPrice></> ) : <Price>{props.style.original_price}</Price>
-          }
-        </PriceComponent>
+        <hr className='hr'/>
       </ProductInfoWrapper>
     )
 };
