@@ -18,3 +18,17 @@ export const HelperStyles = styled.div`
   font-size: 12px;
   margin-top: 25px;
 `;
+
+export const ReviewButtons = styled.button`
+  font-family: Helvetica;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  font-size: 15x;
+  padding: 20px 15px;
+  border-radius: 0px;
+  border: 1px solid black;
+  margin: 10px 0px;
+  cursor: pointer;
+`;
+

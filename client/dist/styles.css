@@ -3,6 +3,17 @@
   display: inline-block;
 }
 
+.moreReviewsWrapper {
+  padding-left: 32.6%;
+  width: 7%;
+  display: inline-block;
+}
+
+.addReviewWrapper {
+  width: 15%;
+  display: inline-block;
+}
+
 .leftSection {
   padding-left: 15%;
   width: 17.5%;

@@ -6,7 +6,7 @@ const RnRApp = function () {
   return (
     <div style = {{paddingLeft : width * 0.05}}>
       <>
-         <span> Coming soon! </span> 
+         <span> Coming soon. . . maybe </span> 
       </>
     </div>
   )

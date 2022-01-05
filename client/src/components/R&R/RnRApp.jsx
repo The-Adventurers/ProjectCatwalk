@@ -3,6 +3,7 @@ import useWindowDimensions from '../../shared/useWindowDimensions';
 import { ReviewListContainer} from '../../../dist/RnRStyles';
 import { getReviews } from '../../shared/api';
 import RnRList from './RnRList.jsx';
+import {RnRButton, AddReviewButton} from './RnRButton.jsx';
 
 //fetch all reviews
 
@@ -17,24 +18,24 @@ const RnRApp = function (props) {
     .then(
       res => {reviewListUpdater(res.data.results)}
       )
-    .then(
-      res => {
-        if (res.data.results.length == reviewLength) {
-          reviewLengthUpdater(reviewLength + 100)
-        }
-      }
-    )
   }, [props.productId, reviewLength])
 
   const { height, width } = useWindowDimensions();
   return (
     <ReviewListContainer>
         <div className = "leftSection">
-            <p> This is where the summary sidebar will appear, but it is a stretch goal (Rob said so.) </p>
+            <p> This is where the summary sidebar will appear, but it is a stretch goal (Rob said so?!) </p>
         </div>
         <div className = "rightSection">
             <RnRList reviewList = {reviewList}/>
         </div>
+        <div className = "moreReviewsWrapper">
+          <RnRButton />
+        </div>
+        <div className = "addReviewWrapper">
+          <AddReviewButton />
+        </div>
+        
     </ReviewListContainer>
   )
 }
