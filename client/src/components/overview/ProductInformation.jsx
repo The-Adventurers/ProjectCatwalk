@@ -4,7 +4,7 @@ import { ProductInfoWrapper, Title, Category, Price, SalesPrice, OldPrice, Descr
 
 export const ProductInformation = (props) => {
     return (
-      <ProductInfoWrapper>
+      <div>
         <Category>
           <div className="OverviewCategory">{props.product.category}</div>
         </Category>
@@ -17,6 +17,6 @@ export const ProductInformation = (props) => {
         <Description>
           {props.product.description}
         </Description>
-      </ProductInfoWrapper>
+      </div>
     )
 };

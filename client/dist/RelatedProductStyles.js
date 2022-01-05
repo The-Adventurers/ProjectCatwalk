@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
   position: absolute;
   width: 80%;
   height: 80%;
-  top: 80%;
+  top: 75%;
 `;
 
 export const RelatedProducts = styled.div`
