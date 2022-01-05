@@ -92,7 +92,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
           </label>
 
           <div id='photo-form-container'>
-            {photoURL.length ? photoURL.map(url => <div> <img alt={`photo-for-${question_info[1]}`} src={url}/> </div> ) : null}
+            {photoURL.length ? photoURL.map((url,index) => <div key={url + index}> <img alt={`photo-for-${question_info[1]}`} src={url}/> </div> ) : null}
           </div>
           <button type='submit'>Submit</button>
 

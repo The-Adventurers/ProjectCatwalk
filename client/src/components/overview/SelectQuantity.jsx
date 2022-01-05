@@ -15,4 +15,4 @@ export const SelectQuantity = (props) => {
       {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
     </select>
   )
-}
+};

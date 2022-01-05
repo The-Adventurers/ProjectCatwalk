@@ -61,15 +61,6 @@
   opacity: 0.6;
 }
 
-.ZoomImage {
-  cursor: zoom-out;
-  display: block;
-  margin: auto;
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
-}
-
 .StyleImage {
   padding: '0rem', '0rem';
   background-color: transparent;
@@ -366,5 +357,5 @@ span.user {
 }
 
 
-/*------------------------------------- QA-section END ----------------------------------------*/
+/*-------------- QA-section END ------------------------*/
 

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Overview = styled.div`
   position: absolute;
+  letter-spacing: 0.5px;
   width: 95%;
   height: 80%;
   left: 2%;
