@@ -19,6 +19,7 @@ const RnRApp = function (props) {
       )
     .then(
       res => {
+        console.log(res)
         if (res.data.results.length == reviewLength) {
           reviewLengthUpdater(reviewLength + 100)
         }
