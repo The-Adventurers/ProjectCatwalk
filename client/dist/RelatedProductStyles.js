@@ -3,9 +3,8 @@ import styled from 'styled-components';
 // RELATED PRODUCTS LIST //
 export const MainContainer = styled.div`
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 80%;
-  left: 2%;
   top: 80%;
 `;
 

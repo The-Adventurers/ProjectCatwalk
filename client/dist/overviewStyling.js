@@ -3,14 +3,13 @@ import styled from 'styled-components';
 export const Overview = styled.div`
   position: absolute;
   letter-spacing: 0.5px;
-  width: 95%;
+  width: 80%;
   height: 80%;
-  left: 2%;
   top: 5%;
+  margin-left: 1%;
 `;
 
 export const ProductInfoWrapper = styled.div`
-  font-family: Futura;
   position: absolute;
   left: 62%;
   height: 30%;
