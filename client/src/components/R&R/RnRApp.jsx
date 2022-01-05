@@ -19,9 +19,10 @@ const RnRApp = function (props) {
       )
     .then(
       res => {
+        console.log(res)
         if (res.data.results.length == reviewLength) {
           reviewLengthUpdater(reviewLength + 100)
-          console.log("There might be more reviews. Fetching more data.")
+          {/*console.log("There might be more reviews. Fetching more data.")*/}
         } 
       }
     )
