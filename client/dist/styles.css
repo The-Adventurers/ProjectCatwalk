@@ -77,17 +77,10 @@
 }
 
 /*------------- QA-section start here ----------------*/
-/* #app {
-  width: 100%;
-  height: max-content;
-  border: 2px solid green;
-  z-index:0;
-} */
 
 .main-QA {
   margin-top: 5%;
 }
-
 
 /* Search component */
 .search-wrapper {
@@ -109,8 +102,8 @@
 }
 
 #search {
-  width:55%;
-  min-height: 25px;
+  width:65%;
+  height: 25px;
   outline: none;
   border-radius: 10px;
   border: 0.5px solid grey;
@@ -126,8 +119,8 @@
 /* Questions component */
 
 .question-container {
-  width: 60%;
-  margin-left: 20%;
+  width: 80vw;
+  margin-left: 10vw;
  }
 
 div[name|='button'] button:nth-child(2){
@@ -144,7 +137,6 @@ div[name|='button'] button {
    font-weight: bolder;
  }
 
- /* NEED to fix line-height here */
  .question span:nth-child(2) {
   color: grey;
   font-size: 0.8em;
@@ -233,7 +225,7 @@ span.user {
 }
 .singleScreen {
   height: 90vh;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .question-form , .answer-form{
@@ -318,6 +310,24 @@ span.user {
   left:0;
   background: transparent;
 }
+.upload-container span:first-child input {
+  width: 30vw;
+  margin-right: 2%;
+}
+.upload-container {
+  width: 40.7vw;
+}
+#upload-button {
+  border: 0.5px solid transparent;
+  padding: 0.3% 1.3%;
+  color: white;
+  background: black;
+  border-radius: 10px;
+  font-size: 1.5em;
+}
+
+
+
 /*---  photo ---*/
 .photos img {
   max-width: 10vw;
@@ -328,7 +338,24 @@ span.user {
   margin-top: 2.5vh;
   border-radius: 5px;
 }
+#photo-form-container{
+  margin-left: 10vw;
+  display: grid;
+  grid-template-columns: repeat(5, 20%)
+}
+#photo-form-container img {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+}
+#photo-form-container div  {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  margin-left: 10%;
+  margin-bottom: 10%;
+}
 
 
-/*------------------------------------- QA-section END ----------------------------------------*/
+/*-------------- QA-section END ------------------------*/
 

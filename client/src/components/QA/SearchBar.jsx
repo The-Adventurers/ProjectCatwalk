@@ -1,13 +1,14 @@
 import React from 'react';
 
-const SearchBar = ({questions, searchedQ}) => {
+const SearchBar = ({questions, searchResult, keyWord}) => {
   const handleOnChange = (e) => {
-    if(e.target.value.length >= 3) {
-      const searchKey = questions.filter(q => q.question_body.toLowerCase().includes(e.target.value.toLowerCase()));
-      searchedQ([e.target.value.toLowerCase(), ...searchKey]);
-    } else {
-      searchedQ(['', ...questions])
-    }
+      if (e.target.value.length >= 3) {
+        const allResults = questions.filter(q => q.question_body.toLowerCase().includes(e.target.value.toLowerCase()));
+        searchResult(allResults);
+      } else {
+        searchResult(questions);
+      }
+      keyWord(e.target.value);
   }
 
   return(

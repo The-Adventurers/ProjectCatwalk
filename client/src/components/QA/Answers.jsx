@@ -58,7 +58,7 @@ const Answers = ({questions, q_index, product_name}) => {
               <span>({ans[1].helpfulness})</span>
               <span>&ensp;|&emsp;</span>
               <span voted={'false'}> Report </span>
-            </p>
+            </p><hr/>
           </div>
         ))}
         </div>
