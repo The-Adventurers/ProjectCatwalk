@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { getStyles, getProducts } from '../../shared/api.js';
-import { Overview, ProductInfoWrapper } from '../../../dist/overviewStyling.js';
+import { Overview } from '../../../dist/overviewStyling.js';
 import { ProductInformation } from './ProductInformation.jsx';
 import { ImageGallery } from './ImageGallery.jsx';
 import { StyleSelector } from './StyleSelector.jsx';
@@ -47,12 +47,9 @@ export const OverviewApp = (props) => {
           setImageIndex(imageIndex+1);
         }}/>
         <ImageGallery style={ singleStyle } currentImage={ currentImage } limitImageArray={ LimitImageArray } setImageIndex={ setImageIndex }/>
-        <ProductInfoWrapper>
-          <ProductInformation product={ props.currentProduct } style={ singleStyle }/>
-          <hr/>
-          <StyleSelector styles={ allStyles } selectStyle={ setSingleStyle }/>
-          <Cart style={ singleStyle }/>
-        </ProductInfoWrapper>
+        <ProductInformation product={ props.currentProduct } style={ singleStyle }/>
+        <StyleSelector styles={ allStyles } selectStyle={ setSingleStyle }/>
+        <Cart style={ singleStyle }/>
       </div>
     </Overview>
   )

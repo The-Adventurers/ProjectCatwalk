@@ -12,7 +12,7 @@ export const Overview = styled.div`
 export const ProductInfoWrapper = styled.div`
   position: absolute;
   left: 63%;
-  height: 50%;
+  height: 15%;
   width: 37%;
 `;
 
@@ -33,6 +33,9 @@ export const Description = styled.div`
   padding: 5px;
   height: 40%;
   overflow: auto;
+  font-size: 16px;
+  font-weight: 300;
+  padding-bottom: 10px;
 `;
 export const PriceComponent = styled.div`
   position: relative;
@@ -61,14 +64,14 @@ export const OldPrice = styled.div`
 `;
 
 export const SelectStyleWrapper = styled.div`
-  position: relative;
-  margin-top: 5%;
+  position: absolute;
   padding-left: 5px;
-  font-family: helvetica;
   font-weight: bold;
   font-size 1em;
-  height: 75%;
-  width: 100%;
+  left: 63%;
+  top: 35%;
+  height: 35%;
+  width: 36.5%;
 `;
 
 export const Styles = styled.div`
@@ -147,10 +150,12 @@ export const MainImage = styled.div`
 `;
 
 export const CartWrapper = styled.div`
-  position: relative;
+  position: absolute;
+  width: 35%;
+  left: 63.5%;
+  top: 73%;
   height: 20%;
   width: 37%;
-  margin-top: 2%;
 `;
 
 export const ZoomImage = styled.div`

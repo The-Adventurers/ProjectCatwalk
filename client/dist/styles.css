@@ -1,5 +1,6 @@
 #app {
   font-family: Helvetica,Sans-Serif;
+  color: #222;
   letter-spacing: 0.5px;
   margin-left: 10%;
   padding:0;
@@ -46,12 +47,15 @@ nav span {
   cursor: pointer;
 }
 
-
 hr {
   background-color: rgba(0, 0, 0, 0.065);
-  height: 1.2px;
+  height: 1.05px;
   border: none;
   margin-top: 4%;
+}
+
+.hr {
+  margin-top: 1%;
 }
 /*-- overview component ---*/
 .rightSection {
