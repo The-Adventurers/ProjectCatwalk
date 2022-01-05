@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import ShowImage from './ShowImage.jsx';
 
 const Answers = ({questions, q_index, product_name}) => {
   const allAnswers = questions[q_index].answers;
   const [showAnswers, setAnswers] = useState([]);
-  const [imageCollection, setImageCollection] = useState([]);
 
   useEffect(()=>{
     setAnswers(questions[q_index].answers.slice(0, 2))
@@ -23,12 +21,7 @@ const Answers = ({questions, q_index, product_name}) => {
   const formatDate = (date) => {
     return new Date(date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric'})
   }
-  const handleClickImage = (arr) => {
-    setImageCollection(arr);
-    document.querySelector('.gallery-wrapper').style.display = 'block';
-    document.querySelector('.gallery-container').style.display = 'block';
 
-  }
   return(
     <>
       {showAnswers.length > 0 &&
@@ -42,10 +35,8 @@ const Answers = ({questions, q_index, product_name}) => {
               </span>
               <br/>
               {ans[1].photos.length ?
-                 <span className='photos' onClick={(e)=> {
-                  if(e.target.tagName === 'IMG') handleClickImage([e.target.getAttribute('index'), ...ans[1].photos])
-                 }}>
-                   {ans[1].photos.map((photo, index) => <img key={index} index={index} src={photo} onError={(e) => {
+                 <span className='photos'>
+                   {ans[1].photos.map((photo, index) => <img key={index} src={photo} onError={(e) => {
                      e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
                    }} alt={`answer-photo-${ans[0]}-productName-${product_name}`}/>)}
                  </span> : null
@@ -76,7 +67,6 @@ const Answers = ({questions, q_index, product_name}) => {
          </p>
         : null
       }
-      <ShowImage images={imageCollection}/>
     </>
   )
 }

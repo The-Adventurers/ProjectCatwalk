@@ -15,9 +15,8 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
       document.querySelector('.form-wrapper').style.display = 'none';
       updateData();
     })
-
   }
-  // ADD You must enter the following: for incompleted form request !! **** Note
+
   return (
     <div className="form-wrapper">
       <div className='question-form-container'>
