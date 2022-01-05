@@ -19,6 +19,17 @@ module.exports = {
         res.status(500).send(error);
       });
   },
+
+  postReviews: (req, res) => {
+    models.postReviews(req.query)
+      .then(res => 
+        {res.status(201).send(results.data)
+      })
+      .catch((error) => {
+      res.status(505).send(error)
+      })
+  },
+
   getMeta: (req, res) => {
     models.getMeta(req.query)
       .then((results) => {
