@@ -15,6 +15,19 @@ const RelatedProductCard = ({ product, setProductId, setModal }) => {
     image = <Image src='https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1' alt="Thumbnail related product image"/>
   }
 
+  const starConverter = (rating) => {
+    const starRatings = {
+      0 : "☆☆☆☆☆",
+      1 : "★☆☆☆☆",
+      2 : "★★☆☆☆",
+      3 : "★★★☆☆",
+      4 : "★★★★☆",
+      5 : "★★★★★"
+    };
+    let newRating = Math.round(rating);
+    return starRatings[newRating];
+  };
+
   return (
     <ProductCard
       aria-label='Go to related product page'
@@ -32,7 +45,7 @@ const RelatedProductCard = ({ product, setProductId, setModal }) => {
       <Category>{product.category.toUpperCase()}</Category>
       <Name>{product.name}</Name>
       {price}
-      {/* <Rating>{product.rating}</Rating> */}
+      <Rating>{starConverter(product.rating)}</Rating>
     </ProductCard>
   );
 }
