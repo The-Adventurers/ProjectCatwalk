@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+
 import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
 import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
@@ -9,22 +10,21 @@ import RnRApp from './R&R/RnRApp.jsx';
 
 const App = function () {
 
-  let [productId, setProductId] = useState(63616);
-  let [currentProduct, setCurrentProduct] = useState({});
-  let [styles, setStyles] = useState([]);
-  let [relatedProducts, setRelatedProducts] = useState([]);
-  let [currentOutfit, setCurrentOutfit] = useState({});
-  let [error, setError] = useState(null);
-  let [isLoading, setIsLoading] = useState(true);
+  const [productId, setProductId] = useState(63616);
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [currentOutfit, setCurrentOutfit] = useState({});
+  const [yourOutfit, setYourOutfit] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getAllData = () => {
-    let getData = [getProducts({product_id: productId}), getStyles({product_id: productId }), getRelated({product_id: productId})];
+    const getData = [getProducts({product_id: productId}), getRelated({product_id: productId})];
     Promise.all(getData)
       .then((results) => {
         setCurrentProduct(results[0].data);
-        setRelatedProducts(results[2].data.slice(1));
-        setCurrentOutfit(results[2].data[0])
-        setStyles(results[1].data.results);
+        setRelatedProducts(results[1].data.slice(1));
+        setCurrentOutfit(results[1].data[0])
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
@@ -47,7 +47,7 @@ const App = function () {
   return (
     <div>
       <div>
-        <OverviewApp product_id={ productId } currentProduct = { currentProduct } styles={ styles } setStyles={ setStyles }/>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
       </div>
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>

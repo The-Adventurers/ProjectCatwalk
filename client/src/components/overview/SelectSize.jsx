@@ -7,4 +7,4 @@ export const SelectSize = (props) => {
       {props.sku.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
     </select>
   )
-}
+};
