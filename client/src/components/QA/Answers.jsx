@@ -7,8 +7,6 @@ const Answers = ({questions, q_index, product_name}) => {
   useEffect(()=>{
     setAnswers(questions[q_index].answers.slice(0, 2))
   }, [questions])
-  // const [showAnswers, setAnswers] = useState(questions[q_index].answers.slice(0, 2))
-
 
   const displayAnswers = (e) => {
     if (e.target.innerText.includes('LOAD MORE ANSWERS')) {
@@ -58,7 +56,7 @@ const Answers = ({questions, q_index, product_name}) => {
               <span>({ans[1].helpfulness})</span>
               <span>&ensp;|&emsp;</span>
               <span voted={'false'}> Report </span>
-            </p><hr/>
+            </p>
           </div>
         ))}
         </div>

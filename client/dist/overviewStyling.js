@@ -5,12 +5,11 @@ export const Overview = styled.div`
   letter-spacing: 0.5px;
   width: 80%;
   height: 80%;
-  left: 10%;
   top: 5%;
+  margin-left: 1%;
 `;
 
 export const ProductInfoWrapper = styled.div`
-  font-family: Helvetica;
   position: absolute;
   left: 63%;
   height: 30%;

@@ -7,6 +7,7 @@ import { OverviewApp } from './overview/OverviewApp.jsx';
 import { getProducts, getStyles, getRelated } from '../shared/api';
 import { MainContainer } from '../../dist/RelatedProductStyles';
 import RnRApp from './R&R/RnRApp.jsx';
+import NavBar from './NavBar.jsx';
 
 const App = function () {
 
@@ -46,13 +47,16 @@ const App = function () {
 
   return (
     <div>
-      <div>
+        <NavBar/>
         <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
-      </div>
+
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
+        <hr/>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit}/>
+        <hr/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
+        <hr/>
         <RnRApp productId = {productId} />
       </MainContainer>
     </div>

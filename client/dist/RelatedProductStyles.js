@@ -5,7 +5,6 @@ export const MainContainer = styled.div`
   position: absolute;
   width: 80%;
   height: 80%;
-  left: 10%;
   top: 80%;
 `;
 
