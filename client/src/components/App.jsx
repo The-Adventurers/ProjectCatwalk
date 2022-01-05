@@ -53,12 +53,9 @@ const App = function () {
       <MainContainer>
         <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
         <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
+        <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
+        <RnRApp productId = {productId} />
       </MainContainer>
-       <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
-      <div>
-        {/* <RnRApp productId = {productId} /> */}
-      </div>
-
     </div>
   )
 }

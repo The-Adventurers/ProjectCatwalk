@@ -1,26 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { addQA } from '../../shared/api.js';
 
 const AnswerForm = ({updateData, product_name, question_info}) => {
 
   const [selectedImg, setImg] = useState([]);
+  const [photoURL, setPhotoURL] = useState([]);
+
+  useEffect(()=>{
+  },[photoURL])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = e.target.querySelector('#answer-body');
     const name =  e.target.querySelector('#answer-nickname');
     const email = e.target.querySelector('#answer-email');
-    const answerFormRequest = {question_id: question_info[0], body: body.value, name: name.value, email: email.value};
+    const answerFormRequest = {
+      question_id: question_info[0],
+      body: body.value,
+      name: name.value,
+      email: email.value,
+      photos: photoURL
+    };
 
     addQA(answerFormRequest).then(() => {
       [body, name, email].forEach(el => el.value = '');
       document.querySelector('.answer-form-wrapper').style.display = 'none';
+      setPhotoURL([]);
       updateData();
     })
   }
-  let imgURL;
+
+  const checkPhotoValidation = (inputUrl, callback) => {
+    const img = new  Image();
+    img.onload = ()=> callback(true);
+    img.onerror = ()=> callback(false);
+    img.src = inputUrl;
+  }
+
   const handleUploadFile = (e) => {
-    setImg([...selectedImg, e.target.files])
+    if(e.target.getAttribute('id') === 'upload-button') {
+      if (photoURL.length < 5) {
+      const inputURL = e.target.previousElementSibling.value;
+      checkPhotoValidation(inputURL, (validation) => {
+        if (validation && photoURL.length < 5) {
+          setPhotoURL([...photoURL, inputURL]);
+          document.querySelector('#answer-photo').value = '';
+        } else {
+          alert('Invalid upload file');
+        }
+      })
+      } else {
+        alert('Sorry, You are only allowed to upload a maximum of 5 photos');
+      }
+    }
   }
 
   return(
@@ -31,23 +63,17 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
             <p>Submit your Answer</p>
             <i className="fas fa-times"></i>
           </div>
-
           <h3>{product_name} : {question_info[1]}</h3>
-
           <label htmlFor='answer-body'><p>Your Answer :</p>
           <textarea id='answer-body' name='answer' placeholder='Example: I love this product!' maxLength='1000' required>
           </textarea>
           </label>
-
-
           <label htmlFor='answer-nickname'><p>Your nickname :</p>
           <p>
             <input id='answer-nickname' placeholder='Example: jackson11!' required/>
             <span>For privacy reasons, do not use your full name or email address</span>
           </p>
           </label>
-
-
           <label htmlFor='answer-email'><p>Your email :</p>
           <p>
             <input type='email' id='answer-email' placeholder='Example: jack@email.com' required/>
@@ -56,17 +82,18 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
           </label>
 
           <label htmlFor='answer-photo'><p>Add Photo : </p>
-            <p>
-              <input id='answer-photo' type='file' accept='image/*' name='photo' onChange={handleUploadFile}/>
-              <span>upload up to 5 photos</span>
-
+            <p className='upload-container'>
+              <span>
+                <input id='answer-photo' type='text' name='photo' placeholder='image URL '/>
+                <span onClick={ handleUploadFile } id='upload-button'>upload</span>
+              </span>
+              <span>upload a maximum of 5 photos</span>
             </p>
           </label>
+
           <div id='photo-form-container'>
-            {selectedImg.map(img =>  <div> <img alt= 'uploadedImg' src={selectedImg}/> </div> )}
-
+            {photoURL.length ? photoURL.map(url => <div> <img alt={`photo-for-${question_info[1]}`} src={url}/> </div> ) : null}
           </div>
-
           <button type='submit'>Submit</button>
 
         </form>

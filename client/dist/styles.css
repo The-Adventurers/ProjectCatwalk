@@ -86,18 +86,10 @@
 }
 
 /*------------- QA-section start here ----------------*/
-/* #app {
-  width: 100%;
-  height: max-content;
-  border: 2px solid green;
-  z-index:0;
-} */
 
 .main-QA {
-  position: sticky;
-  margin-top: 130%;
+  margin-top: 5%;
 }
-
 
 /* Search component */
 .search-wrapper {
@@ -136,8 +128,8 @@
 /* Questions component */
 
 .question-container {
-  width: 60%;
-  margin-left: 20%;
+  width: 80vw;
+  margin-left: 10vw;
  }
 
 div[name|='button'] button:nth-child(2){
@@ -154,7 +146,6 @@ div[name|='button'] button {
    font-weight: bolder;
  }
 
- /* NEED to fix line-height here */
  .question span:nth-child(2) {
   color: grey;
   font-size: 0.8em;
@@ -328,6 +319,24 @@ span.user {
   left:0;
   background: transparent;
 }
+.upload-container span:first-child input {
+  width: 30vw;
+  margin-right: 2%;
+}
+.upload-container {
+  width: 40.7vw;
+}
+#upload-button {
+  border: 0.5px solid transparent;
+  padding: 0.3% 1.3%;
+  color: white;
+  background: black;
+  border-radius: 10px;
+  font-size: 1.5em;
+}
+
+
+
 /*---  photo ---*/
 .photos img {
   max-width: 10vw;
@@ -339,10 +348,13 @@ span.user {
   border-radius: 5px;
 }
 #photo-form-container{
-  display: flex;
+  margin-left: 10vw;
+  display: grid;
+  grid-template-columns: repeat(5, 20%)
 }
 #photo-form-container img {
   max-width: 150px;
+  max-height: 150px;
   object-fit: cover;
 }
 #photo-form-container div  {

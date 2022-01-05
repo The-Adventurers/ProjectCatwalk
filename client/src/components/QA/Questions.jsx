@@ -11,7 +11,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const [chosenQuestion, setChosenQuestion] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [keyWord, setKeyWord] = useState('');
-  const [componentSize, setSize] = useState(0);
+  const [resizeSection, setResize] = useState(null);
 
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
@@ -22,8 +22,11 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   },[searchResult]);
 
   useEffect(()=> {
-    setSize(screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y - Math.abs(document.querySelector('.search-wrapper').getBoundingClientRect().y) * 100/screen.height)
-  })
+    const currentContentSize = document.querySelector('.question-container').getBoundingClientRect();
+    const { bottom, top } = currentContentSize;
+    const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
+    if(currentRatio < 15) setResize('singleScreen')
+  },[showQuestions])
 
 
   const handleOnClick = (e) => {
@@ -42,19 +45,16 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         target.setAttribute('voted', 'true')
         updateData()});
     } else if (e.target.tagName === 'BUTTON' && e.target.innerText === 'ADD QUESTION +') {
-
       document.querySelector('.form-wrapper').style.display = 'block';
       document.querySelector('.question-form-container').style.display = 'block';
     } else if(e.target.tagName === 'I') {
       document.querySelector('.answer-form-wrapper').style.display = 'none';
       document.querySelector('.form-wrapper').style.display = 'none';
-
     } else if (e.target.tagName === 'SPAN' && e.target.innerText === 'Add Answer') {
       setChosenQuestion([e.target.getAttribute('q_id'), e.target.getAttribute('q_body')]);
       document.querySelector('.answer-form-wrapper').style.display = 'block';
       document.querySelector('.answer-form-container').style.display = 'block';
     }
-
   }
 
   const showMoreQuestions = () => {
@@ -64,7 +64,6 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
     } else {
       setShowQuestions(questions.slice(0, length + 2));
     }
-
   }
 
   const question =
@@ -90,7 +89,6 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   const addQuestion = <button>ADD QUESTION +</button>;
   const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
-  const resizeSection = document.querySelector('[name = "button"]') ? (componentSize < 20 ? 'singleScreen': null) : null;
 
   return(
     <>
