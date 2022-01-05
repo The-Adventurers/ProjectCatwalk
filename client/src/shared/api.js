@@ -18,4 +18,3 @@ export const updateQA = (paramsObj) => axios.put('/api/catwalk/updateQA', params
 export const addQA = (paramsObj) => axios.post('/api/catwalk/addQA', paramsObj)
 export const getRelatedInfo = (paramsObj) => axios.get('/api/catwalk/relatedInfo', { params: paramsObj });
 export const postCart = (bodyObj) => axios.post('/api/catwalk/cart', bodyObj);
-export const postReviews = (paramsObj) => axios.post('/api/catwalk/reviews', paramsObj);

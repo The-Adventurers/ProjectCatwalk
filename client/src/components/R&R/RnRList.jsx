@@ -5,14 +5,9 @@ import useWindowDimensions from '../../shared/useWindowDimensions';
 const RnRList = function (props) {
   if (props.reviewList.length == 0) {
     return (
-      <div className = "reviewItem">
-      <h3>{"Nothing but us chickens here. . ."}</h3>
-      <p> {"Looks like you're the first one! Why not write a review? :)"} </p>
-      <HelperStyles>
-          <p>Helpful? Yes | Report</p>
-      </HelperStyles>
-      <hr></hr>
-      </div>
+      <>
+        <p>There are no reviews. . . be the first to write one!</p>
+      </>
     )
   }
   let myArray = [];
@@ -41,7 +36,7 @@ const RnRList = function (props) {
       )
     }
 
-    else if (listItem.recommend && (listItem.response !== "" && listItem.response !== null)) {
+    else if (listItem.recommend && (listItem.response !== "" || listItem.response !== null)) {
         return (
           <div className = "reviewItem" key = {listItem.review_id}>
           <h3>{starConverter[listItem.rating]}</h3>
@@ -59,6 +54,7 @@ const RnRList = function (props) {
           </div>
         )
       }
+  
     else if (!listItem.recommend && (listItem.response === "" || listItem.response === null)){
       return (
       <div className = "reviewItem" key = {listItem.review_id}>
@@ -72,8 +68,7 @@ const RnRList = function (props) {
       </div>
       )
     }
-    
-    else if (!listItem.recommend && (listItem.response !== "" && listItem.response !== null)) {
+    else if (!listItem.recommend && (listItem.response !== "" || listItem.response !== null)) {
         return (
           <div className = "reviewItem" key = {listItem.review_id}>
           <h3>{starConverter[listItem.rating]}</h3>

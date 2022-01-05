@@ -23,8 +23,6 @@ module.exports = {
 
     postCart: (bodyObj) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/cart', bodyObj, { headers }),
 
-    postReviews: (paramsObj) => axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/reviews/', { headers, params: paramsObj}),
-
     getStyles: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/styles`, { headers, params: paramsObj }),
 
     getRelated: (paramsObj) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo/products/${paramsObj.product_id}/related`, { headers, params: paramsObj }),
