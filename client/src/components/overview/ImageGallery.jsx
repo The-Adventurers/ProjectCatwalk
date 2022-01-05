@@ -17,9 +17,9 @@ export const ImageGallery = (props) => {
         })}
         </div>
       </MiniGallery>
-      {props.zoom === false ? (<MainImage>
-        <img src={props.currentImage} alt="Product Image" className="MainImage" onClick={() => {props.setZoom(!props.zoom)}}/>
-      </MainImage>) : <ZoomImage><img src={props.currentImage} alt="Product Image" className="ZoomImage" onClick={() => {props.setZoom(!props.zoom)}}/></ZoomImage>}
+      <MainImage>
+        <img src={props.currentImage} alt="Product Image" className="MainImage"/>
+      </MainImage>
     </GalleryWrapper>
   )
-}
+};

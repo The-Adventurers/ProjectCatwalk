@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
+import { ProductCard, Container, Image, Icon, Category, Name, Price, SalePrice, RegPrice, Rating } from '../../../dist/RelatedProductStyles';
 
 const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
   let price, image;
   if (product.salePrice) {
-    price = <Price>Reg Price: {'$' + Math.round(product.defaultPrice)}, Sale Price: {'$' + Math.round(product.salePrice)}</Price>
+    price = <><RegPrice>{'$' + Math.round(product.defaultPrice)}</RegPrice><SalePrice>{'$' + Math.round(product.salePrice)}</SalePrice></>
   } else {
     price = <Price>{'$' + Math.round(product.defaultPrice)}</Price>
   }
@@ -30,7 +30,7 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
       <Container>
         {image}
         <Icon
-          src='https://cdn-icons.flaticon.com/png/512/2734/premium/2734822.png?token=exp=1640915254~hmac=e17f64f7dddaad35c5f73a9a22441120'
+          src='https://cdn-icons-png.flaticon.com/512/992/992660.png'
           aria-label='Remove current product from your outfit list'
           alt=''
           onClick={removeOutfit}
@@ -39,7 +39,7 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
       <Category>{product.category.toUpperCase()}</Category>
       <Name>{product.name}</Name>
       {price}
-      <Rating>{product.rating /* import star component for rating */}</Rating>
+      {/* <Rating>{product.rating}</Rating> */}
     </ProductCard>
   );
 }

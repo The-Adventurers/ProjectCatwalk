@@ -1,63 +1,92 @@
 import React, { useState, useEffect } from 'react';
 import Answers from './Answers.jsx';
+import QuestionForm from './QuestionForm.jsx';
+import AnswerForm from './AnswerForm.jsx';
+import SearchBar from './SearchBar.jsx';
+import { updateQA } from '../../shared/api.js';
 
-const Questions = ({questions}) => {
+const Questions = ({questions, updateData, product_id, product_name, report}) => {
 
-  const  [showQuestions, setShowQuestions] = useState([]);
-  const style = { cursor: 'pointer'}
-
+  const  [showQuestions, setShowQuestions] = useState([questions]);
+  const [chosenQuestion, setChosenQuestion] = useState([]);
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
   }, [questions])
+
+  const handleOnClick = (e) => {
+    if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
+      const ansId = e.nativeEvent.path[1].getAttribute('ans_id');
+      const quesId = e.nativeEvent.path[2].getAttribute('q_id');
+      const type = ansId ? 'answers' : 'questions';
+      const section = e.target.innerText.trim() === 'Yes' ? 'helpful' : 'report';
+      const target = e.target;
+      section === 'report'
+        ? (()=> {
+            target.innerText = 'Reported';
+            report(ansId);
+          })()
+        : updateQA({type, section, id: ansId || quesId}).then(()=> {
+        target.setAttribute('voted', 'true')
+        updateData()});
+    } else if (e.target.tagName === 'BUTTON' && e.target.innerText === 'ADD QUESTION +') {
+
+      document.querySelector('.form-wrapper').style.display = 'block';
+      document.querySelector('.question-form-container').style.display = 'block';
+    } else if(e.target.tagName === 'I') {
+      document.querySelector('.answer-form-wrapper').style.display = 'none';
+      document.querySelector('.form-wrapper').style.display = 'none';
+
+    } else if (e.target.tagName === 'SPAN' && e.target.innerText === 'Add Answer') {
+      setChosenQuestion([e.target.getAttribute('q_id'), e.target.getAttribute('q_body')]);
+      document.querySelector('.answer-form-wrapper').style.display = 'block';
+      document.querySelector('.answer-form-container').style.display = 'block';
+    }
+  }
 
   const showMoreQuestions = () => {
     let length = showQuestions.length;
     setShowQuestions(questions.slice(0, length + 2));
   }
 
-  // show Q
-
   const question =
     <div>
       {showQuestions.map((question, index) => (
-        <>
-          <p style={{display:'flex', justifyContent: 'space-between', fontWeight: 'bold'}}>
+        <div key={index}>
+          <p className='question' q_id={question.question_id}>
             <span> Q:&nbsp;{question.question_body} </span>
-            <span style={{color: 'grey', fontSize: '0.7em', lineHeight: 'normal', fontWeight: 'lighter'}}>
-              Helpful?&ensp;
-              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
-                Yes
-              </span>
+            <span>
+              Helpful ?&ensp;&ensp;
+              <span voted={'false'}>Yes</span>&ensp;
               <span>({question.question_helpfulness})</span>
               <span>&ensp;|&emsp;</span>
-              <span style={{textDecoration: 'underline', cursor: 'pointer'}}>
+              <span q_body={question.question_body} q_id={question.question_id}>
                 Add Answer
               </span>
             </span>
           </p>
-        <Answers questions={questions} q_index={index}/>
-      </>
+        <Answers questions={showQuestions} q_index={index} product_name={product_name}/>
+      </ div>
       ))}
-    </div>;
-
-
-  //add Q button
-  const addQuestion = <button style={style}>ADD QUESTION +</button>;
-
-  //more Q button
-  const moreQuestions = <button onClick={showMoreQuestions} style={style}>MORE ANSWERED QUESTIONS</button>;
-
-  return(
-
-    <div className='question-container'>
-      {questions.length ? question : addQuestion }
-
-      <div name="button">
-        {(questions.length > 2 && showQuestions.length < questions.length) && moreQuestions }
-        {questions.length && addQuestion}
-      </div>
     </div>
 
+  const addQuestion = <button>ADD QUESTION +</button>;
+
+  const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({questions.length - showQuestions.length})</button>;
+  const resizeSection = document.querySelector('[name = "button"]') ? (screen.height - document.querySelector('[name = "button"]').getBoundingClientRect().y )/screen.height * 100  < 30 ? 'singleScreen' : null : null;
+  return(
+    <>
+      <SearchBar questions={questions} />
+      <div className={`question-container ${resizeSection}`} onClick={handleOnClick} >
+        {questions.length ? question : addQuestion }
+
+        <div name="button">
+          {(questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions :  ''}
+          {questions.length ? addQuestion : 'Loading...' }
+        </div>
+        <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
+        <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
+      </div>
+    </>
   )
 }
 

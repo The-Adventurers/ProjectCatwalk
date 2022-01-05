@@ -12,7 +12,7 @@ import { ImageGallery } from '../client/src/components/overview/ImageGallery';
 test('ImageGallery to render correct quantity of images in MiniGallery', () => {
 
   render(<App/>);
-  
+
 })
 
 // test components if it is rendered
