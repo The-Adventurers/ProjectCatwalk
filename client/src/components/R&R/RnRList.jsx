@@ -5,9 +5,14 @@ import useWindowDimensions from '../../shared/useWindowDimensions';
 const RnRList = function (props) {
   if (props.reviewList.length == 0) {
     return (
-      <>
-        <p>There are no reviews. . . be the first to write one!</p>
-      </>
+      <div className = "reviewItem">
+      <h3>{"Nothing but us chickens here. . ."}</h3>
+      <p> {"Looks like you're the first one! Why not write a review? :)"} </p>
+      <HelperStyles>
+          <p>Helpful? Yes | Report</p>
+      </HelperStyles>
+      <hr></hr>
+      </div>
     )
   }
   let myArray = [];

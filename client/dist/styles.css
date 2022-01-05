@@ -1,3 +1,9 @@
+.reviewFormWrapper {
+  height: 50%;
+  width: 90%;
+  display: inline-block;
+}
+
 .rightSection {
   width: 40%;
   display: inline-block;
@@ -15,6 +21,13 @@
 }
 
 .leftSection {
+  padding-left: 15%;
+  width: 17.5%;
+  display: inline-block;
+}
+
+.addReviewForm {
+  margin-top: 5%;
   padding-left: 15%;
   width: 17.5%;
   display: inline-block;

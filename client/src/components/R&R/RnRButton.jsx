@@ -2,10 +2,10 @@ import React from 'react';
 import { ReviewButtons } from '../../../dist/RnRStyles';
 import useWindowDimensions from '../../shared/useWindowDimensions';
 
-const RnRButton = function (props) {
+const MoreReviewButton = function (props) {
   return (
     <>
-      <ReviewButtons>
+      <ReviewButtons onClick = {props.handleClick}>
         MORE REVIEWS
       </ReviewButtons>
     </>
@@ -15,7 +15,7 @@ const RnRButton = function (props) {
 const AddReviewButton = function (props) {
   return (
     <>
-      <ReviewButtons>
+      <ReviewButtons onClick = {props.handleClick}>
         ADD A REVIEW +
       </ReviewButtons>
     </>
@@ -23,4 +23,4 @@ const AddReviewButton = function (props) {
 }
 
 
-export {RnRButton, AddReviewButton};
+export {MoreReviewButton, AddReviewButton};

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import useWindowDimensions from '../../shared/useWindowDimensions';
-import { ReviewListContainer} from '../../../dist/RnRStyles';
+import { ReviewListContainer, WriteReviewStyles} from '../../../dist/RnRStyles';
 import { getReviews } from '../../shared/api';
 import RnRList from './RnRList.jsx';
-import {RnRButton, AddReviewButton} from './RnRButton.jsx';
+import { AddReviewButton, MoreReviewButton} from './RnRButton.jsx';
+import WriteReviewForm from './writeReviewForm.jsx';
 
 //fetch all reviews
 
 const RnRApp = function (props) {
   const [reviewList, reviewListUpdater] = useState([])
   const [productId, productIdUpdater] = useState(props.productId)
-  const [reviewLength, reviewLengthUpdater] = useState(100)
+  const [reviewLength, reviewLengthUpdater] = useState(2)
+  const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
     productIdUpdater(props.productId)
@@ -18,24 +20,42 @@ const RnRApp = function (props) {
     .then(
       res => {reviewListUpdater(res.data.results)}
       )
-  }, [props.productId, reviewLength])
+  }, [props.productId, reviewLength, reviewList])
 
-  const { height, width } = useWindowDimensions();
+  const getMoreReviews = function() {
+    reviewLengthUpdater(reviewLength + 2)
+  }
+
+  const toggleForm = function() {
+    setVisibility(!visibility)
+  }
+
   return (
     <ReviewListContainer>
         <div className = "leftSection">
-            <p> This is where the summary sidebar will appear, but it is a stretch goal (Rob said so?!) </p>
+            <p> This is where the summary sidebar will appear, but it is a stretch goal (Rob said so?) </p>
         </div>
         <div className = "rightSection">
             <RnRList reviewList = {reviewList}/>
         </div>
+        <div>
+        </div>
         <div className = "moreReviewsWrapper">
-          <RnRButton />
+          <MoreReviewButton handleClick = {getMoreReviews}/>
         </div>
         <div className = "addReviewWrapper">
-          <AddReviewButton />
+          <AddReviewButton handleClick = {toggleForm}/>
         </div>
-        
+        <></>
+        <div>
+        </div>
+        { visibility && (
+        <div className="reviewFormWrapper">
+          <WriteReviewStyles>
+            <WriteReviewForm />
+          </WriteReviewStyles>
+          </div>
+        ) }
     </ReviewListContainer>
   )
 }
