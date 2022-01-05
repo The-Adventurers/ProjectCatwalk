@@ -7,11 +7,12 @@ import { updateQA } from '../../shared/api.js';
 
 const Questions = ({questions, updateData, product_id, product_name, report}) => {
 
-  const  [showQuestions, setShowQuestions] = useState([questions]);
+  const [showQuestions, setShowQuestions] = useState([questions]);
   const [chosenQuestion, setChosenQuestion] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [keyWord, setKeyWord] = useState('');
   const [resizeSection, setResize] = useState(null);
+  const [clickMoreQ, setClick] = useState(false);
 
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
@@ -22,10 +23,14 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   },[searchResult]);
 
   useEffect(()=> {
-    const currentContentSize = document.querySelector('.question-container').getBoundingClientRect();
-    const { bottom, top } = currentContentSize;
-    const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
-    if(currentRatio < 15) setResize('singleScreen')
+    return ()=>{
+      const currentContentSize = document.querySelector('.question-container').getBoundingClientRect();
+      const { bottom, top } = currentContentSize;
+      const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
+      if(currentRatio > 65 && clickMoreQ) {
+        console.log('changed')
+      setResize('singleScreen')}
+    }
   },[showQuestions])
 
 
@@ -59,6 +64,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   const showMoreQuestions = () => {
     let length = showQuestions.length;
+    setClick(true);
     if (keyWord.length > 2) {
       setShowQuestions(searchResult.slice(0, length + 2));
     } else {

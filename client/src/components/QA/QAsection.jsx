@@ -43,6 +43,7 @@ const QAsection = ({ product_id , product_name}) => {
 
   return (
     <div className='main-QA'>
+      <p id='header'>QUESTIONS & ANSWERS</p>
       <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {report} />
     </div>
   );
