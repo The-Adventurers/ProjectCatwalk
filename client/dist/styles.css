@@ -1,3 +1,9 @@
+.reviewFormWrapper {
+  height: 50%;
+  width: 90%;
+  display: inline-block;
+}
+
 #app {
   font-family: Helvetica,Sans-Serif;
   color: #222;
@@ -5,6 +11,12 @@
   margin-left: 10%;
   padding:0;
   margin-top: 0;
+}
+
+.radioButton {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  width: 5%;
 }
 
 nav {
@@ -63,7 +75,25 @@ hr {
   display: inline-block;
 }
 
+.moreReviewsWrapper {
+  padding-left: 32.6%;
+  width: 7%;
+  display: inline-block;
+}
+
+.addReviewWrapper {
+  width: 15%;
+  display: inline-block;
+}
+
 .leftSection {
+  padding-left: 15%;
+  width: 17.5%;
+  display: inline-block;
+}
+
+.addReviewForm {
+  margin-top: 5%;
   padding-left: 15%;
   width: 17.5%;
   display: inline-block;

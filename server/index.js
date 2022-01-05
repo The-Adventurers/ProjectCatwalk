@@ -22,5 +22,6 @@ app.put('/api/catwalk/updateQA', controllers.updateQA);
 app.post('/api/catwalk/addQA', controllers.addQA);
 app.get('/api/catwalk/related', controllers.getRelated);
 app.post('/api/catwalk/cart', controllers.postCart);
+app.post('/api/catwalk/reviews', controllers.postReviews);
 
 app.listen(PORT, () => console.log(`Listening to port... ${PORT}`));
