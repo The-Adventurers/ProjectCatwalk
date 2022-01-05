@@ -14,7 +14,6 @@ export const RelatedProducts = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  gap: 20px;
   font-family: Helvetica, Sans-Serif;
   margin-top: 50px;
   font-weight: 500;
@@ -39,7 +38,7 @@ export const InnerCarousel = styled.div`
   align-items: stretch;
   gap: 10px;
   white-space: nowrap;
-  transition: transform 0.3s;
+  transition: transform 0.5s;
   width: 1150px;
 `;
 
@@ -47,9 +46,13 @@ export const ProductCard = styled.div`
   text-align: left;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 5px 10px;
+  margin: 30px 10px 5px 10px;
   cursor: pointer;
   border-radius: 10px;
+  transition: transform 0.5s;
+  &:hover {
+    transform: translateY(-5%);
+  }
 `;
 
 export const Category = styled.div`
@@ -100,13 +103,7 @@ export const Container = styled.div`
 export const Image = styled.img`
   width: 260px;
   height: 260px;
-  transition: transform 0.5s, filter 0.5s ease-in-out;
-  transform-origin: center center;
   border-radius: 10px 10px 0 0;
-  &:hover {
-    transform: scale(1.05);
-    opacity: 0.6;
-  }
 `;
 
 export const Icon = styled.img`
@@ -145,9 +142,12 @@ export const NoArrow = styled.img`
 export const AddCard = styled.div`
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 5px 10px;
+  margin: 30px 10px 5px 10px;
   cursor: pointer;
   border-radius: 10px;
+  &:hover {
+    opacity: 0.6;
+  }
 `
 
 export const Add = styled.div`
@@ -163,12 +163,6 @@ export const Add = styled.div`
 export const AddIcon = styled.img`
   width: 260px;
   height: 260px;
-  transition: transform 0.5s, filter 0.5s ease-in-out;
-  transform-origin: center center;
-  border-radius: 10px 10px 0 0;
-  &:hover {
-    opacity: 0.6;
-  }
 `;
 // YOUR OUTFIT LIST //
 
