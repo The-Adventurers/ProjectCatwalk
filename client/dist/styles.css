@@ -1,5 +1,6 @@
 #app {
   font-family: Helvetica,Sans-Serif;
+  color: #222;
   letter-spacing: 0.5px;
   margin-left: 10%;
   padding:0;
@@ -10,11 +11,10 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  padding:5px;
+  padding:12px 10px;
   width: 100vw;
   overflow: hidden;
   background: black;
-  margin-top: 0;
   z-index: 2;
   border-bottom: 2px solid rgb(60, 58, 60);
   color: white;
@@ -27,14 +27,15 @@ nav {
 nav div:first-child span {
   color:white;
   margin-left: 2%;
-  font-family: 'Kanit', sans-serif;
-  font-weight: bolder;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 500;
   font-size:1.5em;
 }
 nav div:last-child {
   display: flex;
   justify-content: flex-end;
-  margin-right: 3%;
+  margin-right: 5%;
   font-size: 1em;
 }
 nav i {
@@ -46,12 +47,15 @@ nav span {
   cursor: pointer;
 }
 
-
 hr {
   background-color: rgba(0, 0, 0, 0.065);
-  height: 1.2px;
+  height: 1.05px;
   border: none;
   margin-top: 4%;
+}
+
+.hr {
+  margin-top: 1%;
 }
 /*-- overview component ---*/
 .rightSection {

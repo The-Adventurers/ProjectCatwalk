@@ -25,6 +25,19 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
     }
   }
 
+  const starConverter = (rating) => {
+    const starRatings = {
+      0 : "☆☆☆☆☆",
+      1 : "★☆☆☆☆",
+      2 : "★★☆☆☆",
+      3 : "★★★☆☆",
+      4 : "★★★★☆",
+      5 : "★★★★★"
+    };
+    let newRating = Math.round(rating);
+    return starRatings[newRating];
+  };
+
   return (
     <ProductCard>
       <Container>
@@ -39,7 +52,7 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
       <Category>{product.category.toUpperCase()}</Category>
       <Name>{product.name}</Name>
       {price}
-      {/* <Rating>{product.rating}</Rating> */}
+      <Rating>{starConverter(product.rating)}</Rating>
     </ProductCard>
   );
 }
