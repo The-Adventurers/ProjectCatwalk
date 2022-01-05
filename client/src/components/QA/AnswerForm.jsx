@@ -80,7 +80,6 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
             <span>For authentication reasons, you will not be emailed</span>
           </p>
           </label>
-
           <label htmlFor='answer-photo'><p>Add Photo : </p>
             <p className='upload-container'>
               <span>
@@ -90,12 +89,10 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
               <span>upload a maximum of 5 photos</span>
             </p>
           </label>
-
           <div id='photo-form-container'>
             {photoURL.length ? photoURL.map((url,index) => <div key={url + index}> <img alt={`photo-for-${question_info[1]}`} src={url}/> </div> ) : null}
           </div>
           <button type='submit'>Submit</button>
-
         </form>
       </div>
     </div>
