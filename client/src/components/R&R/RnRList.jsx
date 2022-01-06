@@ -95,7 +95,7 @@ const RnRList = function (props) {
 
   return (
     <>
-      <h2> {props.reviewList.length} reviews, sorted by relevance. </h2>
+      <h2> {props.reviewList.length} reviews out of {props.maxLength} total, sorted by relevance. </h2>
       {myArray}
     </>
   )
