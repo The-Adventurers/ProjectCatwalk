@@ -13,7 +13,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const [keyWord, setKeyWord] = useState('');
   const [resizeSection, setResize] = useState(null);
   const [clickMoreQ, setClick] = useState(false);
-
+  const [showPhoto, setShowPhoto] = useState([]);
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
   }, [questions]);
@@ -28,11 +28,26 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
       const { bottom, top } = currentContentSize;
       const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
       if(currentRatio > 65 && clickMoreQ) {
-        console.log('changed')
-      setResize('singleScreen')}
+        setResize('singleScreen')}
     }
   },[showQuestions])
 
+  document.body.style.overflow =   showPhoto.length ? 'hidden' : 'auto';
+
+  if (showPhoto.length) {
+    const left = document.querySelector('.fa-angle-left');
+    const right = document.querySelector('.fa-angle-right');
+    if (left && showPhoto[0] === 0) {
+      left.style.color = 'rgba(0, 0, 0, 0)';
+
+    } else if (right && showPhoto[0] === showPhoto[1].length - 1) {
+      right.style.color = 'rgba(0, 0, 0, 0)';
+
+    } else if ( left && right && showPhoto[0] > 0 && showPhoto[0] < showPhoto[1].length - 1) {
+      left.style.color = 'white';
+      right.style.color = 'white';
+    }
+  }
 
   const handleOnClick = (e) => {
     if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
@@ -88,13 +103,29 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
               </span>
             </span>
           </p>
-        <Answers questions={showQuestions} q_index={index} product_name={product_name}/>
+        <Answers questions={showQuestions} q_index={index} product_name={product_name} getPhoto={setShowPhoto}/>
       </ div>
       ))}
     </div>
 
   const addQuestion = <button>ADD QUESTION +</button>;
   const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
+  const handleImgOnClick = (e) => {
+    if(e.target.tagName === 'I') {
+      const target = e.target.className;
+      if (target.includes('times')) {
+        setShowPhoto([]);
+      } else if (target.includes('left') && showPhoto[0] > 0) {
+        setShowPhoto([showPhoto[0] - 1, showPhoto[1]]);
+      } else if (target.includes('right') && showPhoto[0] < showPhoto[1].length - 1) {
+          setShowPhoto([showPhoto[0] + 1, showPhoto[1]]);
+      }
+    } else if (e.target.tagName !== 'IMG') {
+      setShowPhoto([]);
+    }
+  }
+
+
 
   return(
     <>
@@ -107,6 +138,10 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         </div>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
+        {showPhoto.length ? <div className='showImage-container' onClick={handleImgOnClick}> <i className="fas fa-times"/>{<div className='img-frame'><i className="fas fa-angle-left"/><img src={showPhoto[1][showPhoto[0]]} alt={'answer-img'} onError={(e) => {
+            e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
+          }} /><i className="fas fa-angle-right"/></div>}
+        </div> : null}
       </div>
     </>
   )
