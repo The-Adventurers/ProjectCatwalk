@@ -7,7 +7,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon server/index.js",
-    "react-dev": "webpack --config ./webpack.config.js  -w",
+    "start-prod": "node server/index.js",
+    "react-dev": "webpack -w",
+    "react-prod": "webpack",
     "test": "jest",
     "clean": "kill -9 $(lsof -t -i:3030)"
   },
