@@ -8,7 +8,6 @@ export const SelectQuantity = (props) => {
     }
     maxQty.push(i);
   }
-
   return (
     <select onChange={() => {props.setQuantity(event.target.value)}}>
       <option> - </option>

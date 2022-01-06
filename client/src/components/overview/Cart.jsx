@@ -47,7 +47,10 @@ export const Cart = (props) => {
   if (Size !== null && Quantity === null) {
     return (
       <CartWrapper>
-        <SelectSize size={ Size } setSize={ setSize } sku={ SKU } />
+        <select onChange={() => {setSize(event.target.value)}}>
+          <option key="0">Select Size</option>
+          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
+        </select>
         <SelectQuantity availableQty={ availableQty } setQuantity={ setQuantity }/>
       </CartWrapper>
     )
