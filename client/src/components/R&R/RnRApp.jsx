@@ -6,8 +6,6 @@ import RnRList from './RnRList.jsx';
 import { AddReviewButton, MoreReviewButton} from './RnRButton.jsx';
 import WriteReviewForm from './writeReviewForm.jsx';
 
-//fetch all reviews
-
 const RnRApp = function (props) {
   const [reviewList, reviewListUpdater] = useState([])
   const [reviewMeta, reviewMetaUpdater] = useState([])
@@ -64,7 +62,5 @@ const RnRApp = function (props) {
     </ReviewListContainer>
   )
 }
-
-
 
 export default RnRApp;
