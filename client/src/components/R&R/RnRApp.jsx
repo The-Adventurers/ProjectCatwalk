@@ -42,7 +42,6 @@ const RnRApp = function (props) {
         </div>
         <div className = "rightSection">
             <RnRList reviewList = {reviewList} maxLength = {maxReviewLength}/>
-            {console.log(maxReviewLength)}
         </div>
         <div>
         </div>
