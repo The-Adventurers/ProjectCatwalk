@@ -15,7 +15,6 @@ const App = function () {
   const [currentProduct, setCurrentProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
-  const [yourOutfit, setYourOutfit] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -48,12 +47,12 @@ const App = function () {
   return (
     <div>
         <NavBar/>
-        <OverviewApp product_id={ productId } currentProduct = { currentProduct }/>
+        <OverviewApp product_id={ productId } currentProduct = { currentProduct } />
 
       <MainContainer>
-        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts}/>
+        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts} />
         <hr/>
-        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit}/>
+        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} />
         <hr/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
         <hr/>

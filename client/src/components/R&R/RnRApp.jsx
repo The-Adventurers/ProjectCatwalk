@@ -11,6 +11,7 @@ const RnRApp = function (props) {
   const [reviewMeta, reviewMetaUpdater] = useState([])
   const [productId, productIdUpdater] = useState(props.productId)
   const [reviewLength, reviewLengthUpdater] = useState(2)
+  const [maxReviewLength, setMaxReviewLength] = useState(0)
   const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
@@ -19,15 +20,11 @@ const RnRApp = function (props) {
     .then(
       res => {reviewListUpdater(res.data.results)}
       )
-    .finally(
-    )
     getMeta({product_id : props.productId})
     .then(
       res => {reviewMetaUpdater(res.data)}
     )
-    .finally(
-    )
-  }, [props.productId, reviewLength, reviewList])
+  }, [props.productId, reviewLength])
 
   const getMoreReviews = function() {
     reviewLengthUpdater(reviewLength + 2)
@@ -42,7 +39,7 @@ const RnRApp = function (props) {
         <div className = "leftSection">
         </div>
         <div className = "rightSection">
-            <RnRList reviewList = {reviewList}/>
+            <RnRList reviewList = {reviewList} maxLength = {maxReviewLength}/>
         </div>
         <div>
         </div>
