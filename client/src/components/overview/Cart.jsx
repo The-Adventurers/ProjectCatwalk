@@ -36,9 +36,9 @@ export const Cart = (props) => {
   if (Size === null) {
     return (
       <CartWrapper>
-        <select onChange={() => {setSize(event.target.value)}}>
-          <option key="0">Select Size</option>
-          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
+        <select onChange={() => {setSize(event.target.value)}} className="select-menu">
+          <option key="0" className="select-option">Select Size</option>
+          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} className="select-option">{sku.size}</option>)}
         </select>
       </CartWrapper>
     )
@@ -47,12 +47,12 @@ export const Cart = (props) => {
   if (Size !== null && Quantity === null) {
     return (
       <CartWrapper>
-        <select onChange={() => {setSize(event.target.value)}}>
-          <option key="0">Select Size</option>
+        <select onChange={() => {setSize(event.target.value)}} className="select-menu">
+          <option key="0" className="select-option">Select Size</option>
           {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
         </select>
-        <select onChange={() => {setQuantity(event.target.value)}}>
-          <option> - </option>
+        <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
+          <option>Select Quantity</option>
           {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
         </select>
       </CartWrapper>
@@ -60,11 +60,11 @@ export const Cart = (props) => {
   }
   return (
     <CartWrapper>
-      <select onChange={() => {setSize(event.target.value)}}>
+      <select onChange={() => {setSize(event.target.value)}} className="select-menu">
         <option key="0">Select Size</option>
         {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
       </select>
-      <select onChange={() => {setQuantity(event.target.value)}}>
+      <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
         <option> - </option>
         {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
       </select>
