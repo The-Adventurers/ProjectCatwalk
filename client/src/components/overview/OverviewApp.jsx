@@ -9,7 +9,7 @@ import { Cart } from './Cart.jsx';
 
 export const OverviewApp = (props) => {
 
-  const [allStyles, setAllStyles] = useState([])
+  const [allStyles, setAllStyles] = useState([]);
   const [singleStyle, setSingleStyle] = useState({
     photos: [{
       url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',

@@ -116,7 +116,7 @@ export const AddCartButton = styled.button`
     background: black;
     border: 2px solid black;
   }
-  display: inline-block;
+  width: 16rem;
   background: grey;
   color: white;
   font-size: 1em;
