@@ -125,8 +125,6 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
     }
   }
 
-
-
   return(
     <>
       <SearchBar questions={questions} searchResult={setSearchResult} keyWord={setKeyWord}/>
