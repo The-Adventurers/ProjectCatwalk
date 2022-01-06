@@ -21,17 +21,11 @@ const RnRApp = function (props) {
     .then(
       res => {reviewListUpdater(res.data.results)}
       )
-    .finally(
-      // console.log("Review list fetched successfully.")
-    )
     getMeta({product_id : props.productId})
     .then(
       res => {reviewMetaUpdater(res.data)}
     )
-    .finally(
-      // console.log("Review metadata fetched successfully.")
-    )
-  }, [props.productId, reviewLength, reviewList])
+  }, [props.productId, reviewLength])
 
   const getMoreReviews = function() {
     reviewLengthUpdater(reviewLength + 2)

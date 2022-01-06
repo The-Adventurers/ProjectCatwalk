@@ -28,7 +28,6 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
       const { bottom, top } = currentContentSize;
       const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
       if(currentRatio > 65 && clickMoreQ) {
-        console.log('changed')
       setResize('singleScreen')}
     }
   },[showQuestions])
