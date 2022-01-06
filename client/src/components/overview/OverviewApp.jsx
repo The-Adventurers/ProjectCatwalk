@@ -31,7 +31,16 @@ export const OverviewApp = (props) => {
   }, [props.product_id]);
 
   const LimitImageArray = singleStyle.photos.slice(0, 10);
-  const currentImage = LimitImageArray[imageIndex].url || 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1'
+
+
+  let currentImage = 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1';
+
+  if (LimitImageArray[imageIndex]) {
+    currentImage = LimitImageArray[imageIndex].url
+  } else {
+    currentImage = LimitImageArray[0].url
+  }
+
   if (error) {
     return (
       <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>

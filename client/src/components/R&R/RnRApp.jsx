@@ -22,10 +22,6 @@ const RnRApp = function (props) {
     .then(
       res => {reviewListUpdater(res.data.results)}
       )
-    getReviews( {product_id : props.productId, count : 100} )
-    .then(
-      res => {setMaxReviewLength(res.data.results.length)}
-    )
     getMeta({product_id : props.productId})
     .then(
       res => {reviewMetaUpdater(res.data)}
