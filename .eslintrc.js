@@ -22,9 +22,10 @@ module.exports = {
     'react',
   ],
   rules: {
+    "import/extensions": "always",
     "react/function-component-definition": [<enabled>, {
       "namedComponents": "function-declaration" | "function-expression" | "arrow-function" | Array<"function-declaration" | "function-expression" | "arrow-function">,
       "unnamedComponents": "function-expression" | "arrow-function" | Array<"function-expression" | "arrow-function">
-    }]
+    }],
   },
 };
