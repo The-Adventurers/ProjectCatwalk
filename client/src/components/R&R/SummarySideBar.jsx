@@ -6,11 +6,10 @@ const RnRApp = function () {
   return (
     <div style = {{paddingLeft : width * 0.05}}>
       <>
-         <span> Coming soon. . . maybe </span> 
+         <span> Coming soon. . . maybe </span>
       </>
     </div>
   )
 }
-
 
 export default RnRApp;

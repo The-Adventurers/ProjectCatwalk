@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
-const Answers = ({questions, q_index, product_name}) => {
+const Answers = ({questions, q_index, product_name, getPhoto}) => {
   const allAnswers = questions[q_index].answers;
   const [showAnswers, setAnswers] = useState([]);
+
 
   useEffect(()=>{
     setAnswers(questions[q_index].answers.slice(0, 2))
@@ -22,6 +23,10 @@ const Answers = ({questions, q_index, product_name}) => {
     return new Date(date).toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric'})
   }
 
+  const showImage = (index, allSrc) => {
+    getPhoto([index, allSrc])
+  }
+
   return(
     <>
       {showAnswers.length > 0 &&
@@ -38,7 +43,7 @@ const Answers = ({questions, q_index, product_name}) => {
                  <span className='photos'>
                    {ans[1].photos.map((photo, index) => <img key={index} src={photo} onError={(e) => {
                      e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
-                   }} alt={`answer-photo-${ans[0]}-productName-${product_name}`}/>)}
+                   }} alt={`answer-photo-${ans[0]}-productName-${product_name}`} onClick={()=>showImage(index, ans[1].photos)}/>)}
                  </span> : null
               }
             </p>

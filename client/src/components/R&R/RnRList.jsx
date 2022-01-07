@@ -72,7 +72,7 @@ const RnRList = function (props) {
       </div>
       )
     }
-    
+
     else if (!listItem.recommend && (listItem.response !== "" && listItem.response !== null)) {
         return (
           <div className = "reviewItem" key = {listItem.review_id}>
@@ -100,6 +100,5 @@ const RnRList = function (props) {
     </>
   )
 }
-
 
 export default RnRList;
