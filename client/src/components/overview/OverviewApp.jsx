@@ -9,7 +9,7 @@ import { Cart } from './Cart.jsx';
 
 export const OverviewApp = (props) => {
 
-  const [allStyles, setAllStyles] = useState([])
+  const [allStyles, setAllStyles] = useState([]);
   const [singleStyle, setSingleStyle] = useState({
     photos: [{
       url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',
@@ -17,7 +17,6 @@ export const OverviewApp = (props) => {
     }]
   });
   const [imageIndex, setImageIndex] = useState(0);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     getStyles({product_id: props.product_id })
@@ -26,13 +25,11 @@ export const OverviewApp = (props) => {
         setSingleStyle(res.data.results[0]);
       })
       .catch((error) => {
-        setError(error);
+        props.setError(error);
       });
   }, [props.product_id]);
 
   const LimitImageArray = singleStyle.photos.slice(0, 10);
-
-
   let currentImage = 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1';
 
   if (LimitImageArray[imageIndex]) {
@@ -41,11 +38,6 @@ export const OverviewApp = (props) => {
     currentImage = LimitImageArray[0].url
   }
 
-  if (error) {
-    return (
-      <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-3.png.webp"/>
-    )
-  }
   return (
     <Overview>
       <div className="Overview">

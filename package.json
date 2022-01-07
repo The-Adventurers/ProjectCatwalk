@@ -20,9 +20,16 @@
     "@babel/preset-react": "^7.12.13",
     "@testing-library/react": "^12.1.2",
     "babel-loader": "^8.2.2",
+<<<<<<< HEAD
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",
+=======
+    "compression-webpack-plugin": "^9.2.0",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-import": "^2.25.3",
+>>>>>>> db2eaf967f73beb8ad238390ff8b9ca6b663a7fb
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
@@ -35,12 +42,9 @@
   "dependencies": {
     "@jest/globals": "^27.4.4",
     "axios": "^0.21.1",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-dom": "^6.2.1",
-    "styled-components": "^5.3.3",
-    "underscore": "^1.12.1"
+    "styled-components": "^5.3.3"
   }
 }

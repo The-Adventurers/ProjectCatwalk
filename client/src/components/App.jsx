@@ -1,38 +1,36 @@
 import React, { useState, useEffect} from 'react';
-
-import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
-import OutfitList from './relatedProducts/OutfitList.jsx';
-import QAsection from './QA/QAsection.jsx';
-import { OverviewApp } from './overview/OverviewApp.jsx';
-import { getProducts, getStyles, getRelated } from '../shared/api';
-import { MainContainer } from '../../dist/RelatedProductStyles';
-import RnRApp from './R&R/RnRApp.jsx';
 import NavBar from './NavBar.jsx';
+import { OverviewApp } from './overview/OverviewApp.jsx';
+import RelatedProductsWrapper from './relatedProducts/Wrapper.jsx';
+import QAsection from './QA/QAsection.jsx';
+import RnRApp from './R&R/RnRApp.jsx';
+import { MainContainer } from '../../dist/RelatedProductStyles';
+import { getProducts } from '../shared/api';
 
 const App = function () {
 
   const [productId, setProductId] = useState(63616);
   const [currentProduct, setCurrentProduct] = useState({});
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  const [currentOutfit, setCurrentOutfit] = useState({});
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const getAllData = () => {
-    const getData = [getProducts({product_id: productId}), getRelated({product_id: productId})];
-    Promise.all(getData)
+    getProducts({product_id: productId})
       .then((results) => {
-        setCurrentProduct(results[0].data);
-        setRelatedProducts(results[1].data.slice(1));
-        setCurrentOutfit(results[1].data[0])
+        setCurrentProduct(results.data);
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
   }
 
+
   useEffect(() => {
     getAllData();
   }, [productId])
+
+  if (isLoading) {
+    return <img src='https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'/>;
+  }
 
   if (error) {
     return (
@@ -40,20 +38,12 @@ const App = function () {
     );
   }
 
-  if (isLoading) {
-    return <img src='https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'/>;
-  }
-
   return (
     <div>
-        <NavBar/>
-        <OverviewApp product_id={ productId } currentProduct = { currentProduct } />
-
+      <NavBar/>
+      <OverviewApp product_id={ productId } currentProduct = { currentProduct } setError={setError}/>
       <MainContainer>
-        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts} />
-        <hr/>
-        <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} />
-        <hr/>
+        <RelatedProductsWrapper productId={productId} setProductId={setProductId} currentProduct={currentProduct} setError={setError}/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
         <hr/>
         <RnRApp productId = {productId} />
