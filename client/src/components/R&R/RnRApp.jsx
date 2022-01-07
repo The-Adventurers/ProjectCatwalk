@@ -38,13 +38,13 @@ const RnRApp = function (props) {
 
   return (
     <ReviewListContainer>
-        <div className = "leftSection">
-        </div>
-        <div className = "rightSection">
-            <RnRList reviewList = {reviewList} maxLength = {maxReviewLength}/>
-        </div>
-        <div>
-        </div>
+      <div className = "leftSection">
+      </div>
+      <div className = "rightSection">
+          <RnRList reviewList = {reviewList} maxLength = {maxReviewLength}/>
+      </div>
+      <div>
+      </div>
         <div className = "moreReviewsWrapper">
           <MoreReviewButton handleClick = {getMoreReviews}/>
         </div>

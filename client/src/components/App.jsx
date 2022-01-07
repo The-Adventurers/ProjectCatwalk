@@ -28,7 +28,7 @@ const App = function () {
         setIsLoading(false);
       })
       .catch(err => { setError(err); })
-  }
+  };
 
   useEffect(() => {
     getAllData();
