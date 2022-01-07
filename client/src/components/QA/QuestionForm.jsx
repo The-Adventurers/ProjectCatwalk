@@ -15,6 +15,7 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
       document.querySelector('.form-wrapper').style.display = 'none';
       updateData();
     })
+
   }
 
   return (

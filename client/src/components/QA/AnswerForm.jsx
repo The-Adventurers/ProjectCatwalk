@@ -5,6 +5,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
 
   const [selectedImg, setImg] = useState([]);
   const [photoURL, setPhotoURL] = useState([]);
+  
 
   useEffect(()=>{
   },[photoURL])

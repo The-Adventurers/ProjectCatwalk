@@ -14,6 +14,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const [resizeSection, setResize] = useState(null);
   const [clickMoreQ, setClick] = useState(false);
   const [showPhoto, setShowPhoto] = useState([]);
+  // const [showModal, setmodal] = useState();
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
   }, [questions]);
@@ -33,6 +34,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   },[showQuestions])
 
   document.body.style.overflow =   showPhoto.length ? 'hidden' : 'auto';
+
 
   const handleOnClick = (e) => {
     if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
@@ -121,6 +123,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         </div>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
+
         {showPhoto.length ? <div className='showImage-container' onClick={handleImgOnClick}> <i className="fas fa-times"/>{<div className='img-frame'><i className="fas fa-angle-left" style={showPhoto[0] === 0 ? {color: 'rgba(0, 0, 0, 0)'} : null}/><img src={showPhoto[1][showPhoto[0]]} alt={'answer-img'} onError={(e) => {
             e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
           }} /><i className="fas fa-angle-right" style={showPhoto[0] === showPhoto[1].length - 1 ? {color: 'rgba(0, 0, 0, 0)'} : null}/></div>}
