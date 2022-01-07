@@ -34,21 +34,6 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
 
   document.body.style.overflow =   showPhoto.length ? 'hidden' : 'auto';
 
-  if (showPhoto.length) {
-    const left = document.querySelector('.fa-angle-left');
-    const right = document.querySelector('.fa-angle-right');
-    if (left && showPhoto[0] === 0) {
-      left.style.color = 'rgba(0, 0, 0, 0)';
-
-    } else if (right && showPhoto[0] === showPhoto[1].length - 1) {
-      right.style.color = 'rgba(0, 0, 0, 0)';
-
-    } else if ( left && right && showPhoto[0] > 0 && showPhoto[0] < showPhoto[1].length - 1) {
-      left.style.color = 'white';
-      right.style.color = 'white';
-    }
-  }
-
   const handleOnClick = (e) => {
     if (e.target.tagName === 'SPAN' && ['Yes', 'Report'].includes(e.target.innerText.trim()) && e.target.getAttribute('voted') === 'false') {
       const ansId = e.nativeEvent.path[1].getAttribute('ans_id');
@@ -136,9 +121,9 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         </div>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
-        {showPhoto.length ? <div className='showImage-container' onClick={handleImgOnClick}> <i className="fas fa-times"/>{<div className='img-frame'><i className="fas fa-angle-left"/><img src={showPhoto[1][showPhoto[0]]} alt={'answer-img'} onError={(e) => {
+        {showPhoto.length ? <div className='showImage-container' onClick={handleImgOnClick}> <i className="fas fa-times"/>{<div className='img-frame'><i className="fas fa-angle-left" style={showPhoto[0] === 0 ? {color: 'rgba(0, 0, 0, 0)'} : null}/><img src={showPhoto[1][showPhoto[0]]} alt={'answer-img'} onError={(e) => {
             e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
-          }} /><i className="fas fa-angle-right"/></div>}
+          }} /><i className="fas fa-angle-right" style={showPhoto[0] === showPhoto[1].length - 1 ? {color: 'rgba(0, 0, 0, 0)'} : null}/></div>}
         </div> : null}
       </div>
     </>

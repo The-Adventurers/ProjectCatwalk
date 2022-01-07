@@ -23,6 +23,7 @@ const App = function () {
       .catch(err => { setError(err); })
   }
 
+
   useEffect(() => {
     getAllData();
   }, [productId])
