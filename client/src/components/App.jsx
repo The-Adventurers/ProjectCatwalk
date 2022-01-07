@@ -11,12 +11,14 @@ const App = function () {
 
   const [productId, setProductId] = useState(63616);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const getAllData = () => {
     getProducts({product_id: productId})
       .then((results) => {
         setCurrentProduct(results.data);
+        setIsLoading(false);
       })
       .catch(err => { setError(err); })
   }
@@ -24,6 +26,10 @@ const App = function () {
   useEffect(() => {
     getAllData();
   }, [productId])
+
+  if (isLoading) {
+    return <img src='https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg'/>;
+  }
 
   if (error) {
     return (

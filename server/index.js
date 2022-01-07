@@ -7,6 +7,11 @@ const PORT = 3030;
 const controllers = require('./controllers/controllers');
 
 // Middleware
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(express.json());
 
