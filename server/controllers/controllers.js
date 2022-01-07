@@ -22,7 +22,7 @@ module.exports = {
 
   postReviews: (req, res) => {
     models.postReviews(req.query)
-      .then(res => 
+      .then(res =>
         {res.status(201).send(results.data)
       })
       .catch((error) => {
@@ -86,7 +86,7 @@ module.exports = {
       })
   },
   addQA: (req, res) => {
-    models.addQA(req.body) 
+    models.addQA(req.body)
       .then((results) => {
         res.status(201).send(results.data)
       })
