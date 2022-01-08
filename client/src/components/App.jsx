@@ -25,6 +25,7 @@ const App = function () {
 
   useEffect(() => {
     getAllData();
+    return () => { document.documentElement.scrollTop = 0 };
   }, [productId])
 
   if (isLoading) {
