@@ -36,7 +36,7 @@ const RnRApp = function (props) {
 
   return (
     <ReviewListContainer>
-      <div className = "leftSection">
+      <div id='reviewSection' className = "leftSection">
       </div>
       <div className = "rightSection">
           <RnRList reviewList = {reviewList} maxLength = {maxReviewLength}/>

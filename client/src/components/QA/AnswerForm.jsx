@@ -6,6 +6,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
   const [selectedImg, setImg] = useState([]);
   const [photoURL, setPhotoURL] = useState([]);
 
+
   useEffect(()=>{
   },[photoURL])
 
@@ -84,7 +85,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
             <p className='upload-container'>
               <span>
                 <input id='answer-photo' type='text' name='photo' placeholder='image URL '/>
-                <span onClick={ handleUploadFile } id='upload-button'>upload</span>
+                <span onClick={ handleUploadFile } id='upload-button'>UPLOAD</span>
               </span>
               <span>upload a maximum of 5 photos</span>
             </p>
@@ -92,7 +93,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
           <div id='photo-form-container'>
             {photoURL.length ? photoURL.map((url,index) => <div key={url + index}> <img alt={`photo-for-${question_info[1]}`} src={url}/> </div> ) : null}
           </div>
-          <button type='submit'>Submit</button>
+          <button type='submit'>SUBMIT</button>
         </form>
       </div>
     </div>

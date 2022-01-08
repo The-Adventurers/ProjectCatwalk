@@ -37,7 +37,7 @@ export const OverviewApp = (props) => {
 
   return (
     <Overview>
-      <div className="Overview">
+      <div id='OverviewSection' className="Overview">
         <img
           src="https://img.icons8.com/ios/344/circled-left-2.png" className={imageIndex === 0 ? "hiddenArrow" : "leftArrowGallery"}
           onClick={() => {
