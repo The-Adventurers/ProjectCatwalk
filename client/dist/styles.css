@@ -493,7 +493,7 @@ span.user {
 }
 .photos img:hover {
   transform: scale(1.15);
-  cursor: pointer;
+  cursor: po;
 }
 #photo-form-container{
   margin-left: 10vw;
