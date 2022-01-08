@@ -108,7 +108,9 @@ export const ImageButton = styled.button`
   height: 70px;
   margin: 5%;
   object-fit: cover;
-
+  &:hover {
+    transform: translateY(-5%);
+  }
 `
 
 export const AddCartButton = styled.button`

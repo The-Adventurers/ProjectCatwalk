@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { CartWrapper, AddCartButton } from '../../../dist/overviewStyling.js';
 import { postCart } from '../../shared/api.js';
 
-
 export const Cart = (props) => {
   const [OutOfStock, setOutOfStock] = useState(false);
   const [Size, setSize] = useState('Select Size');
@@ -33,13 +32,22 @@ export const Cart = (props) => {
     maxQty.push(i);
   }
 
+  const SizeMenu = (
+    <select onChange={() => {setSize(event.target.value)}} className="select-menu">
+      <option key="0" value={null}>Select Size</option>
+      {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} >{sku.size}</option>)}
+    </select>
+  )
+  const QuantityMenu = (
+    <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
+      <option key="0">Select Quantity</option>
+      {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
+    </select>
+  )
   if (Size === 'Select Size') {
     return (
       <CartWrapper>
-        <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-          <option key="0" value={null}>Select Size</option>
-          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} >{sku.size}</option>)}
-        </select>
+        {SizeMenu}
       </CartWrapper>
     )
   }
@@ -47,36 +55,28 @@ export const Cart = (props) => {
   if (Size !== 'Select Size' && Quantity === 'Select Quantity') {
     return (
       <CartWrapper>
-        <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-          <option key="0" value={null}>Select Size</option>
-          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
-        </select>
-        <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
-          <option key="0">Select Quantity</option>
-          {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
-        </select>
+        {SizeMenu}
+        {QuantityMenu}
       </CartWrapper>
     )
   }
   return (
     <CartWrapper>
-      <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-        <option key="0" >Select Size</option>
-        {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
-      </select>
-      <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
-        <option key="0"> Select Quantity </option>
-        {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
-      </select>
-      <AddCartButton onClick= {() => {
-        postCart({ sku_id: currentSKU, count: Quantity })
-          .then((results) => {
-            console.log('Cart Created', results);
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-        }}>Add To Cart</AddCartButton>
+      {SizeMenu}
+      {QuantityMenu}
+      <AddCartButton
+        onClick= {() => {
+          postCart({ sku_id: currentSKU, count: Quantity })
+            .then((results) => {
+              console.log('Cart Created', results);
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }}
+      >
+        Add To Cart
+      </AddCartButton>
     </CartWrapper>
   )
 };
