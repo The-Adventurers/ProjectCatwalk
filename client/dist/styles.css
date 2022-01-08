@@ -360,6 +360,8 @@ span.user {
 .singleScreen {
   height: 90vh;
   overflow-y: scroll;
+  background: rgb(250, 245, 245);
+  border-radius: 10px;
 }
 
 .question-form , .answer-form{
@@ -470,15 +472,13 @@ span.user {
   padding: 0.3% 1.3%;
   color: black;
   border: 1px solid grey;
-  background: grey;
+  /* background: grey; */
   border-radius: 10px;
   font-size: 1em;
   font-weight: bold;
 }
 #upload-button:hover {
-  background: black;
-  color: white;
-  border: 1px solid white;
+  font-size: 1.05em;
 }
 
 /*---  photo ---*/
@@ -493,6 +493,7 @@ span.user {
 }
 .photos img:hover {
   transform: scale(1.15);
+  cursor: pointer;
 }
 #photo-form-container{
   margin-left: 10vw;

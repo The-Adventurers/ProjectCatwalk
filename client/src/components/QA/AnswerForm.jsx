@@ -84,7 +84,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
           <label htmlFor='answer-photo'><p>Add Photo : </p>
             <p className='upload-container'>
               <span>
-                <input id='answer-photo' type='text' name='photo' placeholder='image URL '/>
+                <input id='answer-photo' type='text' name='photo' placeholder='image URL'/>
                 <span onClick={ handleUploadFile } id='upload-button'>UPLOAD</span>
               </span>
               <span>upload a maximum of 5 photos</span>
