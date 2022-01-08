@@ -3,7 +3,7 @@ import React from 'react';
 const NavBar = ({ defaultProductId}) => {
   return (
     <nav>
-      <div><a id='brand' onClick={()=>  defaultProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
+      <div><a id='brand' href='#OverviewSection' onClick={()=>  defaultProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
       <div>
         <div id='linkSection'>
           <a href='#OverviewSection'>Product</a>
