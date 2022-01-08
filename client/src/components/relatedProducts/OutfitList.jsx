@@ -7,6 +7,13 @@ const OutfitList = ({ productId, currentProduct, currentOutfit }) => {
   let [index, setIndex] = useState(0);
   let [scrollY, setScrollY] = useState(window.scrollY);
 
+  useEffect(() => {
+    if (localStorage.length) {
+      let outfits = JSON.parse(localStorage.getItem('outfits'));
+      setYourOutfit(outfits);
+    }
+  }, [])
+
   const addOutfit = () => {
     for (let item of yourOutfit) {
       if (item.id === currentOutfit.id) {
@@ -14,6 +21,7 @@ const OutfitList = ({ productId, currentProduct, currentOutfit }) => {
       }
     }
     let newOutfit = [...yourOutfit, currentOutfit];
+    localStorage.setItem('outfits', `${JSON.stringify(newOutfit)}`);
     setYourOutfit(newOutfit);
   }
 

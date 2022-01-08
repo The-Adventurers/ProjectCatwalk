@@ -23,9 +23,9 @@ const App = function () {
       .catch(err => { setError(err); })
   };
 
-
   useEffect(() => {
     getAllData();
+    return () => { document.documentElement.scrollTop = 0 };
   }, [productId])
 
   if (isLoading) {
@@ -40,7 +40,7 @@ const App = function () {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar defaultProductId={setProductId}/>
       <OverviewApp product_id={ productId } currentProduct = { currentProduct } setError={setError}/>
       <MainContainer>
         <RelatedProductsWrapper productId={productId} setProductId={setProductId} currentProduct={currentProduct} setError={setError}/>

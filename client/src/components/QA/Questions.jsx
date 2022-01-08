@@ -3,6 +3,7 @@ import Answers from './Answers.jsx';
 import QuestionForm from './QuestionForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
 import SearchBar from './SearchBar.jsx';
+import Modal from './Modal.jsx';
 import { updateQA } from '../../shared/api.js';
 
 const Questions = ({questions, updateData, product_id, product_name, report}) => {
@@ -11,26 +12,19 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   const [chosenQuestion, setChosenQuestion] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [keyWord, setKeyWord] = useState('');
-  const [resizeSection, setResize] = useState(null);
+  const [resizeSection, setResize] = useState(0);
   const [clickMoreQ, setClick] = useState(false);
   const [showPhoto, setShowPhoto] = useState([]);
+
   useEffect(()=>{
     setShowQuestions(questions.slice(0,4));
+    return () => { setResize(0)}
   }, [questions]);
 
   useEffect(()=>{
     setShowQuestions(searchResult.slice(0, 4))
+    return () => { setResize(0)}
   },[searchResult]);
-
-  useEffect(()=> {
-    return ()=>{
-      const currentContentSize = document.querySelector('.question-container').getBoundingClientRect();
-      const { bottom, top } = currentContentSize;
-      const currentRatio = (bottom - Math.abs(top)) / screen.height * 100;
-      if(currentRatio > 65 && clickMoreQ) {
-      setResize('singleScreen')}
-    }
-  },[showQuestions])
 
   document.body.style.overflow =   showPhoto.length ? 'hidden' : 'auto';
 
@@ -73,7 +67,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   }
 
   const question =
-    <div>
+    <>
       {showQuestions.map((question, index) => (
         <div key={index}>
           <p className='question' q_id={question.question_id}>
@@ -91,29 +85,18 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         <Answers questions={showQuestions} q_index={index} product_name={product_name} getPhoto={setShowPhoto}/>
       </ div>
       ))}
-    </div>
+    </>
 
   const addQuestion = <button>ADD QUESTION +</button>;
-  const moreQuestions = <button onClick={showMoreQuestions}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
-  const handleImgOnClick = (e) => {
-    if(e.target.tagName === 'I') {
-      const target = e.target.className;
-      if (target.includes('times')) {
-        setShowPhoto([]);
-      } else if (target.includes('left') && showPhoto[0] > 0) {
-        setShowPhoto([showPhoto[0] - 1, showPhoto[1]]);
-      } else if (target.includes('right') && showPhoto[0] < showPhoto[1].length - 1) {
-          setShowPhoto([showPhoto[0] + 1, showPhoto[1]]);
-      }
-    } else if (e.target.tagName !== 'IMG') {
-      setShowPhoto([]);
-    }
-  }
+  const moreQuestions = <button onClick={ () => {
+    showMoreQuestions();
+    setResize(resizeSection + 1);
+    }}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
 
   return(
     <>
       <SearchBar questions={questions} searchResult={setSearchResult} keyWord={setKeyWord}/>
-      <div className={`question-container ${resizeSection}`} onClick={handleOnClick} >
+      <div className={`question-container ${resizeSection === 2 ? 'singleScreen' : ''}`} onClick={handleOnClick} >
         {questions.length ? question : addQuestion }
         <div name="button">
           {keyWord.length > 2 ? ((searchResult.length > 2 && showQuestions.length < searchResult.length) ? moreQuestions : ''):((questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions : '')}
@@ -121,10 +104,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         </div>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
-        {showPhoto.length ? <div className='showImage-container' onClick={handleImgOnClick}> <i className="fas fa-times"/>{<div className='img-frame'><i className="fas fa-angle-left" style={showPhoto[0] === 0 ? {color: 'rgba(0, 0, 0, 0)'} : null}/><img src={showPhoto[1][showPhoto[0]]} alt={'answer-img'} onError={(e) => {
-            e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
-          }} /><i className="fas fa-angle-right" style={showPhoto[0] === showPhoto[1].length - 1 ? {color: 'rgba(0, 0, 0, 0)'} : null}/></div>}
-        </div> : null}
+        {showPhoto.length ? <Modal showPhoto={showPhoto} setShowPhoto={setShowPhoto}/> : null}
       </div>
     </>
   )

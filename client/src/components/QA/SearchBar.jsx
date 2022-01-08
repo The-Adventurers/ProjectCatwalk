@@ -13,7 +13,7 @@ const SearchBar = ({questions, searchResult, keyWord}) => {
 
   return(
     <form className='search-wrapper'>
-      <input id='search' type='search' placeholder=' Have a question?  Search for answers… ' minLength='3' autoComplete='off' onChange={handleOnChange}/><i className="fas fa-search"></i>
+      <input id='search' type='search' placeholder=' Have a question?  Search for answers… ' minLength='3' autoComplete='off' onChange={handleOnChange}/><i className="fas fa-search"/>
     </form>
   )
 }
