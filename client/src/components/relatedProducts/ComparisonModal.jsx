@@ -47,7 +47,7 @@ const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setMod
     }
 
     return (
-      <Background>
+      <Background onClick={setModal}>
         <ModalWrapper>
           <Header>COMPARING</Header>
           <ModalIcon

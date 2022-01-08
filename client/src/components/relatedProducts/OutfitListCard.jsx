@@ -20,6 +20,7 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
     for (let i = 0; i < yourOutfit.length; i++) {
       if (yourOutfit[i].id === product.id) {
         newOutfit.splice(i, 1)
+        localStorage.setItem('outfits', `${JSON.stringify(newOutfit)}`);
         setYourOutfit(newOutfit);
       }
     }
