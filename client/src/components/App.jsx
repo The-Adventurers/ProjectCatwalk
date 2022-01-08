@@ -23,7 +23,6 @@ const App = function () {
       .catch(err => { setError(err); })
   };
 
-
   useEffect(() => {
     getAllData();
     return () => { document.documentElement.scrollTop = 0 };
