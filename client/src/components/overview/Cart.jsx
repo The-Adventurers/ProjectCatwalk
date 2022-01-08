@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { CartWrapper, AddCartButton } from '../../../dist/overviewStyling.js';
 import { postCart } from '../../shared/api.js';
@@ -7,6 +7,11 @@ export const Cart = (props) => {
   const [OutOfStock, setOutOfStock] = useState(false);
   const [Size, setSize] = useState('Select Size');
   const [Quantity, setQuantity] = useState('Select Quantity');
+
+  useEffect(() => {
+    setSize('Select Size');
+    setQuantity('Select Quantity');
+  }, [props.product_id]);
 
   const SKU = [];
   let availableQty = 0;
@@ -34,7 +39,7 @@ export const Cart = (props) => {
 
   const SizeMenu = (
     <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-      <option key="0" value={null}>Select Size</option>
+      <option key="0">Select Size</option>
       {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} >{sku.size}</option>)}
     </select>
   )
@@ -60,6 +65,7 @@ export const Cart = (props) => {
       </CartWrapper>
     )
   }
+
   return (
     <CartWrapper>
       {SizeMenu}
