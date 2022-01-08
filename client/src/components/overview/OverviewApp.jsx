@@ -100,7 +100,7 @@ export const OverviewApp = (props) => {
           })}
           </Styles>
         </SelectStyleWrapper>
-        <Cart style={ singleStyle }/>
+        <Cart product_id={ props.product_id } style={ singleStyle } />
       </div>
     </Overview>
   )

@@ -1,35 +1,45 @@
 import React, { useState, useEffect } from 'react';
+import { getStyles, getMeta } from '../../shared/api';
 import OutfitListCard from './OutfitListCard.jsx';
+import { getOutfitCard } from './helpers.js';
 import { RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
-const OutfitList = ({ productId, currentProduct, currentOutfit }) => {
-  let [yourOutfit, setYourOutfit] = useState([]);
-  let [index, setIndex] = useState(0);
-  let [scrollY, setScrollY] = useState(window.scrollY);
+const OutfitList = ({ productId, currentProduct }) => {
+  const [yourOutfits, setYourOutfits] = useState([]);
+  const [currentOutfit, setCurrentOutfit] = useState({});
+  const [index, setIndex] = useState(0);
+  const [scrollY, setScrollY] = useState(window.scrollY);
+
+  const addOutfit = () => {
+    for (let item of yourOutfits) {
+      if (item.id === currentProduct.id) {
+        return;
+      }
+    }
+    let outfitData = [getStyles({product_id: productId}), getMeta({product_id: productId})];
+    Promise.all(outfitData)
+      .then((results) => {
+        let outfit = getOutfitCard(currentProduct, results);
+        let newOutfit = [...yourOutfits, outfit];
+        localStorage.setItem('outfits', `${JSON.stringify(newOutfit)}`);
+        setYourOutfits(newOutfit);
+        setCurrentOutfit(outfit);
+      })
+      .catch(err => { setError(err); })
+  }
 
   useEffect(() => {
     if (localStorage.length) {
       let outfits = JSON.parse(localStorage.getItem('outfits'));
-      setYourOutfit(outfits);
+      setYourOutfits(outfits);
     }
   }, [])
 
-  const addOutfit = () => {
-    for (let item of yourOutfit) {
-      if (item.id === currentOutfit.id) {
-        return;
-      }
-    }
-    let newOutfit = [...yourOutfit, currentOutfit];
-    localStorage.setItem('outfits', `${JSON.stringify(newOutfit)}`);
-    setYourOutfit(newOutfit);
-  }
-
   const updateIndex = (newIndex) => {
-    if (newIndex < 0 || yourOutfit.length < 4) {
+    if (newIndex < 0 || yourOutfits.length < 4) {
       newIndex = 0;
-    } else if (newIndex >= yourOutfit.length - 3) {
-      newIndex = yourOutfit.length - 3;
+    } else if (newIndex >= yourOutfits.length - 3) {
+      newIndex = yourOutfits.length - 3;
     }
     setIndex(newIndex);
   }
@@ -64,12 +74,12 @@ const OutfitList = ({ productId, currentProduct, currentOutfit }) => {
               />
               <Add>Add to Outfit</Add>
             </AddCard>
-            {yourOutfit.map((product) => (
-              <OutfitListCard product={product} key={product.id} yourOutfit={yourOutfit} setYourOutfit={setYourOutfit}/>
+            {yourOutfits.map((product) => (
+              <OutfitListCard product={product} yourOutfits={yourOutfits} setYourOutfits={setYourOutfits}/>
             ))}
           </InnerCarousel>
         </Carousel>
-        {index >= yourOutfit.length - 3 ? <NoArrow/> :
+        {index >= yourOutfits.length - 3 ? <NoArrow/> :
         <Arrow
           src='https://img.icons8.com/ios/344/circled-right-2.png'
           onClick={() => { updateIndex(index + 1); }}
