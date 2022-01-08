@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const MainContainer = styled.div`
   position: absolute;
   width: 80%;
-  height: 80%;
+  height: 100%;
   top: 75%;
 `;
 
@@ -171,7 +171,7 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 15%;
+  bottom: 20%;
 `;
 
 export const ModalWrapper = styled.div`
