@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { addQA } from '../../shared/api.js';
 
+
 const AnswerForm = ({updateData, product_name, question_info}) => {
 
   const [selectedImg, setImg] = useState([]);
@@ -62,7 +63,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
         <form className='answer-form' onSubmit={handleSubmit}>
           <div>
             <p>Submit your Answer</p>
-            <i className="fas fa-times"></i>
+            <i className="fas fa-times"/>
           </div>
           <h3>{product_name} : {question_info[1]}</h3>
           <label htmlFor='answer-body'><p>Your Answer :</p>
