@@ -1,4 +1,5 @@
 import React from 'react';
+import { starConverter } from './helpers.js';
 import { ProductCard, Container, Image, Icon, Category, Name, Price, SalePrice, RegPrice, Rating } from '../../../dist/RelatedProductStyles';
 
 const RelatedProductCard = ({ product, setProductId, setModal }) => {
@@ -14,19 +15,6 @@ const RelatedProductCard = ({ product, setProductId, setModal }) => {
   } else {
     image = <Image src='https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1' alt="Thumbnail related product image"/>
   }
-
-  const starConverter = (rating) => {
-    const starRatings = {
-      0 : "☆☆☆☆☆",
-      1 : "★☆☆☆☆",
-      2 : "★★☆☆☆",
-      3 : "★★★☆☆",
-      4 : "★★★★☆",
-      5 : "★★★★★"
-    };
-    let newRating = Math.round(rating);
-    return starRatings[newRating];
-  };
 
   return (
     <ProductCard
