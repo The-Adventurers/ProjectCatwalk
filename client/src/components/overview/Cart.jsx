@@ -6,8 +6,8 @@ import { postCart } from '../../shared/api.js';
 
 export const Cart = (props) => {
   const [OutOfStock, setOutOfStock] = useState(false);
-  const [Size, setSize] = useState(null);
-  const [Quantity, setQuantity] = useState(null);
+  const [Size, setSize] = useState('Select Size');
+  const [Quantity, setQuantity] = useState('Select Quantity');
 
   const SKU = [];
   let availableQty = 0;
@@ -33,26 +33,26 @@ export const Cart = (props) => {
     maxQty.push(i);
   }
 
-  if (Size === null) {
+  if (Size === 'Select Size') {
     return (
       <CartWrapper>
         <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-          <option key="0" className="select-option">Select Size</option>
-          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} className="select-option">{sku.size}</option>)}
+          <option key="0" value={null}>Select Size</option>
+          {SKU.map((sku) => <option value={sku.size} key={sku.sku_id} >{sku.size}</option>)}
         </select>
       </CartWrapper>
     )
   }
 
-  if (Size !== null && Quantity === null) {
+  if (Size !== 'Select Size' && Quantity === 'Select Quantity') {
     return (
       <CartWrapper>
         <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-          <option key="0" className="select-option">Select Size</option>
+          <option key="0" value={null}>Select Size</option>
           {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
         </select>
         <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
-          <option>Select Quantity</option>
+          <option key="0">Select Quantity</option>
           {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
         </select>
       </CartWrapper>
@@ -61,11 +61,11 @@ export const Cart = (props) => {
   return (
     <CartWrapper>
       <select onChange={() => {setSize(event.target.value)}} className="select-menu">
-        <option key="0">Select Size</option>
+        <option key="0" >Select Size</option>
         {SKU.map((sku) => <option value={sku.size} key={sku.sku_id}>{sku.size}</option>)}
       </select>
       <select onChange={() => {setQuantity(event.target.value)}} className="select-menu">
-        <option> - </option>
+        <option key="0"> Select Quantity </option>
         {maxQty.map((qty) => <option value={qty} key={qty}>{qty}</option>)}
       </select>
       <AddCartButton onClick= {() => {

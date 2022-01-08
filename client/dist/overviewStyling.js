@@ -157,14 +157,3 @@ export const CartWrapper = styled.div`
   height: 20%;
   width: 37%;
 `;
-
-export const ZoomImage = styled.div`
-  position: relative;
-  z-index: 100;
-  display: block;
-  margin: auto;
-  object-fit: contain;
-  left: 15%;
-  height: 110%;
-  width: auto;
-`;

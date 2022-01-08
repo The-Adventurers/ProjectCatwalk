@@ -15,6 +15,7 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
       document.querySelector('.form-wrapper').style.display = 'none';
       updateData();
     })
+
   }
 
   return (
@@ -43,7 +44,7 @@ const QuestionForm = ({product_id, product_name, updateData}) => {
           </p>
           </label>
 
-          <button type='submit'>Submit</button>
+          <button type='submit'>SUBMIT</button>
 
         </form>
     </div>

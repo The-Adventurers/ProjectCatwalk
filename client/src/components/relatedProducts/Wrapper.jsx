@@ -21,7 +21,7 @@ const RelatedProductsWrapper = ({ productId, setProductId, currentProduct, setEr
   }, [productId])
 
   return (
-    <div>
+    <div id='relatedProductSection'>
       <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} relatedProducts={relatedProducts} setRelatedProducts={setRelatedProducts} />
       <hr/>
       <OutfitList productId={productId} currentProduct={currentProduct} currentOutfit={currentOutfit} />
