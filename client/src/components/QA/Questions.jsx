@@ -43,10 +43,12 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         : updateQA({type, section, id: ansId || quesId}).then(()=> {
         target.setAttribute('voted', 'true')
         updateData()});
-    } else if (e.target.tagName === 'BUTTON' && e.target.innerText === 'ADD QUESTION +') {
+    } else if (e.target.tagName === 'BUTTON' && e.target.innerText.includes('ADD QUESTION')) {
+      console.log('add Q')
       document.querySelector('.form-wrapper').style.display = 'block';
       document.querySelector('.question-form-container').style.display = 'block';
     } else if(e.target.tagName === 'I') {
+      console.log('fsdf')
       document.querySelector('.answer-form-wrapper').style.display = 'none';
       document.querySelector('.form-wrapper').style.display = 'none';
     } else if (e.target.tagName === 'SPAN' && e.target.innerText === 'Add Answer') {
@@ -87,16 +89,16 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
       ))}
     </>
 
-  const addQuestion = <button>ADD QUESTION <i class="fas fa-plus"/></button>;
+  const addQuestion = <button> ADD QUESTION <i class="fas fa-plus"/></button>;
   const moreQuestions = <button onClick={ () => {
     showMoreQuestions();
     setResize(resizeSection + 1);
     }}> MORE ANSWERED QUESTIONS ({ keyWord.length > 2 ? searchResult.length - showQuestions.length : questions.length - showQuestions.length})</button>;
 
   return(
-    <>
+    <div onClick={handleOnClick} >
       <SearchBar questions={questions} searchResult={setSearchResult} keyWord={setKeyWord}/>
-      <div className={`question-container ${resizeSection >= 2 ? 'singleScreen' : ''}`} onClick={handleOnClick} >
+      <div className={`question-container ${resizeSection >= 2 ? 'singleScreen' : ''}`}>
         {questions.length ? question : addQuestion }
       </div>
         <div name="button">
@@ -107,7 +109,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
         {showPhoto.length ? <Modal showPhoto={showPhoto} setShowPhoto={setShowPhoto}/> : null}
 
-    </>
+    </div>
   )
 }
 

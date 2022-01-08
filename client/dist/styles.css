@@ -355,7 +355,7 @@ span.user {
 
 .more-answer:hover, .question span span:first-child:hover, .question span span:last-child :hover, .answer-info-container span:nth-child(5):hover, .answer-info-container span:last-child:hover  {
   color:rgb(60, 57, 57);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /*----- QuestionForm component ------*/
@@ -389,7 +389,7 @@ span.user {
 .singleScreen {
   height: 90vh;
   overflow-y: scroll;
-  background: rgb(250, 245, 245);
+  background: rgb(237, 236, 236);
   border-radius: 10px;
 }
 
