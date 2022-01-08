@@ -16,7 +16,7 @@ export const OverviewApp = (props) => {
     }]
   });
   const [imageIndex, setImageIndex] = useState(0);
-
+  document.body.style.overflow =   showModal.length ? 'hidden' : 'auto';
   useEffect(() => {
     getStyles({product_id: props.product_id })
       .then((res) => {

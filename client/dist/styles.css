@@ -216,6 +216,7 @@ hr {
   border-radius: 10px;
   background-color: transparent;
   margin-left: 10vw;
+  margin-bottom: 2%;
   color: black;
   border:2px solid black;
 }
@@ -242,7 +243,6 @@ hr {
   font-size: 1rem;
 }
 
-
 /* Questions component */
 
 .question-container {
@@ -259,14 +259,39 @@ div[name|='button'] button {
    padding: 0.5%;
    cursor: pointer;
    padding:1%;
-   background: white;
-   border: 2px solid black;
+   background: black;
+   border: 2px solid white;
+   color: white;
    border-radius: 10px;
+   margin-top: 3%;
+   font-weight: bold;
  }
- .question {
+ .question-container button {
+  font-weight: bold;
+  color: white;
+  background: black;
+  border: 2px solid white;
+ }
+
+ .question-container button:hover,  div[name|='button'] button:hover {
+  background: white;
+  border: 2px solid black;
+  color: black;
+ }
+
+.fa-plus {
+  margin-left: 2px;
+}
+.question {
    display: flex;
    justify-content: space-between;
    font-weight: bolder;
+ }
+ .question-outline {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+
  }
 
  .question span:nth-child(2) {
@@ -279,7 +304,6 @@ div[name|='button'] button {
   cursor: pointer;
   text-decoration: underline;
 }
-
 /* Answer component */
 .answer {
   font-weight: bolder;
@@ -327,6 +351,11 @@ span.user {
   text-decoration: underline;
   width: fit-content;
   padding: 0.4%;
+}
+
+.more-answer:hover, .question span span:first-child:hover, .question span span:last-child :hover, .answer-info-container span:nth-child(5):hover, .answer-info-container span:last-child:hover  {
+  color:rgb(60, 57, 57);
+  transform: scale(1.1);
 }
 
 /*----- QuestionForm component ------*/
@@ -448,7 +477,6 @@ span.user {
   border: 1px solid grey;
   color: black;
   background: grey;
-
 }
 
 
@@ -472,7 +500,6 @@ span.user {
   padding: 0.3% 1.3%;
   color: black;
   border: 1px solid grey;
-  /* background: grey; */
   border-radius: 10px;
   font-size: 1em;
   font-weight: bold;

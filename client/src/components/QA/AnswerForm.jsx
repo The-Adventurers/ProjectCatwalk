@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { addQA } from '../../shared/api.js';
 
+
 const AnswerForm = ({updateData, product_name, question_info}) => {
 
   const [selectedImg, setImg] = useState([]);

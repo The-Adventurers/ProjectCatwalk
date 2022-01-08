@@ -87,7 +87,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
       ))}
     </>
 
-  const addQuestion = <button>ADD QUESTION +</button>;
+  const addQuestion = <button>ADD QUESTION <i class="fas fa-plus"/></button>;
   const moreQuestions = <button onClick={ () => {
     showMoreQuestions();
     setResize(resizeSection + 1);
@@ -96,8 +96,9 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
   return(
     <>
       <SearchBar questions={questions} searchResult={setSearchResult} keyWord={setKeyWord}/>
-      <div className={`question-container ${resizeSection === 2 ? 'singleScreen' : ''}`} onClick={handleOnClick} >
+      <div className={`question-container ${resizeSection >= 2 ? 'singleScreen' : ''}`} onClick={handleOnClick} >
         {questions.length ? question : addQuestion }
+      </div>
         <div name="button">
           {keyWord.length > 2 ? ((searchResult.length > 2 && showQuestions.length < searchResult.length) ? moreQuestions : ''):((questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions : '')}
           {questions.length ? addQuestion : 'Loading...' }
@@ -105,7 +106,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
         <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
         {showPhoto.length ? <Modal showPhoto={showPhoto} setShowPhoto={setShowPhoto}/> : null}
-      </div>
+
     </>
   )
 }
