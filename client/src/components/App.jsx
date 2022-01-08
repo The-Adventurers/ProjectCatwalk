@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import NavBar from './NavBar.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
-import RelatedProductsWrapper from './relatedProducts/Wrapper.jsx';
+import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
+import OutfitList from './relatedProducts/OutfitList.jsx';
 import QAsection from './QA/QAsection.jsx';
 import RnRApp from './R&R/RnRApp.jsx';
 import { MainContainer } from '../../dist/RelatedProductStyles';
@@ -42,7 +43,10 @@ const App = function () {
       <NavBar defaultProductId={setProductId}/>
       <OverviewApp product_id={ productId } currentProduct = { currentProduct } setError={setError}/>
       <MainContainer>
-        <RelatedProductsWrapper productId={productId} setProductId={setProductId} currentProduct={currentProduct} setError={setError}/>
+        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} setError={setError}/>
+        <hr/>
+        <OutfitList productId={productId} currentProduct={currentProduct} />
+        <hr/>
         <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
         <hr/>
         <RnRApp productId = {productId} />

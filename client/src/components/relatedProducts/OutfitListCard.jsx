@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { starConverter } from './helpers.js';
 import { ProductCard, Container, Image, Icon, Category, Name, Price, SalePrice, RegPrice, Rating } from '../../../dist/RelatedProductStyles';
 
-const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
+const OutfitListCard = ({ product, yourOutfits, setYourOutfits }) => {
   let price, image;
   if (product.salePrice) {
     price = <><RegPrice>{'$' + Math.round(product.defaultPrice)}</RegPrice><SalePrice>{'$' + Math.round(product.salePrice)}</SalePrice></>
@@ -16,28 +17,15 @@ const OutfitListCard = ({ product, yourOutfit, setYourOutfit }) => {
   }
 
   const removeOutfit = () => {
-    let newOutfit = [...yourOutfit]
-    for (let i = 0; i < yourOutfit.length; i++) {
-      if (yourOutfit[i].id === product.id) {
+    let newOutfit = [...yourOutfits]
+    for (let i = 0; i < yourOutfits.length; i++) {
+      if (yourOutfits[i].id === product.id) {
         newOutfit.splice(i, 1)
         localStorage.setItem('outfits', `${JSON.stringify(newOutfit)}`);
-        setYourOutfit(newOutfit);
+        setYourOutfits(newOutfit);
       }
     }
   }
-
-  const starConverter = (rating) => {
-    const starRatings = {
-      0 : "☆☆☆☆☆",
-      1 : "★☆☆☆☆",
-      2 : "★★☆☆☆",
-      3 : "★★★☆☆",
-      4 : "★★★★☆",
-      5 : "★★★★★"
-    };
-    let newRating = Math.round(rating);
-    return starRatings[newRating];
-  };
 
   return (
     <ProductCard>
