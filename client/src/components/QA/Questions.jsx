@@ -44,11 +44,9 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
         target.setAttribute('voted', 'true')
         updateData()});
     } else if (e.target.tagName === 'BUTTON' && e.target.innerText.includes('ADD QUESTION')) {
-      console.log('add Q')
       document.querySelector('.form-wrapper').style.display = 'block';
       document.querySelector('.question-form-container').style.display = 'block';
     } else if(e.target.tagName === 'I') {
-      console.log('fsdf')
       document.querySelector('.answer-form-wrapper').style.display = 'none';
       document.querySelector('.form-wrapper').style.display = 'none';
     } else if (e.target.tagName === 'SPAN' && e.target.innerText === 'Add Answer') {
