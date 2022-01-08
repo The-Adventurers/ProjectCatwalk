@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { getStyles, getProducts } from '../../shared/api.js';
 import { Overview, GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight,ProductInfoWrapper, Title, Category, Price, SalesPrice, OldPrice, Description, PriceComponent, SelectStyleWrapper, Styles, ImageButton, StyleButton } from '../../../dist/overviewStyling.js';
 import { Cart } from './Cart.jsx';
+import Modal from '../QA/Modal.jsx';
 
 export const OverviewApp = (props) => {
 
   const [allStyles, setAllStyles] = useState([]);
+  const [showModal, setShowModal] = useState([]);
   const [singleStyle, setSingleStyle] = useState({
     photos: [{
       url: 'https://images.wondershare.com/mockitt/ux-beginner/loading-time-tips.jpeg',
@@ -67,7 +69,8 @@ export const OverviewApp = (props) => {
             })}
           </MiniGallery>
           <MainImage>
-            <img src={currentImage} alt="Product Image" className="MainImage"/>
+            <img src={currentImage} alt="Product Image" className="MainImage" onClick={()=>setShowModal([0])} />
+            {showModal.length ? <Modal showPhoto={[0, [currentImage]]} setShowPhoto={setShowModal} /> : null }
           </MainImage>
         </GalleryWrapper>
         <ProductInfoWrapper>
