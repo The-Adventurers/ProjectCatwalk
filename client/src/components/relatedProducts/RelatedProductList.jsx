@@ -5,7 +5,7 @@ import { getRelated } from '../../shared/api';
 import { getRelatedCards } from './helpers.js';
 import { MainContainer, RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow } from '../../../dist/RelatedProductStyles';
 
-const RelatedProductList = ({productId, currentProduct, setProductId}) => {
+const RelatedProductList = ({productId, currentProduct, setProductId, setError}) => {
   let [showModal, setShowModal] = useState(false);
   let [comparisonProduct, setComparisonProduct] = useState({});
   let [relatedProducts, setRelatedProducts] = useState([]);

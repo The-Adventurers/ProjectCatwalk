@@ -1,10 +1,9 @@
 const express = require('express');
 const path = require('path');
+const controllers = require('./controllers/controllers');
 
 const app = express();
 const PORT = 3030;
-
-const controllers = require('./controllers/controllers');
 
 // Middleware
 app.get('*.js', function (req, res, next) {
