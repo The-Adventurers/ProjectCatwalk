@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import RelatedProductCard from './RelatedProductCard.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import { getRelated } from '../../shared/api';
 import { getRelatedCards } from './helpers.js';
 import { MainContainer, RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow } from '../../../dist/RelatedProductStyles';
 
-const RelatedProductList = ({productId, currentProduct, setProductId}) => {
-  let [showModal, setShowModal] = useState(false);
-  let [comparisonProduct, setComparisonProduct] = useState({});
-  let [relatedProducts, setRelatedProducts] = useState([]);
-  let [index, setIndex] = useState(0);
-  let [scrollY, setScrollY] = useState(window.scrollY);
+const RelatedProductList = () => {
+  const { productId, setProductId, currentProduct } = useContext(ProductContext);
+  const [showModal, setShowModal] = useState(false);
+  const [comparisonProduct, setComparisonProduct] = useState({});
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [scrollY, setScrollY] = useState(window.scrollY);
 
   const getRelatedData = () => {
     getRelated({product_id: productId})
@@ -18,7 +20,7 @@ const RelatedProductList = ({productId, currentProduct, setProductId}) => {
         let allCards = getRelatedCards(results.data);
         removeDuplicates(allCards);
       })
-      .catch(err => { setError(err); })
+      .catch(err => { console.error(err); })
   }
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const RelatedProductList = ({productId, currentProduct, setProductId}) => {
     for (let i = 0; i < products.length; i++) {
       if ((noDuplicates[products[i].id] === undefined)) {
         noDuplicates[products[i].id] = products[i].name;
-        cards.push(<RelatedProductCard product={products[i]} key={products[i].id} setProductId={setProductId} setModal={setModal}/>);
+        cards.push(<RelatedProductCard product={products[i]} key={products[i].id} setModal={setModal}/>);
       }
     }
     setRelatedProducts(cards);
@@ -88,7 +90,7 @@ const RelatedProductList = ({productId, currentProduct, setProductId}) => {
           />}
         </CarouselContainer>
       </RelatedProducts>
-      <ComparisonModal currentProduct={currentProduct} comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>
+      <ComparisonModal comparisonProduct={comparisonProduct} showModal={showModal} setModal={setModal}/>
     </div>
   );
 }

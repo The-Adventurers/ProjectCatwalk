@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import Answers from './Answers.jsx';
 import QuestionForm from './QuestionForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
@@ -6,8 +7,8 @@ import SearchBar from './SearchBar.jsx';
 import Modal from './Modal.jsx';
 import { updateQA } from '../../shared/api.js';
 
-const Questions = ({questions, updateData, product_id, product_name, report}) => {
-
+const Questions = ({questions, updateData, report}) => {
+  const { productId, currentProduct } = useContext(ProductContext);
   const [showQuestions, setShowQuestions] = useState([questions]);
   const [chosenQuestion, setChosenQuestion] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
@@ -82,7 +83,7 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
               </span>
             </span>
           </p>
-        <Answers questions={showQuestions} q_index={index} product_name={product_name} getPhoto={setShowPhoto}/>
+        <Answers questions={showQuestions} q_index={index} getPhoto={setShowPhoto}/>
       </ div>
       ))}
     </>
@@ -103,8 +104,8 @@ const Questions = ({questions, updateData, product_id, product_name, report}) =>
           {keyWord.length > 2 ? ((searchResult.length > 2 && showQuestions.length < searchResult.length) ? moreQuestions : ''):((questions.length > 2 && showQuestions.length < questions.length) ?  moreQuestions : '')}
           {questions.length ? addQuestion : 'Loading...' }
         </div>
-        <QuestionForm product_id={product_id} updateData={updateData} product_name={product_name}/>
-        <AnswerForm updateData={updateData} product_name={product_name} question_info={chosenQuestion} />
+        <QuestionForm updateData={updateData}/>
+        <AnswerForm updateData={updateData} question_info={chosenQuestion} />
         {showPhoto.length ? <Modal showPhoto={showPhoto} setShowPhoto={setShowPhoto}/> : null}
 
     </div>

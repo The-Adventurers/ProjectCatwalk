@@ -1,4 +1,5 @@
 const models = require('../models/models');
+const redisClient = require('../cache.js');
 
 module.exports = {
   getProducts: (req, res) => {
@@ -95,20 +96,29 @@ module.exports = {
       })
   },
   getRelated: (req, res) => {
-    models.getRelated(req.query)
+    const searchTerm = req.query.product_id;
+    redisClient.get(searchTerm)
       .then((results) => {
-        let fetchAllData = [];
-        results.data.forEach((relatedId) => {
-          fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
-        })
-        return Promise.all(fetchAllData);
+        if (results) {
+          res.status(200).send(JSON.parse(results));
+        } else {
+          return models.getRelated(req.query);
+        }
+      })
+      .then((results) => {
+      let fetchAllData = [];
+      results.data.forEach((relatedId) => {
+        fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
+      })
+      return Promise.all(fetchAllData);
       })
       .then((results) => {
         let allData = [];
         for (var i = 0; i < results.length; i++) {
           allData.push(results[i].data)
         }
-        res.send(allData);
+        redisClient.set(searchTerm, JSON.stringify(allData));
+        res.status(200).send(allData);
       })
       .catch((error) => {
         res.status(500).send(error);

@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 
-const Answers = ({questions, q_index, product_name, getPhoto}) => {
+const Answers = ({questions, q_index, getPhoto}) => {
+  const { currentProduct } = useContext(ProductContext);
   const allAnswers = questions[q_index].answers;
   const [showAnswers, setAnswers] = useState([]);
 
@@ -43,7 +45,7 @@ const Answers = ({questions, q_index, product_name, getPhoto}) => {
                  <span className='photos'>
                    {ans[1].photos.map((photo, index) => <img key={index} src={photo} onError={(e) => {
                      e.target.src = 'https://bitsofco.de/content/images/2018/12/broken-1.png';
-                   }} alt={`answer-photo-${ans[0]}-productName-${product_name}`} onClick={()=>showImage(index, ans[1].photos)}/>)}
+                   }} alt={`answer-photo-${ans[0]}-productName-${currentProduct.name}`} onClick={()=>showImage(index, ans[1].photos)}/>)}
                  </span> : null
               }
             </p>

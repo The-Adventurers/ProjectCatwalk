@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { starConverter } from './helpers.js';
 import { ProductCard, Container, Image, Icon, Category, Name, Price, SalePrice, RegPrice, Rating } from '../../../dist/RelatedProductStyles';
 
-const RelatedProductCard = ({ product, setProductId, setModal }) => {
+const RelatedProductCard = ({ product, setModal }) => {
+  const {setProductId} = useContext(ProductContext);
   let price, image;
   if (product.salePrice) {
     price = <><RegPrice>{'$' + Math.round(product.defaultPrice)}</RegPrice><SalePrice>{'$' + Math.round(product.salePrice)}</SalePrice></>

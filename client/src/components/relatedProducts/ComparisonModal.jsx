@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { Background, ModalWrapper, Header, Products, Features, Feature, CheckMark, ModalIcon } from '../../../dist/RelatedProductStyles';
 
-const ComparisonModal = ({ currentProduct , comparisonProduct, showModal, setModal }) => {
+const ComparisonModal = ({ comparisonProduct, showModal, setModal }) => {
+  const {currentProduct} = useContext(ProductContext);
   let currentFeatures = {};
   let comparisonFeatures = {};
   let allFeatures = {};
