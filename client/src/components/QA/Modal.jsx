@@ -11,9 +11,7 @@ const Modal = ({showPhoto, setShowPhoto}) => {
       } else if (target.includes('right') && showPhoto[0] < showPhoto[1].length - 1) {
           setShowPhoto([showPhoto[0] + 1, showPhoto[1]]);
       }
-    } else if (e.target.tagName !== 'IMG') {
-      setShowPhoto([]);
-    }
+    } 
   }
 
   return(

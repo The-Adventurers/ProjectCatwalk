@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { getStyles, getProducts } from '../../shared/api.js';
 import { Overview, GalleryWrapper, MiniGallery, MainImage, ImageLeft, ImageRight,ProductInfoWrapper, Title, Category, Price, SalesPrice, OldPrice, Description, PriceComponent, SelectStyleWrapper, Styles, ImageButton, StyleButton } from '../../../dist/overviewStyling.js';
 import { Cart } from './Cart.jsx';
 import Modal from '../QA/Modal.jsx';
 
 export const OverviewApp = (props) => {
-
+  const { productId, currentProduct } = useContext(ProductContext);
   const [allStyles, setAllStyles] = useState([]);
   const [showModal, setShowModal] = useState([]);
   const [singleStyle, setSingleStyle] = useState({
@@ -16,9 +16,9 @@ export const OverviewApp = (props) => {
     }]
   });
   const [imageIndex, setImageIndex] = useState(0);
-
+  document.body.style.overflow =   showModal.length ? 'hidden' : 'auto';
   useEffect(() => {
-    getStyles({product_id: props.product_id })
+    getStyles({product_id: productId })
       .then((res) => {
         setAllStyles(res.data.results);
         setSingleStyle(res.data.results[0]);
@@ -26,7 +26,7 @@ export const OverviewApp = (props) => {
       .catch((error) => {
         props.setError(error);
       });
-  }, [props.product_id]);
+  }, [productId]);
 
   const LimitImageArray = singleStyle.photos.slice(0, 10);
   let currentImage = 'https://i1.wp.com/www.careandshare-ut.org/wp-content/uploads/2020/09/image-coming-soon.jpg?resize=600%2C600&ssl=1';
@@ -75,16 +75,16 @@ export const OverviewApp = (props) => {
         </GalleryWrapper>
         <ProductInfoWrapper>
           <Category>
-            <div className="OverviewCategory">{props.currentProduct.category}</div>
+            <div className="OverviewCategory">{currentProduct.category}</div>
           </Category>
           <Title>
-           <div className="OverviewTitle">{props.currentProduct.name}</div>
+           <div className="OverviewTitle">{currentProduct.name}</div>
           </Title>
           <PriceComponent>
             {singleStyle.sale_price !== null ? ( <><OldPrice>{'$' + singleStyle.original_price}</OldPrice><SalesPrice>{'$' + singleStyle.sale_price}</SalesPrice></> ) : <Price>{'$' + singleStyle.original_price}</Price>}
           </PriceComponent>
           <Description>
-           {props.currentProduct.description}
+           {currentProduct.description}
           </Description>
           <hr className='hr'/>
         </ProductInfoWrapper>
@@ -100,7 +100,7 @@ export const OverviewApp = (props) => {
           })}
           </Styles>
         </SelectStyleWrapper>
-        <Cart product_id={ props.product_id } style={ singleStyle } />
+        <Cart style={ singleStyle } />
       </div>
     </Overview>
   )

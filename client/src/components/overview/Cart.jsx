@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { CartWrapper, AddCartButton } from '../../../dist/overviewStyling.js';
 import { postCart } from '../../shared/api.js';
 
 export const Cart = (props) => {
+  const { productId } = useContext(ProductContext);
   const [OutOfStock, setOutOfStock] = useState(false);
   const [Size, setSize] = useState('Select Size');
   const [Quantity, setQuantity] = useState('Select Quantity');
@@ -11,7 +12,7 @@ export const Cart = (props) => {
   useEffect(() => {
     setSize('Select Size');
     setQuantity('Select Quantity');
-  }, [props.product_id]);
+  }, [productId]);
 
   const SKU = [];
   let availableQty = 0;

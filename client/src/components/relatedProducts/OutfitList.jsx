@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { getStyles, getMeta } from '../../shared/api';
 import OutfitListCard from './OutfitListCard.jsx';
 import { getOutfitCard } from './helpers.js';
 import { RelatedProducts, CarouselContainer, Carousel, InnerCarousel, Arrow, NoArrow, AddCard, Add, AddIcon, ProductCard, Container, Image, Icon, Category, Name, Price, Rating } from '../../../dist/RelatedProductStyles';
 
-const OutfitList = ({ productId, currentProduct }) => {
+const OutfitList = () => {
+  const { productId, currentProduct } = useContext(ProductContext);
   const [yourOutfits, setYourOutfits] = useState([]);
   const [currentOutfit, setCurrentOutfit] = useState({});
   const [index, setIndex] = useState(0);

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ProductContext from './ProductContext';
 
-const NavBar = ({ defaultProductId}) => {
+const NavBar = () => {
+  const { setProductId } = useContext(ProductContext);
   return (
     <nav>
-      <div><a id='brand' onClick={()=>  defaultProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
+      <div><a id='brand' onClick={()=>  setProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
       <div>
         <div id='linkSection'>
           <a href='#OverviewSection'>Product</a>
@@ -13,7 +15,7 @@ const NavBar = ({ defaultProductId}) => {
         </div>
       </div>
       <div>
-        <i className="fas fa-home" onClick={()=>  defaultProductId(63616)}/>
+        <i className="fas fa-home" onClick={()=>  setProductId(63616)}/>
         <i className="far fa-envelope"/>
         <i className="fas fa-shopping-cart"/>
         <span>Sign In</span>
