@@ -97,46 +97,32 @@ module.exports = {
   },
   getRelated: (req, res) => {
     const searchTerm = req.query.product_id;
-    console.log('ProductId: ', searchTerm);
-    redisClient.get('63616', function (err, data) {
-      const hello = data;
-      console.log('Data: ', JSON.parse(data));
-    });
-              // .then((results) => {
-          //   console.log('Data: ', results.data);
-          //   let fetchAllData = [];
-          //   results.data.forEach((relatedId) => {
-          //     fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
-          //   })
-          //   return Promise.all(fetchAllData);
-          // })
-          // .then((results) => {
-          //   let allData = [];
-          //   for (var i = 0; i < results.length; i++) {
-          //     allData.push(results[i].data)
-          //   }
-          //   redisClient.set(searchTerm, JSON.stringify(allData));
-          //   res.status(200).send(allData);
-          // })
-          // .catch((error) => {
-          //   res.status(500).send(error);
-          // });
-
-          // try {
-          //   redisClient.get(searchTerm, async (err, products) => {
-          //     if (err) throw err;
-          //     console.log('Cache: ', products);
-          //     if (products) {
-          //         res.status(200).send(JSON.parse(products));
-          //     } else {
-          //       console.log('Not in cache');
-          //       const relatedProducts = await models.getRelated(req.query);
-          //       console.log('Data: ', relatedProducts);
-          //     }
-          //   });
-          // } catch(err) {
-          //   res.status(500).send(err);
-          // }
+    redisClient.get(searchTerm)
+      .then((results) => {
+        if (results) {
+          res.status(200).send(JSON.parse(results));
+        } else {
+          return models.getRelated(req.query);
+        }
+      })
+      .then((results) => {
+      let fetchAllData = [];
+      results.data.forEach((relatedId) => {
+        fetchAllData.push(models.getProducts({product_id: relatedId}), models.getStyles({product_id: relatedId}), models.getMeta({product_id: relatedId}));
+      })
+      return Promise.all(fetchAllData);
+      })
+      .then((results) => {
+        let allData = [];
+        for (var i = 0; i < results.length; i++) {
+          allData.push(results[i].data)
+        }
+        redisClient.set(searchTerm, JSON.stringify(allData));
+        res.status(200).send(allData);
+      })
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   },
   postCart: (req, res) => {
     models.postCart(req.body)
