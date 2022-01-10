@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import ProductContext from './ProductContext';
 import NavBar from './NavBar.jsx';
 import { OverviewApp } from './overview/OverviewApp.jsx';
 import RelatedProductList from './relatedProducts/RelatedProductList.jsx';
@@ -41,17 +42,19 @@ const App = function () {
 
   return (
     <div>
-      <NavBar defaultProductId={setProductId}/>
-      <OverviewApp product_id={ productId } currentProduct = { currentProduct } setError={setError}/>
-      <MainContainer>
-        <RelatedProductList productId={productId} currentProduct={currentProduct} setProductId={setProductId} setError={setError}/>
-        <hr/>
-        <OutfitList productId={productId} currentProduct={currentProduct} />
-        <hr/>
-        <QAsection product_id={currentProduct.id} product_name={currentProduct.name} />
-        <hr/>
-        <RnRApp productId = {productId} />
-      </MainContainer>
+      <ProductContext.Provider value={{productId, setProductId, currentProduct}}>
+        <NavBar/>
+        <OverviewApp setError={setError}/>
+        <MainContainer>
+          <RelatedProductList/>
+          <hr/>
+          <OutfitList/>
+          <hr/>
+          <QAsection/>
+          <hr/>
+          <RnRApp/>
+        </MainContainer>
+      </ProductContext.Provider>
     </div>
   )
 }

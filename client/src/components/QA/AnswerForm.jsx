@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { addQA } from '../../shared/api.js';
 
 
-const AnswerForm = ({updateData, product_name, question_info}) => {
-
+const AnswerForm = ({updateData, question_info}) => {
+  const { currentProduct } = useContext(ProductContext);
   const [selectedImg, setImg] = useState([]);
   const [photoURL, setPhotoURL] = useState([]);
 
@@ -65,7 +66,7 @@ const AnswerForm = ({updateData, product_name, question_info}) => {
             <p>Submit your Answer</p>
             <i className="fas fa-times"/>
           </div>
-          <h3>{product_name} : {question_info[1]}</h3>
+          <h3>{currentProduct.name} : {question_info[1]}</h3>
           <label htmlFor='answer-body'><p>Your Answer :</p>
           <textarea id='answer-body' name='answer' placeholder='Example: I love this product!' maxLength='1000' required>
           </textarea>

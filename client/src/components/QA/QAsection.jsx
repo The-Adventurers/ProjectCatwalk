@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import ProductContext from '../ProductContext';
 import { getQuestions, updateQA } from '../../shared/api.js';
 import Questions from './Questions.jsx';
 
-const QAsection = ({ product_id , product_name}) => {
-
+const QAsection = () => {
+  const { productId } = useContext(ProductContext);
   const [allQuestions, setQuestions] = useState([]);
   const [update, setUpdate] = useState(false);
   const [reportedAns, setReportedAns] = useState([]);
 
   useEffect(() => {
     const fetchData = () => {
-      getQuestions({ product_id, count: 1000 }).then(res => {
+      getQuestions({ product_id: productId, count: 1000 }).then(res => {
         let questions = res.data.results;
         questions.sort((a, b) =>
           b.question_helpfulness - a.question_helpfulness
@@ -28,14 +29,14 @@ const QAsection = ({ product_id , product_name}) => {
       });
     }
     fetchData();
-  }, [product_id, update]);
+  }, [productId, update]);
 
   useEffect(()=>{
       if(reportedAns.length) {
         reportedAns.forEach(id => updateQA({type:'answers', section:'report', id}))
       }
     }
-  , [product_id]);
+  , [productId]);
 
   const report = (id) => {
     setReportedAns([...reportedAns, id]);
@@ -44,7 +45,7 @@ const QAsection = ({ product_id , product_name}) => {
   return (
     <div id='main-QA' className='main-QA'>
       <p id='header'>QUESTIONS & ANSWERS</p>
-      <Questions questions={allQuestions} product_id={product_id} product_name={product_name}  updateData={()=>setUpdate(!update)} report = {report} />
+      <Questions questions={allQuestions} updateData={()=>setUpdate(!update)} report = {report} />
     </div>
   );
 };
