@@ -5,7 +5,7 @@ const NavBar = () => {
   const { setProductId } = useContext(ProductContext);
   return (
     <nav>
-      <div><a id='brand' onClick={()=>  setProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
+      <div><a id='brand' href='#OverviewSection' onClick={()=>  setProductId(63616)}>BOUNDLESS BUCKEYE</a></div>
       <div>
         <div id='linkSection'>
           <a href='#OverviewSection'>Product</a>
